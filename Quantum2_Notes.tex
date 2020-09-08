@@ -14,7 +14,8 @@
 \usepackage{hyperref} % references and links
 \hypersetup{colorlinks=false, linkbordercolor=1 1 1}
 
-\setlength\parindent{0pt} % no auto-indents
+\setlength{\parindent}{0pt} % no auto-indents
+\setlength{\parskip}{8pt}
 
 \begin{document}
 \title{\huge Quantum Physics Notes \vspace{2cm} \\  \large Adapted from Dr. Jesse Maasen's lecture notes\thanks{As well as \emph{Introduction to Quantum Mechanics}, 3rd ed. by Griffiths and Schroeter.} \\ \vspace{0.5cm} \normalsize for \vspace{0.5cm} \\  PHYC 4151 \vspace{2cm}}
@@ -23,6 +24,23 @@
 	\normalsize Last updated: \today}
 \maketitle
 
+\section{Spin}
+\subsection{Introduction to spin}
+In classical mechanics, a rigid object can have two kinds of angular momentum:
 
+\begin{description}
+	\item Orbital: $\vb{L} = \vb{r}\cross\vb{p}$
+	\item Spin : $\vb{S} = I\vb*{\omega}$
+\end{description}
+
+%% Figure: L and S for Earth orbit
+
+Classically, both are equivalent; spin is simply the sum of the angular momenta of infinitesimal elements over the volume of a non-point mass. In quantum mechanics, we have the same two components of angular momentum, but the distinction is absolutely fundamental.
+
+There is orbital angular momentum, for example associated with the motion of an electron around the nucleus in the hydrogen atom, for example. This is described by the spherical harmonics for a spherically symmetric potential.
+
+The electron also carries another form of angular momentum which has nothing to do with motion in space and is independent of position ($r$, $\phi$, $\theta$) but is somewhat analogous to classical spin. This analogy cannot be pressed too far, as quantum mechanical spin cannot be decomposed into the orbital angular momentum of constituent parts.
+
+We start from the fact that elementary particles carry \emph{intrinsic} angular momentum $\vb{S}$ in addition to their \emph{extrinsic} angular momentum $\vb{L}$. The algebraic theory of spin is similar to the theory of orbital angular momentum.
 
 \end{document}
