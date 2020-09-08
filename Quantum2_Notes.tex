@@ -14,6 +14,9 @@
 \usepackage{hyperref} % references and links
 \hypersetup{colorlinks=false, linkbordercolor=1 1 1}
 
+\newcommand{\com}[2]{\qty[#1 \,,\, #2]}
+\newcommand{\exv}[1]{\langle #1 \rangle}
+
 \setlength{\parindent}{0pt} % no auto-indents
 \setlength{\parskip}{8pt}
 
@@ -43,4 +46,99 @@ The electron also carries another form of angular momentum which has nothing to 
 
 We start from the fact that elementary particles carry \emph{intrinsic} angular momentum $\vb{S}$ in addition to their \emph{extrinsic} angular momentum $\vb{L}$. The algebraic theory of spin is similar to the theory of orbital angular momentum.
 
+\subsection{Review of orbital angular momentum}
+\subsubsection{Definitions of orbital angular momentum}
+Orbital angular momentum is defined as the cross product of the position and linear momentum vector:
+
+\begin{equation}
+\vb{L} = \vb{r}\cross\vb{p} \, .
+\end{equation}
+
+%% Figure: angular momentum vector
+
+In Cartesian components, this is
+
+\begin{subequations}
+	\begin{align}
+	L_{x} &= y p_{z} - z p_{y} \\
+	L_{y} &= z p_{x} - x p_{x} \\
+	L_{z} &= x p_{y} - y p_{x} \, ,
+	\end{align}
+\end{subequations}
+
+and in quantum mechanics, we use the prescription
+
+\begin{subequations}
+	\begin{align}
+	p_{x} &= - i \hbar \pdv*{x} \\
+	p_{y} &= - i \hbar \pdv*{y} \\
+	p_{z} &= - i \hbar \pdv*{z} \, .
+	\end{align}
+\end{subequations}
+
+An important consequence is that the angular momentum operators do not commute:
+
+\begin{subequations}
+	\begin{align}
+	\com{L_{x}}{L_{y}} &= i \hbar L_{z} \\
+	\com{L_{y}}{L_{z}} &= i \hbar L_{x} \\
+	\com{L_{z}}{L_{x}} &= i \hbar L_{y} \, .
+	\end{align}
+\end{subequations}
+
+The observables $L_{x}$, $L_{y}$ and $L_{z}$ are incompatible and for example, the uncertainty principle says
+
+\begin{equation}
+	\sigma_{L_{x}}\sigma_{L_{y}} \geq \frac{\hbar}{2}\left|\exv{L_{z}}\right| \, .
+\end{equation}
+
+These  $L_{x}$, $L_{y}$ and $L_{z}$ operators do not share the same eigenfunctions. However, the total angular momentum,
+
+\begin{equation}
+	L^2 = L_{x}^{\, 2} + L_{y}^{\, 2} + L_{z}^{\, 2}
+\end{equation}
+
+does commute with each of the component angular momentum operators,
+
+\begin{subequations}
+	\begin{align}
+	\com{L^2}{L_{x}} &= 0 \\
+	\com{L^2}{L_{y}} &= 0 \\
+	\com{L^2}{L_{z}} &= 0 \, .
+	\end{align}
+\end{subequations}
+
+ and therefore they share the same eigenfunctions.
+ 
+ \subsubsection{Eigenvalues and Eigenfunctions}
+ The eigenvalue equations for the angular momentum operators are 
+ 
+ \begin{align}
+ 	L^2 Y_{\ell}^{m} &= \hbar^2\ell(\ell+1) Y_{\ell}^{m} \\
+ 	L_{z} Y_{\ell}^{m} &= \hbar m Y_{\ell}^{m} \, ,
+ \end{align}
+ 
+ where $\ell$ is the azimuthal quantum number ($\ell=0,1,2,\ldots$) and $m$ is the magnetic quantum number ($m=-\ell,-\ell+1,\ldots,\ell-1,\ell$). The eigenfunctions $Y_{\ell}^{m}$ are functions of $\phi$ and $\theta$ and are known as the \emph{spherical harmonics}.
+ 
+ %% Figure: Classical picture of l = 2
+ 
+We can also define ladder operators,
+
+\begin{equation}
+	L_{\pm} = L_{x} \pm i L_{y}
+\end{equation}
+
+%% Figure: Ladder operator
+
+These operators raise or lower the eigenvalues and eigenstates of $L_{z}$ . Of course, applying the raising operator to the top state, or applying the lowering operator to the bottom state gives zero:
+
+\begin{subequations}
+\begin{align}
+	L_{+}\ket{\ell, m_{\text{max}}} &= 0 \\
+	L_{-}\ket{\ell, m_{\text{min}}} &= 0 \, .
+\end{align}
+\end{subequations}
+
+The ladder operators are not hermitian and are thus not observable quantities.
+ 
 \end{document}
