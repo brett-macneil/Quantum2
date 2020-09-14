@@ -11,6 +11,8 @@
 \usepackage{float}  % placement of figures
 \usepackage{siunitx} % SI units
 \usepackage{mhchem} % chemical symbols
+\usepackage{mdframed} % frames
+\usepackage{xcolor} % colors
 \usepackage{hyperref} % references and links
 \hypersetup{colorlinks=false, linkbordercolor=1 1 1}
 
@@ -191,4 +193,188 @@ In general, $s$ can be an integer or half integer, whereas for orbital angular m
 \end{equation}
 
 Every particle has a specific and immutable value of $s$, which we call spin. By contrast, the orbital angular momentum quantum number $\ell$ can take on any integer value, and may change when the system is perturbed. \textbf{Spin is fixed}!
+
+\subsection{Spin 1/2}
+The case where $s=1/2$ is the most important to study, since ordinary matter (electrons, protons, neutrons) have this spin. There are only two eigenstates.
+
+\begin{description}
+	\item Spin up ($\uparrow$): $s=\frac{1}{2}$, $m=+\frac{1}{2}$
+	\item Spin down ($\downarrow$): $s=\frac{1}{2}$, $m=-\frac{1}{2}$
+\end{description}
+
+Using these two eigenstates as a basis, we can express the general state of a spin-$1/2$ particle as a two-component vector, known as a \textbf{spinor}:
+
+\begin{equation}
+	\chi = \begin{bmatrix} a \\ b \end{bmatrix} = a\chi_+ + b\chi_- 
+\end{equation}
+
+where the basis states are
+
+\begin{equation}
+	\chi_+ = \begin{bmatrix} 1 \\ 0 \end{bmatrix} \quad \text{(spin up)} \qquad;\qquad \chi_- = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \quad \text{(spin down)} \,.
+\end{equation}
+
+This means that the spin operators are $2 \times 2$ matrices and we can determine their form by examining their effect on the basis spinors. Since $S^2\ket{s, m} = \hbar^2s(s+1)\ket{s, m}$, it follows that for $s=1/2$,
+
+\begin{equation}
+	S^2\chi_+ = \frac{3}{4}\hbar^2\chi_+ \quad\text{and}\quad S^2\chi_- = \frac{3}{4}\hbar^2\chi_- \,.
+\end{equation}
+
+If we consider a general matrix $S^2 = \begin{bmatrix} s_{11} & s_{12} \\ s_{21} & s_{22}\end{bmatrix}$ then we find
+
+\begin{align*}
+	S^2\chi_+ = \begin{bmatrix} s_{11} & s_{12} \\ s_{21} & s_{22}\end{bmatrix}\begin{bmatrix} 1 \\ 0\end{bmatrix} = \frac{3}{4}\hbar^2\begin{bmatrix} 1 \\ 0\end{bmatrix} \quad\implies\quad \begin{bmatrix} s_{11} \\ s_{21}\end{bmatrix}=\begin{bmatrix} 3\hbar^2/4 \\ 0\end{bmatrix}\\[8pt]
+	S^2\chi_- = \begin{bmatrix} s_{11} & s_{12} \\ s_{21} & s_{22}\end{bmatrix}\begin{bmatrix} 0 \\ 1\end{bmatrix} = \frac{3}{4}\hbar^2\begin{bmatrix} 0 \\ 1\end{bmatrix} \quad\implies\quad \begin{bmatrix} s_{12} \\ s_{22}\end{bmatrix}=\begin{bmatrix} 0 \\ 3\hbar^2/4 \end{bmatrix}
+\end{align*}
+
+which means that
+
+\begin{equation}
+	S^2 = \frac{3}{4}\hbar^2\begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix} \,.
+\end{equation}
+
+Additionally, since $S_z\ket{s, m} = \hbar m \ket{s, m}$ we have
+
+\begin{equation}
+S_z\chi_+ = \frac{1}{2}\hbar\chi_+ \quad\text{and}\quad S_z\chi_- = -\frac{1}{2}\hbar\chi_- \,.
+\end{equation}
+
+By similar analysis as above, we find that the matrix representation of the $S_z$ operator is
+
+\begin{equation}
+	S_z = \frac{\hbar}{2}\begin{bmatrix}1 & 0 \\ 0 & -1\end{bmatrix} \,.
+\end{equation}
+
+Meanwhile, the eigenvalue equations for the spin ladder operators are
+
+\begin{equation*}
+	S_+\chi_- = \hbar\chi_+ \quad;\quad S_-\chi_+ = \hbar\chi_- \quad;\quad S_+\chi_+ = S_-\chi_- = 0
+\end{equation*}
+
+and therefore it can be shown that
+
+\begin{equation}
+	S_+ = \hbar\begin{bmatrix} 0 & 1 \\ 0 & 0\end{bmatrix} \quad\text{and}\quad S_- = \hbar\begin{bmatrix} 0 & 0 \\ 1 & 0\end{bmatrix} \,.
+\end{equation}
+
+Now since $S_\pm = S_x \pm iS_y$, we find $S_x = (S_+ + S_-)/2$ and $S_y = (S_+ - S_-)/2i$. This gives
+
+\begin{equation}
+	S_x = \frac{\hbar}{2}\begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix} \quad\text{and}\quad S_y = \frac{\hbar}{2}\begin{bmatrix} 0 & -i \\ i & 0\end{bmatrix} \,.
+\end{equation}
+
+Since the spin operators all carry a factor of $\hbar/2$, it is tidier to write
+
+\begin{equation}
+	\vb{S} = \frac{\hbar}{2}\vb*{\sigma}
+\end{equation}
+
+where $\vb*{\sigma}$ is given by the \textbf{Pauli spin matrices}:
+
+\begin{equation}
+\boxed{
+	\sigma_x = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix} \quad,\quad
+	\sigma_y = \begin{bmatrix} 0 & -i \\ i & 0\end{bmatrix} \quad,\quad
+	\sigma_z = \begin{bmatrix} 1 & 0 \\ 0 & -1\end{bmatrix} }
+\end{equation}
+
+The $S_x$, $S_y$, and $S_z$ operators are Hermitian, since they represent observables. The ladder operators, on the other hand, are not Hermitian as they do not represent observables. 
+
+The eigenspinors of $S_z$ are, by definition, $\chi_+$ and $\chi_-$. If we measure $S_z$ on a particle in some general state $\chi = a\chi_+ + b\chi_-$ then we will measure $=\hbar/2$ with probability $|a|^2$ or $-\hbar/2$ with probability $|b|^2$. Those are the only two choices, so the normalization condition imposes
+
+\begin{equation}
+	|a|^2 + |b|^2 = 1
+\end{equation}
+
+since $\bra{\chi}\ket{\chi} = 1$. 
+
+\begin{mdframed}
+\paragraph*{Note:} The probability of observing a state $\ket{\chi_\pm}$ after measuring a particle in superposition state $\ket{\chi}$ is given by the norm of the projection of the measured state onto the particle state. In other words,
+
+\begin{equation}
+	P_\pm = \qty|\bra{\chi_\pm}\ket{\chi}|^2
+\end{equation}
+
+where the inner product for these spinors involves matrix multiplication, as the basis is discrete.
+\end{mdframed}
+
+What if we choose to measure $S_x$? What are the possible results, and the associated probabilities? According to the generalized statistical interpretation, we must know the eigenvalues and eigenspinors of $S_x$. The characteristic equation is:
+
+\begin{equation*}
+	S_x\chi = \lambda\chi \quad\implies\quad \det(S_x-\lambda\mathbb{I}) = 0 \quad\implies \begin{vmatrix}-\lambda & \hbar/2 \\ \hbar/2 & -\lambda \end{vmatrix} = 0
+\end{equation*}
+
+which yields eigenvalues of $\lambda \pm\hbar/2$, as expected. The eigenspinors are then calculated by:
+
+\begin{equation*}
+	\frac{\hbar}{2}\begin{bmatrix}0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} \alpha \\ \beta \end{bmatrix} = \pm\frac{\hbar}{2}\begin{bmatrix} \alpha \\ \beta \end{bmatrix} \quad\implies \begin{bmatrix} \beta \\ \alpha \end{bmatrix} = \pm\begin{bmatrix} \alpha \\ \beta \end{bmatrix} \quad\implies\quad \beta = \pm\alpha
+\end{equation*}
+
+so that we can write $\chi_{\pm}^{(x)} = \alpha \begin{bmatrix} 1 \\ \pm 1\end{bmatrix}$ and applying the normalization condition gives $\alpha = 1/\sqrt{2}$. This gives
+
+\begin{equation}
+	\chi_+^{(x)} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1\end{bmatrix} \quad;\quad \chi_-^{(x)} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1\end{bmatrix}
+\end{equation}
+
+Recall that the eigenvectors of a Hermitian matrix span the space and form a complete basis. We can use a linear combination of them to express a generic spinor. If we change the basis to the eigenspinors of $S_x$, we get
+
+\begin{equation}
+	\chi = \bra{\chi_+^{(x)}}\ket{\chi}\chi_+^{(x)} + \bra{\chi_-^{(x)}}\ket{\chi}\chi_-^{(x)}
+\end{equation}
+
+which gives
+
+\begin{equation}
+	\chi = \qty(\frac{a+b}{\sqrt{2}})\chi_+^{(x)} + \qty(\frac{a-b}{\sqrt{2}})\chi_-^{(x)} \,.
+\end{equation}
+Measuring $S_x$ will yield $+\hbar/2$ with probability $|a+b|^2/2$ and $-\hbar/2$ with probability $|a-b|^2/2$.
+\clearpage
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Suppose a spin-1/2 particle is in the state:
+
+\begin{equation*}
+	\chi = \frac{1}{\sqrt{6}} \begin{bmatrix} 1+i \\ 2 \end{bmatrix} \,.
+\end{equation*}
+
+What are the probabilities of obtaining $+\hbar/2$ and $-\hbar/2$ when measuring $S_z$ ans $S_x$?
+
+\paragraph*{Solution:}
+Here, $a = (1+i)/\sqrt{6}$ and $b = 2/\sqrt{6}$. 
+
+For $S_z$, the probability of measuring $+\hbar/2$ is 
+
+\begin{equation*}
+	|a|^2 = \qty|\frac{1+i}{\sqrt{6}}|^2 = 1/3 \,.
+\end{equation*}
+
+The probability of measuring $-\hbar/2$ is
+
+\begin{equation*}
+	|b|^2 = \qty|\frac{2}{\sqrt{6}}|^2 = 2/3 \,.
+\end{equation*}
+
+For $S_x$, the probability of measuring $+\hbar/2$ is 
+
+\begin{equation*}
+	\frac{|a+b|^2}{2} = \frac{|(3+i)/\sqrt{6}|^2}{2} = 5/6 \,.
+\end{equation*}
+
+The probability of measuring $-\hbar/2$ is
+
+\begin{equation*}
+	\frac{|a-b|^2}{2} = \frac{|(-1+i)/\sqrt{6}|^2}{2} = 1/6 \,.
+\end{equation*}
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Problem:} (a) Show that the eigenspinors of $S_y$ are 
+
+\begin{equation}
+\chi_+^{(y)} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ i\end{bmatrix} \quad;\quad \chi_-^{(x)} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -i \end{bmatrix} \,.
+\end{equation}
+
+(b) If you measure $S_y$ on a particle in a general state $\chi$, what values might you get, and what is the probability of each?
+\end{mdframed}
 \end{document}
