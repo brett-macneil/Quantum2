@@ -16,8 +16,10 @@
 \usepackage{hyperref} % references and links
 \hypersetup{colorlinks=false, linkbordercolor=1 1 1}
 
-\newcommand{\com}[2]{\qty[#1 \,,\, #2]}
-\newcommand{\exv}[1]{\langle #1 \rangle}
+\newcommand{\exv}[1]{\left\langle #1 \right\rangle}
+\newcommand{\Sx}{\begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}}
+\newcommand{\Sy}{\begin{bmatrix} 0 & -i \\ i & 0\end{bmatrix}}
+\newcommand{\Sz}{\begin{bmatrix} 1 & 0 \\ 0 & -1\end{bmatrix}}
 
 \setlength{\parindent}{0pt} % no auto-indents
 \setlength{\parskip}{8pt}
@@ -82,9 +84,9 @@ An important consequence is that the angular momentum operators do not commute:
 
 \begin{subequations}
 	\begin{align}
-	\com{L_{x}}{L_{y}} &= i \hbar L_{z} \\
-	\com{L_{y}}{L_{z}} &= i \hbar L_{x} \\
-	\com{L_{z}}{L_{x}} &= i \hbar L_{y} \, .
+	\comm{L_{x}}{L_{y}} &= i \hbar L_{z} \\
+	\comm{L_{y}}{L_{z}} &= i \hbar L_{x} \\
+	\comm{L_{z}}{L_{x}} &= i \hbar L_{y} \, .
 	\end{align}
 \end{subequations}
 
@@ -104,9 +106,9 @@ does commute with each of the component angular momentum operators,
 
 \begin{subequations}
 	\begin{align}
-	\com{L^2}{L_{x}} &= 0 \\
-	\com{L^2}{L_{y}} &= 0 \\
-	\com{L^2}{L_{z}} &= 0 \, .
+	\comm{L^2}{L_{x}} &= 0 \\
+	\comm{L^2}{L_{y}} &= 0 \\
+	\comm{L^2}{L_{z}} &= 0 \, .
 	\end{align}
 \end{subequations}
 
@@ -142,15 +144,14 @@ These operators raise or lower the eigenvalues and eigenstates of $L_{z}$ . Of c
 \end{subequations}
 
 The ladder operators are not hermitian and are thus not observable quantities.
- 
- \subsection{Theory of spin}
+\subsection{Theory of spin}
  We begin with the fundamental commutation relations for spin, which is analogous to those of orbital angular momentum:
  
  \begin{subequations}
  	\begin{align}
- 	\com{S_{x}}{S_{y}} &= i \hbar S_{z} \\
- 	\com{S_{y}}{S_{z}} &= i \hbar S_{x} \\
- 	\com{S_{z}}{S_{x}} &= i \hbar S_{y} \, .
+ 	\comm{S_{x}}{S_{y}} &= i \hbar S_{z} \\
+ 	\comm{S_{y}}{S_{z}} &= i \hbar S_{x} \\
+ 	\comm{S_{z}}{S_{x}} &= i \hbar S_{y} \, .
  	\end{align}
  \end{subequations}
 
@@ -242,7 +243,7 @@ S_z\chi_+ = \frac{1}{2}\hbar\chi_+ \quad\text{and}\quad S_z\chi_- = -\frac{1}{2}
 By similar analysis as above, we find that the matrix representation of the $S_z$ operator is
 
 \begin{equation}
-	S_z = \frac{\hbar}{2}\begin{bmatrix}1 & 0 \\ 0 & -1\end{bmatrix} \,.
+	S_z = \frac{\hbar}{2}\Sz \,.
 \end{equation}
 
 Meanwhile, the eigenvalue equations for the spin ladder operators are
@@ -260,7 +261,7 @@ and therefore it can be shown that
 Now since $S_\pm = S_x \pm iS_y$, we find $S_x = (S_+ + S_-)/2$ and $S_y = (S_+ - S_-)/2i$. This gives
 
 \begin{equation}
-	S_x = \frac{\hbar}{2}\begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix} \quad\text{and}\quad S_y = \frac{\hbar}{2}\begin{bmatrix} 0 & -i \\ i & 0\end{bmatrix} \,.
+	S_x = \frac{\hbar}{2}\Sx \quad\text{and}\quad S_y = \frac{\hbar}{2}\Sy \,.
 \end{equation}
 
 Since the spin operators all carry a factor of $\hbar/2$, it is tidier to write
@@ -273,9 +274,9 @@ where $\vb*{\sigma}$ is given by the \textbf{Pauli spin matrices}:
 
 \begin{equation}
 \boxed{
-	\sigma_x = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix} \quad,\quad
-	\sigma_y = \begin{bmatrix} 0 & -i \\ i & 0\end{bmatrix} \quad,\quad
-	\sigma_z = \begin{bmatrix} 1 & 0 \\ 0 & -1\end{bmatrix} }
+	\sigma_x = \Sx \quad,\quad
+	\sigma_y = \Sy \quad,\quad
+	\sigma_z = \Sz }
 \end{equation}
 
 The $S_x$, $S_y$, and $S_z$ operators are Hermitian, since they represent observables. The ladder operators, on the other hand, are not Hermitian as they do not represent observables. 
@@ -377,4 +378,176 @@ The probability of measuring $-\hbar/2$ is
 
 (b) If you measure $S_y$ on a particle in a general state $\chi$, what values might you get, and what is the probability of each?
 \end{mdframed}
+
+\subsection{Electron in a magnetic field}
+A charged particle with spin constitutes a magnetic dipole. The \textbf{magnetic dipole moment}, of a particle, denoted by $\vb*{\mu}$, is proportional to its spin angular momentum $\vb{S}$:
+
+\begin{equation}
+    \vb*{\mu} = \gamma \vb{S} \,,
+\end{equation}
+
+where the proportionality constant $\gamma$ is the \textbf{gyromagnetic ratio}. When a magnetic dipole is placed in a magnetic field $\vb{B}$, it experiences a torque $\vb{\Gamma} = \vb*{\mu}\cross\vb{B}$ which tends to line it up parallel to the field. The associated energy is known as the Zeeman energy,
+
+\begin{equation}
+	H = -\vb*{\mu}\vdot\vb{B} \,,
+\end{equation}
+
+so that the Hamiltonian of a charged particle with nonzero spin in a magnetic field is
+
+\begin{equation}
+	\mathcal{H} = -\gamma\vb{B}\vdot\vb{S} \,,
+\end{equation}
+
+where $\vb{S}$ is the appropriate spin matrix. 
+
+\subsubsection{Larmor precession}
+Imagine a particle of spin $1/2$, which points in the $z-$ direction,
+
+\begin{equation*}
+	\vb{B} = B_0\vu{z},.
+\end{equation*}
+
+The Hamiltonian is therefore
+
+\begin{equation}
+	\mathcal{H} = -\gamma B_0 S_z = -\frac{\gamma B_0 \hbar}{2} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \,.
+\end{equation}
+
+Since the Hamiltonian is a scalar multiple of the $S_z$ operator, it is trivial to show that they commute. Therefore, the eigenstates of $\mathcal{H}$ are the same as those of $S_z$:
+
+\begin{equation}
+    \left\{
+    \begin{array}{cc}
+    \chi_+ \,, & \text{with energy} E_+ = -\gamma B_0\hbar/2 \\[6pt]
+    \chi_- \,, & \text{with energy} E_- = \gamma B_0\hbar/2
+    \end{array}
+    \right.
+\end{equation}
+
+The energy is lowest when the dipole moment is parallel to the field, just as it would be classically. Since the Hamiltonian is time-independent, the general solution to the time-dependent Schrödinger equation $\mathcal{H}\chi = i\hbar\pdv*{\chi}{t}$ can be expressed in terms of stationary states:
+
+\begin{equation*}
+	\chi(t) = a\chi_+\exp(-i E_+ t/\hbar) + b\chi_-\exp(-i E_-t/\hbar) = \begin{bmatrix} a\exp(i\gamma B_0 t/2) \\[4pt] b\exp(-i\gamma B_0 t/2) \end{bmatrix}
+\end{equation*}
+
+where the constants $a$ and $b$ are determined by initial conditions
+
+\begin{equation*}
+\chi(0) = \begin{bmatrix} a \\ b \end{bmatrix}
+\end{equation*}
+
+and due to normalization, $|a|^2 + |b|^2 = 1$. With no loss of generality we may assume that $a$ and $b$ are real, and write $a = \cos(\alpha/2)$ and $b = \sin(\alpha/2)$, where $\alpha$ is a fixed angle. This gives
+
+\begin{equation}
+	\chi(t) = \begin{bmatrix} \cos(\alpha/2) \exp(-i\gamma B_0 t/2) \\[4pt] \sin(\alpha/2) \exp(-i\gamma B_0 t/2) \end{bmatrix} \,.
+\end{equation}
+
+To see what is happening, we can calculate the expectation value of $\vb{S}$ as a function of time:
+
+\begin{align*}
+	\exv{S_x} &= \chi^\dagger S_x \chi \\[4pt]
+	&= \begin{bmatrix} \cos(\alpha/2)\exp(-i\gamma B_0 t/2) \\[4pt] \sin(\alpha/2)\exp(i\gamma B_0 t/2) \end{bmatrix}^{\text{T}} \frac{\hbar}{2} \Sx \begin{bmatrix} \cos(\alpha/2)\exp(i\gamma B_0 t/2) \\[4pt] \sin(\alpha/2)\exp(-i\gamma B_0 t/2) \end{bmatrix} \\[4pt]
+	&= \frac{\hbar}{2}\sin\alpha\cos(\gamma B_0 t)
+\end{align*}
+
+Similarly,
+
+\begin{equation*}
+	\exv{S_y} = -\frac{\hbar}{2}\sin\alpha\sin(\gamma B_0 t) \quad\text{and}\quad \exv{S_z} = \frac{\hbar}{2}\cos\alpha \,.
+\end{equation*}
+
+Thus $\exv{\vb{S}}$ is tilted at a constant angle $\alpha$ to the $z$-axis, and precesses about the field at \textbf{Larmor frequency}
+
+\begin{equation}
+	\omega = \gamma B_0 \,,
+\end{equation}
+
+just as a classical dipole would. 
+\clearpage
+
+\begin{mdframed}
+\paragraph*{Note:} This is a consequence of Ehrenfest's theorem, which relates the time derivative of an operator to its commutator with the Hamiltonian:
+
+\begin{equation}
+	\dv{t}\exv{\mathcal{A}} = \frac{1}{i\hbar}\exv{\comm{\mathcal{A}}{\mathcal{H}}} + \exv{\pdv{\mathcal{A}}{t}}
+\end{equation}
+
+Using this relation, one can obtain relations of the same form as classical mechanics:
+
+\begin{align}
+	\dv{\exv{\vb{p}}}{t} &= \exv{-\grad{V}} \,; \\[4pt]
+	\dv{\exv{\vb{J}}}{t} &= \exv{\vb{\Gamma}} = \exv{\vb{r}\cross(-\grad{V})} \,,
+\end{align}
+
+where $\exv{-\grad{V}}$ is analogous to a force, and $\vb{J} = \vb{L} + \vb{S}$ is the total angular momentum. 
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Problem:} Consider a charged particle with spin $1/2$ in a uniform magnetic field of magnitude $B_0$ along the $z$-direction. 
+
+(a) What is the probability, as a function of time, of measuring the $x$-component of the spin angular momentum to be $+\hbar/2$?
+
+(b) Repeat (a), for the $y$-component.
+
+(c) Repeat (a) again, for the $z$-component.
+\end{mdframed}
+
+\subsubsection{The Stern-Gerlach experiment}
+In an \textit{inhomogeneous} magnetic field, there is also a force on a magnetic dipole. From electrodynamics:
+
+\begin{equation}
+	\vb{F} = \grad(\vb*{\mu}\vdot\vb{B}) \,.
+\end{equation}
+
+This force can be used to separate out particles with a particular spin orientation. WE consider a beam of heavy neutral atoms, so we can avoid relativistic effects and large deflection from the Lorentz force. 
+
+%% Figure: Stern-Gerlach experiment
+
+The particles travel in the $y$-direction through a region of static but inhomogeneous magnetic field given by
+
+\begin{equation}
+	\vb{B}(x, y, z) = -\alpha x \vu{x} + (B_0 + \alpha z)\vu{z} \,,
+\end{equation}
+
+where $B_0$ is a large uniform field and $\alpha$ is a small deviation. Ideally, the field would just be along $\vu{z}$, however an $x$-component is required to ensure that $\div{\vb{B}} = 0$. There is a net force on the beam in the $z$-direction and the beam will be deflected up or down depending on $S_z$. Classically, one would observe a continuum of deflections, however since spin is quantized, there will be $2s+1$ separate streams. This was demonstrated by Stern and Gerlach using silver atoms. The inner elections are paired such that their orbital and spin angular momenta cancel. The net atomic spin comes from one unpaired valence electron, giving the overall atom $s=1/2$.
+
+From the frame of reference of the silver atoms, the magnetic Hamiltonian is initially zero and turns on for some time $T$ as they pass through the magnet. Afterward, the Hamiltonian is again zero. This means
+
+\begin{equation}
+	\mathcal{H} = \left\{
+	\begin{array}{ll}
+	0 \,, & t<0 \\
+	-\gamma(B_0 +\alpha z)S_z \,, & 0 \leq t \leq T \\
+	0 \,, & t > T 
+	\end{array}
+	\right. \, .
+\end{equation}
+
+We ignore the $x$-component of the field as Larmor precession causes the expectation value $\exv{S_x}$ to average to zero since the precession frequency is large. If the atoms start in state $\chi = a\chi_+ + b\chi_-$ for $t<0$, the spin state will evolve while the Hamiltonian acts,
+
+\begin{equation*}
+	\chi(t) = a\chi_+\exp(-iE_+ t/\hbar) + b\chi_-\exp(-iE_- t/\hbar) \quad,\quad E_\pm = \mp\frac{\gamma\hbar}{2}(B_0+\alpha z) \quad\text{and}\quad 0 \leq t \leq T \,.
+\end{equation*}
+
+Hence, it emerges from the magnetic field in state
+
+\begin{equation*}
+\chi(t) = \qty(a\exp(i\gamma  T B_0/2)\chi_+)\exp(i\alpha\gamma T/2) + \qty(b\exp(-i\gamma  T B_0/2)\chi_-)\exp(-i\alpha\gamma T/2)
+\end{equation*}
+
+and is frozen in this state for $t>T$. Applying the momentum operator, we can see that the spin-up and spin-down particles have different momentum,
+
+\begin{equation}
+	\left\{
+	\begin{array}{l}
+	P_{z}^{\uparrow} = \alpha \gamma T \hbar/2 \\
+	P_{z}^{\uparrow} = -\alpha \gamma T \hbar/2
+	\end{array}
+	\right.
+\end{equation}
+
+and the beam splits in two.
+
+In this problem, we assumed that the initial state of a spin system is known and quantum mechanics tells us how it \textit{evolves}. To prepare an ensemble of atoms in a particular spin state, a beam can be passed through a Stern-Gerlach magnet and one particular beam can be selected.
+
 \end{document}
