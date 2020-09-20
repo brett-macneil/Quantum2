@@ -13,6 +13,7 @@
 \usepackage{mhchem} % chemical symbols
 \usepackage{mdframed} % frames
 \usepackage{xcolor} % colors
+\usepackage{cancel} % cancelto
 \usepackage{hyperref} % references and links
 \hypersetup{colorlinks=false, linkbordercolor=1 1 1}
 
@@ -541,7 +542,7 @@ and is frozen in this state for $t>T$. Applying the momentum operator, we can se
 	\left\{
 	\begin{array}{l}
 	P_{z}^{\uparrow} = \alpha \gamma T \hbar/2 \\
-	P_{z}^{\uparrow} = -\alpha \gamma T \hbar/2
+	P_{z}^{\downarrow} = -\alpha \gamma T \hbar/2
 	\end{array}
 	\right.
 \end{equation}
@@ -549,5 +550,168 @@ and is frozen in this state for $t>T$. Applying the momentum operator, we can se
 and the beam splits in two.
 
 In this problem, we assumed that the initial state of a spin system is known and quantum mechanics tells us how it \textit{evolves}. To prepare an ensemble of atoms in a particular spin state, a beam can be passed through a Stern-Gerlach magnet and one particular beam can be selected.
+
+\subsection{Addition of angular momentum}
+Suppose now that we have two particles of spins $s_1$ and $s_2$. The first is in state $\ket{s_1, m_1}$ and the second is in state $\ket{s_2, m_2}$. We can denote the composite state as $\ket{s_1s_2,m_1m_2}$, where
+
+\begin{align*}
+	{S^{(1)}}^2\ket{s_1s_2,m_1m_2} &= s_1(s_1+1)\hbar^2\ket{s_1s_2,m_1m_2} \\
+	{S^{(2)}}^2\ket{s_1s_2,m_1m_2} &= s_2(s_2+1)\hbar^2\ket{s_1s_2,m_1m_2} \\
+	S^{(1)}_{z}\ket{s_1s_2,m_1m_2} &= m_1\hbar\ket{s_1s_2,m_1m_2} \\
+	S^{(2)}_{z}\ket{s_1s_2,m_1m_2} &= m_2\hbar\ket{s_1s_2,m_1m_2} \,,
+\end{align*}
+
+as expected. The total $z$-component of the spin,
+
+\begin{align*}
+	S_z\ket{s_1s_2,m_1m_2} &= (S^{(1)}_{z} + S^{(2)}_{z})\ket{s_1s_2,m_1m_2} \\
+	&= S^{(1)}_{z}\ket{s_1s_2,m_1m_2} + S^{(2)}_{z}\ket{s_1s_2,m_1m_2} \\
+	&= m_1\hbar\ket{s_1s_2,m_1m_2} + m_2\ket{s_1s_2,m_1m_2} \\
+	&= (m_1+m_2)\ket{s_1s_2,m_1m_2} \,,
+\end{align*}
+
+is simply the sum of the two particles. However, the net spin, $s$ is much less subtle. 
+
+\subsubsection{Two spin-1/2 particles}
+We consider the case of two spin-1/2 particles, such as the proton and electron in the hydrogen atom. Each can be either spin-up or spin-down so there are four possibilities in all:
+
+\begin{align*}
+	\ket{\uparrow\uparrow} &= \ket{\frac{1}{2}\frac{1}{2},\frac{1}{2}\frac{1}{2}} &&m=1 \\
+	\ket{\uparrow\downarrow} &= \ket{\frac{1}{2}\frac{1}{2},\frac{1}{2}\frac{-1}{2}} &&m=0 \\
+	\ket{\downarrow\uparrow} &= \ket{\frac{1}{2}\frac{1}{2},\frac{-1}{2}\frac{1}{2}} &&m=0 \\
+	\ket{\downarrow\downarrow} &= \ket{\frac{1}{2}\frac{1}{2},\frac{-1}{2}\frac{-1}{2}}  &&m=-1 \,.
+\end{align*}
+
+Since $m=-s,-s+,\ldots,s-1,s$ it appears that in this case $s=1$ however there is an extra $m=0$ state. To gain insight into this, we can apply the lowering operator, $S_- = S_{-}^{(1)} + S_{-}^{(2)}$ to the state $\ket{\uparrow\uparrow}$:
+
+\begin{align*}
+	S_- \ket{\uparrow\uparrow} &= \qty(S_{-}^{(1)}\ket{\uparrow})\ket{\uparrow} + \ket{\uparrow}\qty(S_{-}^{(2)}\ket{\uparrow}) \\
+	&= \hbar\ket{\downarrow}\ket{\uparrow} + \ket{\uparrow}\hbar\ket{\downarrow} \\
+	&= \hbar(\ket{\downarrow\uparrow} - \ket{\uparrow\downarrow}) \,.
+\end{align*}
+
+Applying the lowering operator again to this state gives:
+
+\begin{align*}
+	S_-(\ket{\downarrow\uparrow} - \ket{\uparrow\downarrow}) &= S_{-}^{(1)}\ket{\uparrow\downarrow} + S_{-}^{(2)}\ket{\uparrow\downarrow} + S_{-}^{(1)}\ket{\downarrow\uparrow} + S_{-}^{(2)}\ket{\downarrow\uparrow} \\
+	&= \qty(S_{-}\ket{\uparrow})\ket{\downarrow} + \ket{\uparrow}\cancelto{0}{\qty(S_{-}\ket{\downarrow})} + \cancelto{0}{\qty(S_{-}\ket{\downarrow})\ket{\uparrow}} + \ket{\downarrow}\qty(S_{-}\ket{\uparrow}) \\
+	&= 2\hbar\ket{\downarrow\downarrow}
+\end{align*}
+
+and applying the lowering operator again gives zero. This means that we have three states with $s=1$:
+
+\begin{equation}
+	\left\{
+	\begin{array}{l}
+	\ket{1,1} = \ket{\uparrow\uparrow} \\[2pt]
+	\ket{1,0} = \frac{1}{\sqrt{2}}(\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}) \\[2pt]
+	\ket{1, -1} = \ket{\downarrow\downarrow}
+	\end{array}
+	\right. 
+	\qquad \boxed{s=1}
+\end{equation}
+
+This is called the \textbf{triplet} combination.
+
+\begin{mdframed}
+\paragraph*{Note:} The state $\chi = \ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}$ is not normalized. We must determine the inner product of $\chi$ with itself in order to normalize it:
+
+\begin{align*}
+	\bra{\chi}\ket{\chi} &= \bigl(\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}\bigr)^\dagger\bigl(\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}\bigr) \\
+	&= \bigl(\bra{\uparrow\downarrow} + \bra{\downarrow\uparrow}\bigr)\bigl(\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}\bigr) \\
+	&= \bra{\uparrow\downarrow}\ket{\uparrow\downarrow} + \bra{\uparrow\downarrow}\ket{\downarrow\uparrow} + \bra{\downarrow\uparrow}\ket{\uparrow\downarrow} + \bra{\downarrow\uparrow}\ket{\downarrow\uparrow} \\
+	&= \bra{\uparrow}\ket{\uparrow}\bra{\downarrow}\ket{\downarrow} + \bra{\uparrow}\ket{\downarrow}\bra{\downarrow}\ket{\uparrow} + \bra{\downarrow}\ket{\uparrow}\bra{\uparrow}\ket{\downarrow} + \bra{\downarrow}\ket{\downarrow}\bra{\uparrow}\ket{\uparrow} \\
+	&= (1)(1) + 0 + 0 + (1)(1) \\
+	&= 2
+\end{align*}
+
+Therefore, we write $\chi = \frac{1}{\sqrt{2}}(\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow})$ as the normalized spinor.
+\end{mdframed}
+\clearpage
+
+The leftover orthogonal state with $m=0$ carries $s=0$. It is normalized in a similar manner as demonstrated previously. 
+
+\begin{equation}
+	\left\{
+	\begin{array}{l}
+	\ket{0,0} = \frac{1}{\sqrt{2}}(\ket{\uparrow\downarrow} - \ket{\downarrow\uparrow})
+	\end{array}
+	\right.
+	\qquad \boxed{s=0}
+\end{equation}
+
+This is called the \textbf{singlet} state and applying both ladder operators will give zero.
+
+It appears that the \textit{combination} of the two spin=1/2 particles can carry a spin of 1 or 0, depending on whether they occupy the singlet or triplet configuration. To confirm this, we must show that the triplet states are eigenvectors of $S^2$ with eigenvalue $2\hbar^2$ and applying $S^2$ to the singlet state gives zero.
+
+The $S^2$ operator is
+
+\begin{align}
+	S^2 &= \qty(S^{(1)} + S^{(2)})\vdot\qty(S^{(1)} + S^{(2)}) \nonumber \\
+	&= \qty(S^{(1)})^2 + \qty(S^{(2)})^2 + 2 S^{(1)}\vdot S^{(2)} \nonumber \\
+	&= \qty(S^{(1)})^2 + \qty(S^{(2)})^2 + 2\qty(S_{x}^{(1)}S_{x}^{(2)} + S_{y}^{(1)}S_{y}^{(2)} + S_{z}^{(1)}S_{z}^{(2)}) \,.
+\end{align}
+
+For the $\ket{1,1}$ state, we have:
+
+\begin{align*}
+	S^2\ket{1,1} &= \qty(\qty(S^{(1)})^2 + \qty(S^{(2)})^2 + 2S^{(1)}\vdot S^{(2)})\ket{\uparrow\uparrow} \\
+	&= (S^2\ket{\uparrow})\ket{\uparrow} + \ket{\uparrow}(S^2)\ket{\uparrow} + 2\qty((S_x\ket{\uparrow})(S_x\ket{\uparrow}) + (S_y\ket{\uparrow})(S_y\ket{\uparrow}) + (S_z\ket{\uparrow})(S_z\ket{\uparrow})) \\
+	&= \frac{3\hbar^2}{4}\ket{\uparrow} + \frac{3\hbar^2}{4}\ket{\uparrow} + 2\qty(\frac{\hbar}{2}\ket{\downarrow}\frac{\hbar}{2}\ket{\downarrow} + \frac{i\hbar}{2}\ket{\downarrow}\frac{i\hbar}{2}\ket{\downarrow} + \frac{\hbar}{2}\ket{\uparrow}\frac{\hbar}{2}\ket{\uparrow}) \\
+	&= 2\hbar^2\ket{\uparrow\uparrow} \\
+	&= 2\hbar^2\ket{1,1} \,,
+\end{align*}
+
+as required. The proof for the $\ket{1, 0}$ and $\ket{1, -1}$ states follow the same approach. For the singlet state,
+
+\begin{align*}
+	S^2\ket{0,0} &= 0 + 0 + \qty(2S^{(1)}\vdot S^{(2)})\frac{1}{\sqrt{2}}(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}) \\
+	&= \sqrt{2}\bigl(S_x\ket{\uparrow}S_x\ket{\downarrow} + S_y\ket{\uparrow}S_y\ket{\downarrow} + S_z\ket{\uparrow}S_z\ket{\downarrow} \bigr. \\
+	& \qquad\qquad \bigl.- S_x\ket{\downarrow}S_x\ket{\uparrow} + S_y\ket{\downarrow}S_y\ket{\uparrow} + S_z\ket{\downarrow}S_z\ket{\uparrow}\bigr) \\
+	&= 0
+\end{align*}
+
+as required. 
+
+We have just studied what happens when we combine two spin-1/2 particles, finding that we obtain spin-1 and spin-0 states. This case is part of a larger problem, where we combine spin-$s_1$ with spin-$s_2$. In this case, the possible spin states are:
+
+\begin{equation}
+	s = (s_1+s_2),\, (s_1+s_2-1),\, (s_1+s_2-2),\, \ldots,\, |s_1-s_2| \,.
+\end{equation}
+
+For example, combining a particle of spin 3/2 with another of spin 2, the two particles could take on spin 7/2, 5/2, 3/2 or 1/2.
+
+\subsubsection{Arbitrary combinations}
+The combined state $\ket{s, m}$ with total spin $s$ and $z$-component $m$ will be some linear combination of the composite states $\ket{s_1, m_1}\ket{s_2, m_2}$:
+
+\begin{equation}
+	\ket{s,m} = \sum_{m_1+m_2=m}C_{m_1m_2m}^{s_1s_2s}\ket{s_1s_2,m_1m_2} \,.
+\end{equation}
+
+Because the $z$-components add, the only composite states that contribute are those for which $m_1+m_2=m$. The constants $C_{m_1m_2m}^{s_1s_2s}$ are called the \textbf{Clebsch-Gordan coefficients}, which are often presented in table form.
+
+%% Figure: Clebsch-Gordan coefficients
+
+Consider the combination of a spin-2 particle with a spin-1 particle. The table says that
+
+\begin{equation*}
+	\ket{3,0} = \frac{1}{\sqrt{5}}\ket{2,1}\ket{1,-1} + \sqrt{\frac{3}{5}}\ket{2,0}\ket{1,0} + \frac{1}{\sqrt{5}}\ket{2,-1}\ket{1,1} \,.
+\end{equation*}
+
+If two particles of spin 2 and spin 1 are at rest in a box, and the \emph{total} spin is 3, and its $z$-component is zero, them a measurement of $S_z^{(1)}$ could return the value $\hbar$ (with probability 1/5) or zero (with probability 3/5) or $-\hbar$ (with probability 1/5).
+
+These tables also work the other way around:
+
+\begin{equation}
+	\ket{s_1s_2,m_1m_2} = \sum_{s}C_{m_1m_2m}^{s_1s_2s}\ket{s,m_1+m_2} \,.
+\end{equation}
+
+Now consider a spin-3/2 particle along with a spin-1 particle. The table reads:
+
+\begin{equation}
+	\ket{\frac{3}{2}\frac{1}{2}, \frac{1}{2}0} = \sqrt{\frac{3}{5}}\ket{\frac{5}{2},\frac{1}{2}} + \frac{1}{\sqrt{15}}\ket{\frac{3}{2},\frac{1}{2}} - \frac{1}{\sqrt{3}}\ket{\frac{1}{2},\frac{1}{2}} \,.
+\end{equation}
+
+If particles of spin 3/2 and spin 1 are at rest in a boc, and it is known that the first has $m_1=1/2$ and the second has $m_2=0$ (so $m=1/2$), the total spin $s$ could be measured as 5/2 (with probability 3/5), 3/2 (with probability 1/15) or 1/2 (with probability 1/3).
 
 \end{document}
