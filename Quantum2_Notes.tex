@@ -751,4 +751,103 @@ When considering multi-particle systems, distinguishability is an important conc
 
 The problem with the second point is that quantum mechanics forbids us from having infinite prevision on the trajectory of a particle. Thus, according to quantum mechanics, identical particles are indistinguishable. This impacts the possible form of multi-particle wavefunctions.
 
+\subsection{Bosons and fermions}
+Suppose particle 1 is in the state $\psi_a(\vb{r}_1)$ and particle 2 is in the state $\psi(\vb{r}_2)$. In this case, the two-particle wavefunction is the product of the two single-particle wavefunctions:
+
+\begin{equation}
+\psi(\vb{r}_1,\vb{r}_2) = \psi(\vb{r}_1)\psi(\vb{r}_2) \,,
+\end{equation}
+
+assuming that the different particles can identified. However, for two identical particles, it is impossible to determine which particle is in state $\psi_a$ or $\psi_b$. All that can be known is that one particle is in one state and the second particle is in the other. 
+
+To accommodate indistinguishable particles, we construct a wavefunction that is a superposition of the two possible states:
+
+\begin{equation}
+\psi_\pm(\vb{r}_1,\vb{r}_2) = A\Bigl[ \psi_a(\vb{r}_1)\psi_b(\vb{r}_2) \pm \psi_b(\vb{r}_1)\psi_a(\vb{r}_2) \Bigr] \,.
+\end{equation}
+
+The theory permits two kinds of identical particles:
+
+\begin{itemize}
+	\item  Bosons (+): have a symmetric wavefunction and are characterized by integer spin values.
+	\item Fermions ($-$): have an anti-symmetric wavefunction and are characterized by half-integer spin values.
+\end{itemize}
+
+\begin{mdframed}
+	\paragraph*{Note}:
+	A consequence of this is that two identical fermions may not occupy the same state. Consider two identical fermions in states $\psi_a = \psi_b$. Then,
+	
+	\begin{equation*}
+	\psi_-(\vb{r}_1,\vb{r}_2) =  A\Bigl[ \psi_a(\vb{r}_1)\psi_a(\vb{r}_2) - \psi_a(\vb{r}_1)\psi_a(\vb{r}_2) \Bigr] = 0 \,.
+	\end{equation*}
+	
+	In this case the total particle wavefunction must be zero and therefore two identical fermions will never occupy the same state. This is the famous \textbf{Pauli exclusion principle}.	
+\end{mdframed}
+
+Let us define the exchange operator $\mathcal{P}$, which interchanges the two particles:
+
+\begin{equation}
+\mathcal{P}\ket{(1,2)} = \ket{(2,1)} \,.
+\end{equation}
+
+Clearly, applying this operator twice does not change the state ($\mathcal{P}^2 = \mathbb{I}$) and we also note that the eigenvalues of $\mathcal{P}$ are $\pm1$. If the two particles are identical, the Hamiltonian must treat them the same, since $m_1 = m_2$ and $V(\vb{r}_1,\vb{r}_2) = V(\vb{r}_2,\vb{r}_1)$. It then follows that $\mathcal{P}$ and $\mathcal{H}$ are compatible observables, 
+
+\begin{equation}
+\comm{\mathcal{P}}{\mathcal{H}} = 0 \,.
+\end{equation}
+
+Ehrenfest's theorem also ensures that $\dv*{\exv{\mathcal{P}}}{t} = 0$ and the expectation value of the exchange operator is conserved. As a result, we can find solutions to the Schrödinger equation that are either symmetric (eigenvalue $+1$) or anti-symmetric (eigenvalue $-1$) under exchange:
+
+\begin{equation}
+\boxed{ \psi(\vb{r}_1,\vb{r}_2) = \pm\psi(\vb{r}_2,\vb{r}_1) \,.}
+\end{equation}
+
+The wavefunction for identical particles is required to obey the systematization rule (+: bosons, $-$: fermions). This is true for $N$-particle systems with any two particles exchanged.
+
+\begin{mdframed}[backgroundcolor=gray!20]
+	\paragraph*{Example:}
+	Suppose we have two non-interacting particles in a one-dimensional infinite square well. The one-particle states are given by:
+	
+	\begin{equation*}
+	\psi_n(x) = \sqrt{\frac{2}{a}}\sin\qty(\frac{n\pi}{a}x) \,, \quad E_n = \frac{n^2\pi^2\hbar^2}{2ma^2} \,.
+	\end{equation*}
+	
+	If the particles are distinguishable with the first in state $n_1$ and the second in state $n_2$, the composite wavefunction is:
+	
+	\begin{equation*}
+	\psi_{n_{1}n_{2}}(x) = \psi_{n_{1}}(x_1)\psi_{n_{2}}(x_2) \,, \qquad E_{n_{1n_{2}}} = \frac{({n_1}^2 + {n_2}^2)\pi^2\hbar^2}{2ma^2} \,.
+	\end{equation*}
+	
+	The ground state is 
+	
+	\begin{equation*}
+	\psi_{1,1} = \frac{2}{a}\sin\qty(\frac{\pi}{a}x_1)\sin\qty(\frac{\pi}{a}x_2) \, \qquad E_{1,1} = \frac{\pi^2\hbar^2}{ma^2} \,.
+	\end{equation*}
+	
+	The first excited state is doubly degenerate:
+	
+	\begin{equation*}
+	\left\{
+	\begin{array}{ll}
+	\psi_{1,2} = \frac{2}{a}\sin\qty(\frac{2\pi}{a}x_2) & E_{1,2} = \frac{2\pi^2\hbar^2}{2ma^2} \\[6pt]
+	\psi_{2,1} = \frac{2}{a}\sin\qty(\frac{2\pi}{a}x_1)\sin\qty(\frac{\pi}{a}x_2) & E_{2,1} = \frac{5\pi^2\hbar^2}{2ma^2}
+	\end{array}
+	\right. \,.
+	\end{equation*}
+	
+	If the particles are identical bosons, the ground state is unchanged but the first excited state is non-degenerate:
+	
+	\begin{equation*}
+	\frac{\sqrt{2}}{a}\qty[\sin\qty(\frac{\pi}{a}x_1)\sin\qty(\frac{2\pi}{a}x_2) + \sin\qty(\frac{2\pi}{a}x_1)\sin\qty(\frac{2\pi}{a}x_2)] \,,\qquad E = \frac{5\pi^2\hbar^2}{2ma^2} \,.
+	\end{equation*}
+	
+	If the particles are identical fermions, they cannot both have the same quantum number $n$, so there is no state with energy $E = \pi^2\hbar^2/ma^2$. Instead, the ground state is
+	
+	\begin{equation*}
+	\frac{\sqrt{2}}{a}\qty[\sin\qty(\frac{\pi}{a}x_1)\sin\qty(\frac{2\pi}{a}x_2) - \sin\qty(\frac{2\pi}{a}x_1)\sin\qty(\frac{2\pi}{a}x_2)] \,,\qquad E = \frac{5\pi^2\hbar^2}{2ma^2} \,.
+	\end{equation*}
+	
+	%% Plots of wavefunctions
+\end{mdframed}
+
 \end{document}
