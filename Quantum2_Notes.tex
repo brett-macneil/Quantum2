@@ -951,4 +951,53 @@ Recalling the composite spin states for two particles, we see that the singlet s
 
 The singlet state leads to a bonding state, and the the triplet states lead to anti-bonding states.
 
+\subsection{Atoms}
+A neutral atom of atomic number $Z$ consists of a heavy nucleus with electric charge $Ze$ surrounded by $Z$ electrons (of mass $m$ and charge $-e$). The Hamiltonian for this system is
+
+\begin{equation}
+	\mathcal{H} = \sum_{j=1}^{Z}\qty(-\frac{\hbar^2}{2m}\laplacian{}_j - \frac{1}{4\pi\epsilon_0}\frac{Ze^2}{r_j}) + \frac{1}{2}\frac{1}{4\pi\epsilon_0}\sum_{j\neq}^{Z}\frac{e^2}{|\vb{r}_j - \vb{r}_k|}
+\end{equation}
+
+which is composed of kinetic and potential energy terms, as usual, in addition to an additional potential energy term accounting for the electron-electron repulsion. The problem is to solve the Schrödinger equation, $\mathcal{H}\psi = E\psi$ for this situation. Because the electrons are identical, the acceptable states, denoted
+
+\begin{equation}
+	\Psi = \psi(\vb{r}_1, \vb{r}_2,\ldots,\vb{r}_Z)\chi(\vb{s}_1, \vb{s}_2,\ldots,\vb{s}_Z)
+\end{equation}
+
+must be anti-symmetric with respect to exchange of any two electrons. In particular, no two electrons can occupy the same state. Unfortunately, the general case has not been solved exactly except for the hydrogen atom. We must resort to approximate methods, which we will see in later sections.
+
+After hydrogen, helium is next simplest atom, with $Z=2$. The Hamiltonian is
+
+\begin{equation}
+	\mathcal{H} = \qty(-\frac{\hbar^2}{2m}\laplacian{}_{1} - \frac{1}{4\pi\epsilon_0}\frac{2e^2}{r_1}) + \qty(-\frac{\hbar^2}{2m}\laplacian{}_{2} - \frac{1}{4\pi\epsilon_0}\frac{2e^2}{r_2}) + \frac{1}{4\pi\epsilon_0}\frac{e^2}{|\vb{r}_1-\vb{r}_2|}
+\end{equation}
+
+which consists of two hydrogenic Hamiltonians and a term for the  repulsion of the two electrons. This repulsion term makes it difficult to solve for the system state, so we will ignore it, and see what result we obtain. In this case, the Hamiltonian separates and we can write the solution as
+
+\begin{equation}
+	\psi(\vb{r}_1,\vb{2}_2) = \psi_{n\ell m}(\vb{r}_1)\psi_{n^\prime\ell^\prime m^\prime}(\vb{r}_2)
+\end{equation} 
+
+where the single-particle solutions are of the same form as hydrogen, except the Bohr radius is halved and the Bohr energies are increased by a factor of 4. The total energy of the system is
+
+\begin{equation}
+	E = 4\qty(-\frac{\SI{13.6}{\eV}}{n^2} - \frac{\SI{13.6}{\eV}}{{n^\prime}^2}) \,.
+\end{equation}
+
+The ground state would be 
+
+\begin{equation}
+	\psi_{0}(\vb{r}_1,\vb{r}_2) = \psi_{100}(\vb{r}_1)\psi_{100}(\vb{r}_2) = \frac{8\pi}{{a_0}^2}\exp(-\frac{2(r_1+r_2)}{a_0})
+\end{equation}
+
+with energy $E = \SI{-109}{\eV}$. Because this spatial wavefunction is symmetric, the spinor must be anti-symmetric and the two electrons must have their spins oppositely aligned.
+
+The experimentally determined ground state of \ce{He} is a singlet state, but the energy is $\SI{-78.975}{\eV}$. There is poor agreement because we have ignored the electron-electron repulsion. This repulsion energy will be positive, and accounts for the higher energy. The excited states will be $\psi_{n\ell m}\psi_{100}$. Exciting both electrons will cause one to drop back to the ground state, releasing enough energy to ionize the atom.
+
+We can construct either symmetric or anti-symmetric spatial wavefunctions which require either anti-symmetric (singlet) or symmetric (triplet) spin states. When a helium atom has a symmetric wavefunction and anti-symmetric spinor, it is known as \textbf{parahelium}. Alternatively, when helium has an anti-symmetric wavefunction and occupies a symmetric spin state, it is known as \textbf{orthohelium}. The ground state is necessarily parahelium, while excited states can take on either configuration.
+
+Symmetric spatial states bring electrons closer together and raises the energy through electrostatic repulsion. This has been verified experimentally.
+
+%% Figure: energy levels of helium
+
 \end{document}
