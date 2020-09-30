@@ -850,4 +850,105 @@ The wavefunction for identical particles is required to obey the systematization
 	%% Plots of wavefunctions
 \end{mdframed}
 
+\subsection{Exchange forces}
+The symmetrization requirement of multi-particle wavefunctions has profound implications on the chemistry and physics of materials. Let us consider a one-dimensional example of two particles. Suppose one particle is in state $\psi_a(x)$ and the other is in $\psi_b(x)$. We also assume that these states are orthonormal.
+
+If both particles are distinguishable, the combined wavefunction is
+
+\begin{equation}
+	\psi(x_1,x_2) = \psi_a(x_2)\psi_b(x_2) \,.
+\end{equation}
+
+If they are identical bosons, the (normalized) composite wavefunction is
+
+\begin{equation}
+	\psi_+(x_1,x_2) = \frac{1}{\sqrt{2}}\Bigl[\psi_a(x_1)\psi_b(x_2) + \psi_b(x_1)\psi_a(x_1)\Bigr] \,.
+\end{equation}
+
+If, on the other hand, they are identical fermions,
+
+\begin{equation}
+\psi_+(x_1,x_2) = \frac{1}{\sqrt{2}}\Bigl[\psi_a(x_1)\psi_b(x_2) - \psi_b(x_1)\psi_a(x_1)\Bigr] \,.
+\end{equation}
+
+We wish to compute the average squared distance between the particles,
+
+\begin{equation}
+	\exv{(x_1-x_2)^2} = \exv{{x_1}^2} + \exv{{x_2}^2} - 2\exv{x_1x_2} \,.
+\end{equation}
+
+\paragraph*{Case 1: Distinguishable particles.} Using the distinguishable particle wavefunction, we find that:
+
+\begin{align*}
+	\exv{{x_1}^2} &= \int{x_1}^2|\psi_a(x_1)|^2 \dd{x_1}\int|\psi_b(x_2)|^2\dd{x_2} = \exv{x^2}_a \\[4pt]
+	\exv{{x_2}^2} &= \int|\psi_a(x_1)|^2\dd{x_1}\int{x_2}^2|\psi_b(x_2)|^2 \dd{x_2} = \exv{x^2}_b \\[4pt]
+	\exv{x_1x_2} &= \int x_1|\psi_a(x_1)|^2 \dd{x_1} \int x_2|\psi_b(x_2)|^2\dd{x_2} = \exv{x}_a\exv{x}_b \,,
+\end{align*}
+
+so in this case we find that:
+
+\begin{equation}
+		\exv{(x_1-x_2)^2} = \exv{x^2}_a + \exv{x^2}_b - 2\exv{x}_a\exv{x}_b \,.
+\end{equation}
+
+This answer would be the same if particle 1 had been in state $\psi_b$ and particle 2 had been in state $\psi_b$.
+
+\paragraph*{Case 2: Identical particles.} Using the bosonic and fermionic wavefunctions, we can repeat the same process. We find:
+
+\begin{align*}
+	\exv{{x_1}^2} &= \frac{1}{2}\Biggl[\Biggl. \int{x_1}^2|\psi_a(x_1)|^2\dd{x_1}\int|\psi_b(x_2)|^2\dd{x_2} \\ &\qquad\qquad + \int{x_1}^2|\psi_b(x_1)|^2\dd{x_1}\int|\psi_a(x_2)|^2\dd{x_2} \\
+	&\qquad\qquad\pm \int{x_1}^2{\psi_a}^*(x_1)\psi_b(x_2)\dd{x_1}\int{\psi_b}^*(x_2)\psi_a(x_2) \dd{x_2} \\ 
+	& \qquad\qquad\pm \int{x_1}^2{\psi_b}^*(x_1)\psi_a(x_2)\dd{x_1}\int{\psi_a}^*(x_2)\psi_b(x_2) \dd{x_2} \Biggl.\Biggr] \\[4pt]
+	&= \frac{1}{2}\qty[\exv{x^2}_a + \exv{x^2}_b \pm 0 \pm 0] \\[4pt]
+	&= \frac{1}{2}\qty(\exv{x^2}_a + \exv{x^2}_b) \,.
+\end{align*}
+
+In a similar fashion, it can be shown that $\exv{{x_2}^2} = \exv{{x_1}^2}$ since the particles are indistinguishable. Next,
+
+\begin{align*}
+	\exv{x_1x_2} &= \frac{1}{2}\Biggl[\Biggr. \int x_1|\psi_a(x_1)|^2\dd{x_1}\int x_2|\psi_b(x_2)|^2\dd{x_2} \\
+	&\qquad\qquad + \int x_1|\psi_b(x_1)|^2\dd{x_1}\int x_2|\psi_a(x_2)|^2\dd{x_2} \\
+	&\qquad\qquad \pm \int x_1{\psi_a}^*(x_1)\psi_b(x_1)\dd{x_1}\int x_2{\psi_b}^*(x_2)\psi_a(x_2)\dd{x_2} \\
+	&\qquad\qquad \pm \int x_1{\psi_a}^*(x_1)\psi_b(x_1)\dd{x_1}\int x_2{\psi_b}^*(x_2)\psi_a(x_2)\dd{x_2} \Biggl.\Biggr] \\[4pt]
+	&= \frac{1}{2}\Bigl[\exv{x}_a\exv{x}_b + \exv{x}_b\exv{x}_a \pm \exv{x}_{ab}\exv{x}_{ba} \pm \exv{x}_{ba}\exv{x}_{ab}\Bigr] \\[4pt]
+	&= \exv{x}_a\exv{x}_b \pm |\exv{x}_{ab}|^2 \,,
+\end{align*}
+
+where
+
+\begin{equation*}
+	\exv{x}_{ab} \equiv \int x {\psi_a}^*(x)\psi_b(x)\dd{x}
+\end{equation*}
+
+is known as the exchange integral. Putting this together, we see that:
+
+\begin{equation}
+	\exv{(x_1-x_2)^2}_\pm = \exv{x^2}_a + \exv{x^2}_b - 2\exv{x}_a\exv{x}_b \mp 2|\exv{x}_{ab}| \,.
+\end{equation}
+
+Comparing the distinguishable and identical results, we see that the difference comes from the final term:
+
+\begin{equation}
+	\exv{\Delta x^2}_\pm = \exv{\Delta x^2}_{\text{distinguishable}} \mp 2|\exv{x}_{ab}|^2
+\end{equation}
+
+\begin{mdframed}
+\paragraph*{Conclusion:}
+Identical bosons tend to be closer together, and identical fermions tend to be farther apart, compared to distinguishable.
+
+Note that the exchange integral $\exv{x}_{ab}$ vanishes unless the particles' wavefunctions overlap. Thus when the distance between particles is large, indistinguishability is not an issue.
+\end{mdframed}
+
+When there is overlap in wavefunctions, the system behaves as if there is a force of attraction (for bosons) or repulsion (for fermions). This is referred as exchange force (\textit{although this is not really a force}), and is a consequence of the symmetrization requirement. It is strictly a quantum mechanical effect with no classical analogue.
+
+The complete state of a particle includes not only its position wavefunction, but also a spinor describing its spin orientation. It is the total state function, not just the position component, that must obey the symmetrization rule. For an electron, we require
+
+\begin{equation}
+	\psi(\vb{r}_1,\vb{r}_2)\chi(1,2) = -\psi(\vb{r}_2,\vb{r}_2)\chi(2,1) \,.
+\end{equation}
+
+Recalling the composite spin states for two particles, we see that the singlet state is anti-symmetric whereas the triplet states are symmetric. Two electrons occupying the singlet state must have a symmetric spatial wavefunction whereas two electrons occupying a triplet state must have an anti-symmetric spatial wavefunction.
+
+The singlet state leads to a bonding state, and the the triplet states lead to anti-bonding states.
+
 \end{document}
