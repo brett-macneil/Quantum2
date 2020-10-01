@@ -1000,4 +1000,261 @@ Symmetric spatial states bring electrons closer together and raises the energy t
 
 %% Figure: energy levels of helium
 
+\subsection{Solids}
+With solids, a few of the outermost valence electrons detach from their host atoms and are free to move through the material. The core electrons hare tightly bound to the nucleus and have properties like the original atom. The mobile valence electrons are influenced by a potential from the entire crystal lattice.
+
+\subsubsection{Free electron gas}
+The electron gas theory (Sommerfeld theory) ignores al forces and treats the mobile electrons as particles in a box. Consider a rectangular solid with dimensions $\ell_x$, $\ell_y$ and $\ell_z$. The potential acting on electrons is
+
+\begin{equation}
+	V(x,y,z) = 
+	\begin{cases}
+	0 & \text{if } x\in[0,\ell_x]\,,y\in[0,\ell_y]\,,z\in[0,\ell_z] \\[4pt]
+	\infty & \text{otherwise}
+	\end{cases} \,,
+\end{equation}
+
+and solving the Schrödinger and applying boundary conditions yields a solution depending on three quantum numbers:
+
+\begin{equation}
+	\psi(x,y,z) = \sqrt{\frac{8}{\ell_x\ell_y\ell_z}}\sin\qty(\frac{n_x \pi }{\ell_x}x)\sin\qty(\frac{n_y \pi }{\ell_y}y)\sin\qty(\frac{n_z \pi }{\ell_z}z) \,,
+\end{equation} 
+
+with energies given by
+
+\begin{equation}
+	E_{n_{x}n_{y}n_{z}} = \frac{\hbar^2\pi^2}{2m}\qty(\frac{{n_x}^2}{{\ell_x}^2} + \frac{{n_y}^2}{{\ell_y}^2} + \frac{{n_z}^2}{{\ell_z}^2}) = \frac{\hbar^2k^2}{2m}
+\end{equation}
+
+where $k$ is the magnitude of the wavevector $\vb{k} = k_x\vu{x} + k_y\vu{y} + k_z\vu{z}$. If we imagine a three dimensional $k$-space with axes $k_x$, $k_y$ and $k_z$, the allowable $k$-values setup a uniform discrete grid. 
+
+%% Figure: k-space
+
+The intersection points on the grid are distinct one-particle states. The volume in $k$-space occupied by each state is 
+
+\begin{equation}
+	V_{k} = \frac{\pi^3}{\ell_x\ell_y\ell_z} = \frac{\pi^3}{V} \,,
+\end{equation}
+
+where $V$ is the volume of the entire solid. Suppose this solid has $N$ atoms, each contributing $d$ free electrons. In a typical solid, $N\sim 10^{22}$ and $d\sim 1$ or $2$. Since electrons are fermions, subject to the Pauli exclusion principle, so only two of them can occupy any given $k$-state, one spin up and one spin down.
+
+Filling states with increasing energy will give one octant a sphere in $k$-space centered around zero. Typically the sample is very large such that $V_k$ is very small and the wavevector $\vb{k}$ is approximated as continuous.
+
+The radius of this spherical octant, known as the \textbf{Fermi wavevector} $k_\text{F}$ is determined by the fact each electron pair fills a volume $\pi^3/V$. This gives
+
+\begin{equation*}
+	\frac{1}{8}\qty(\frac{4}{3}\pi {k_\text{F}}^3) = Nd\qty(\frac{\pi^3}{2V})
+\end{equation*}
+
+or, after rearranging we obtain
+
+\begin{equation}
+	k_\text{F} = (3\rho\pi^2)^{1/3} \,,
+\end{equation}
+
+where $\rho = Nq/V$ is the free electron density. The edge of the filled sphere is the \textbf{Fermi surface} and the corresponding energy is the \textbf{Fermi energy}:
+
+\begin{equation}
+	E_\text{F} = \frac{\hbar^2}{2m}(3\rho\pi^2)^{2/3} \,.
+\end{equation}
+
+The total energy of the electron gas is then calculated by adding the energies of all the electrons in $k$-space:
+
+\begin{align*}
+	U &= \int\frac{\hbar^2k^2}{2m}\frac{\dd[3]{k}}{V_k/2} \\[4pt]
+	&= \int_{0}^{k_\text{F}}\int_{0}^{\pi/2}\int_{0}^{\pi/2}\frac{\hbar^2 k^2}{2m}\qty(\frac{2V}{\pi^3})k^2\sin\theta\dd{k}\dd{\theta}\dd{\phi} \\[4pt]
+	&= \frac{\hbar^2V}{2m\pi^2}\int_{0}^{k_\text{F}}k^4\dd{k} \\[4pt]
+	&= V\frac{\hbar^2{k_\text{F}}^5}{10m\pi^2}
+\end{align*}
+
+We can write the total energy per unit volume as 
+
+\begin{equation}
+	U = \frac{\hbar^2(3\pi^2\rho)^{5/3}}{10\pi^2 m} = \frac{(2m)^{3/2}{E_\text{F}}^{5/2}}{5\pi^2\hbar^3} \,,
+\end{equation}
+
+which yields the average energy per electron:
+
+\begin{equation}
+	\exv{E} = \frac{3}{5}E_\text{F} \,.
+\end{equation}
+
+If we compare this to the average thermal energy of a classical particle, $\exv{E} = 3k_\text{B}T/2$, we can define the \textbf{Fermi temperature} to be 
+
+\begin{equation}
+	T_\text{F} = \frac{2}{5}\frac{E_\text{F}}{k_\text{B}} \,,
+\end{equation}
+
+which is on the order of $10^4~\si{\kelvin}$ for most solids. Pauli exclusion forces electrons to fill higher energy states than they would classically. This a purely quantum effect known as \textbf{degeneracy pressure} which keeps the Fermi sphere from collapsing.
+
+\subsubsection{Band structure}
+In the free electron model, all interactions are neglected, when in reality they feel a force from the positively charged, regularly spaced nuclei. Here will improve on the free electron model by considering a \textit{periodic} potential. The qualitative features of solids can be understood by considering the periodic nature of crystals.
+
+\begin{mdframed}
+\paragraph*{Bloch's theorem.}
+If a system is described by a periodic potential energy function $V(x) = V(x+a)$ for some constant $a$, and all $x$, then the solutions to Schrödinger's equation are of the form
+
+\begin{equation}
+	\psi(x+a) = e^{iqa}\psi(x) 
+\end{equation}
+
+or equivalently
+
+\begin{equation}
+	\psi(x) = e^{iqx}u(x)
+\end{equation}
+
+where $u(x) = u(x+a)$ is some periodic function with the same periodicity as the potential (and of the lattice). In other words, the wavefunction is a plane wave modulated by some periodic envelope function.
+
+\paragraph*{Proof.}
+Let us define the translation operator $\hat{T}(a)$ as the operator with the property that 
+
+\begin{equation}
+	\hat{T}(a)\psi(x) = \psi(x-a) \,.
+\end{equation} 
+
+We can derive an explicit expression for this operator by Taylor expanding the right-hand side of this equation:
+
+\begin{align*}
+	\hat{T}(a)\psi(x) &= \sum_{n=0}^{\infty}\frac{1}{n!}(-a)^n\dv[n]{x}\psi(x) \\[4pt]
+	&= \sum_{n=0}^{\infty}\frac{1}{n!}\qty(-\frac{ia}{\hbar}\hat{p})^n\psi(x)
+\end{align*}
+
+where $\hat{p}$ is the momentum operator. This gives
+
+\begin{equation}
+	\hat{T}(a) = \exp\qty(-\frac{ia}{\hbar}\hat{p}) \,.
+\end{equation}
+
+If the Hamiltonian commutes with the translation operator (\textit{which it does if the potential is periodic}), then they must share the same eigenstates and the wavefunctions must satisfy
+
+\begin{equation*}
+	\mathcal{H}\psi(x) = E\psi(x) \quad\text{and}\quad \hat{T}(a)\psi(x) = \lambda\psi(x) \,.
+\end{equation*}
+
+It is easily shown that the translation operator is unitary ($\hat{T}^\dagger\hat{T}=\mathbb{I}$), its eigenvalues must have unit magnitude. This means we must take $\lambda = e^{i\phi}$ for some real constant $\phi$. For reasons of convention we take $\phi = -qa$. Then, by the above argument, any wavefunction for the periodic system must satisfy
+
+\begin{equation*}
+	\psi(x-a)=e^{-iqa}\psi(x) \,.
+\end{equation*} 
+
+We can write this differently by taking $\psi(x) = e^{iqx}u(x)$. Writing this equation in terms of $u(x)$, we obtain 
+
+\begin{equation*}
+	e^{iq(x-a)}u(x-a) = e^{iqa}e^{-iqa}e^{iqx}u(x) \,,
+\end{equation*}
+
+which simplifies to 
+
+\begin{equation*}
+	u(x-a) = u(x) \,.
+\end{equation*}
+
+Thus we have proven both forms of Bloch's theorem.
+
+\hspace*{\fill}$\blacksquare$
+\end{mdframed}
+
+Bloch's theorem says that $\psi(x)$ is not periodic, but $|\psi(x)|^2$ is:
+
+\begin{equation}
+	|\psi(x-a)|^2 = |\psi(x)|^2 \,.
+\end{equation}
+
+No true solid has infinite size, and the surface terminates the periodicity. However, any macroscopic crystal is comprised of a large number of atoms (around $10^{28}$ per cubic metre), such that the electrons are in an effectively infinite crystal. We can apply periodic boundary conditions such that:
+
+\begin{equation}
+	\psi(x+Na) = \psi(x) \,.
+\end{equation}
+
+Bloch's theorem ensures that
+
+\begin{equation}
+	e^{iNqa}\psi(x) = \psi(x) \,,
+\end{equation}
+
+so $e^{iNqa}=1$ which means that $Nqa = 2\pi n$ and
+
+\begin{equation}
+	q = \frac{2\pi}{a} n \,, \quad n = 0,\,\pm 1,\,\pm 2\,,\ldots
+\end{equation}
+
+Due to Bloch's theorem, we only need to solve the Schrödinger equation in one unit cell (for $0<x<a$), and we can construct a solution for all $x$.
+
+Suppose an electron in a solid experiences a potential given by:
+
+%% Figure: Delta function potential
+
+\begin{equation}
+	V(x) = \alpha\sum_{j=0}^{N-1}\delta(x-ja) \,.
+\end{equation}
+
+This is a Dirac comb, like found in the Kronig-Penney model. We need to solve the Schrödinger equation for $0<x<a$. We obtain the oscillatory free-particle wavefunction 
+
+\begin{equation}
+	\psi(x) = A\sin(kx) + B\cos(kx) \,,
+\end{equation}
+
+where $k=\sqrt{2mE}/\hbar$ and $E$ is the electron energy. Using Bloch's theorem, the wavefunction for $-a<x<0$ is
+
+\begin{equation}
+	\psi(x) = e^{-iqa}\Bigl(A\sin\bigl(k(x+a)\bigr) + B\cos\bigl(k(x+a)\bigr)\Bigr) \,.
+\end{equation}
+
+At $x =0$, the wavefunction must be continuous, which gives
+
+\begin{equation*}
+	B = e^{-iqa}\Bigl[A\sin(ka) + B\cos(ka)\Bigr] \,.
+\end{equation*}
+
+The derivative, on the other hand, is \textit{not} continuous at $x=0$ due to the delta function potential. It can be shown that the difference in derivatives is
+
+\begin{equation*}
+	\Delta\qty(\dv{\psi}{x}) = \frac{2m\alpha}{\hbar^2}\psi(0) \,.
+\end{equation*}
+
+This condition gives
+
+\begin{equation*}
+	kA - e^{-iqa}k\biggl(A\cos(ka) - B\sin(ka)\Bigr) = \frac{2m\alpha}{\hbar^2k}B \,,
+\end{equation*}
+
+and solving for $A$ in terms of $B$, we get
+
+\begin{equation*}
+	A\sin(ka) = \biggl(e^{iqa}-\cos(ka)\biggr)B \,.
+\end{equation*}
+
+Substituting this into the earlier result (and canceling $kB$), we get
+
+\begin{equation*}
+	\biggl(e^{iqa} - \cos(ka)\biggr)\bigg(1-e^{-iqa}\cos(ka)\bigg) + e^{-iqa}\sin[2](ka) = \frac{2m\alpha}{\hbar^2k}\sin(ka) \,,
+\end{equation*}
+
+which may be simplified to
+
+\begin{equation}
+	\cos(qa) = \cos(ka) + \frac{m\alpha}{\hbar^2k}\sin(ka) \,.
+\end{equation}
+
+This equation determines the allowed wavevectors and energies that the electron can take. If we let $z=ka$ and $\beta=m\alpha a/\hbar^2$, we obtain
+
+\begin{equation*}
+	f(z) = \cos z + \beta\frac{\sin z}{z} \,.
+\end{equation*}
+
+Only $k$ values when $|f(z)|<1$ are acceptable, since there are no solutions to $\cos(qa) = f(z)$ otherwise.
+
+%% Figure: Plot of f(z) and bands
+
+%% Figure: Plot of energy bands
+
+There are \textit{gaps} in $k$ representing forbidden energies, which are separated by \textit{bands} of allowed energies. Within a band, nearly every energy is allowed, since $qa = 2\pi n/N$ where $N$ is very large. 
+
+Due to Pauli exclusion, $2N$ electrons can occupy a band; $N$ are spin up and $N$ are spin down. If there is one free electron per atom ($d=1$), the first band will be half-filled. If there are two free electrons per atom ($d=2$), the first band will be totally filled. In three dimensions, with more realistic potentials, the band structure is more complicated. However, energy bands exist as a result of the periodic potential.
+
+If the topmost band is partly filled, it takes little energy to excite an electron to the next allowed level and the material will be a conductor, or metal. On the other hand, if the highest band is completely filled, an electron is required to overcome the energy difference in the band gap to enter an excited state. This material is an insulator, although if the band gap is small and the electrons have sufficient thermal energy, a select few may become excited and the material is a semiconductor.
+
+In the Sommerfeld free electron model, all solids should be metals, as no band gaps exist. However, Bloch's theorem ensures that the presence of a periodic potential gives rise to band theory, which can account for the range of electrical conductivities of different solids.
+
 \end{document}
