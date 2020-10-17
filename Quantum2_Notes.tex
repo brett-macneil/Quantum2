@@ -1257,4 +1257,190 @@ If the topmost band is partly filled, it takes little energy to excite an electr
 
 In the Sommerfeld free electron model, all solids should be metals, as no band gaps exist. However, Bloch's theorem ensures that the presence of a periodic potential gives rise to band theory, which can account for the range of electrical conductivities of different solids.
 
+\section{Time independent perturbation theory}
+\subsection{Nondegernerate perturbation theory}
+\subsubsection{General formulation}
+Let us assume that er have solves the time-independent Schrödinger equation for some potential
+
+\begin{equation}
+	\mathcal{H}^0{\psi_n}^0 = {E_n}^0{\psi_n}^0
+\end{equation}
+
+which gives energy eigenvalues ${E_n}^0$ and an associated set of orthonormal eigenfunctions
+
+\begin{equation}
+	\bra{{\psi_m}^0}\ket{{\psi_n}^0} = \delta_{mn} \,.
+\end{equation}
+
+Now suppose we add a small perturbation to the potential. We want to determine the new eigenvalues and eigenfunctions,
+
+\begin{equation}
+\mathcal{H}\psi_n = E_n\psi_n \,.
+\end{equation}
+
+In the vast majority of cases, we will not be able to analytically solve the Schrödinger equation for the new potential.
+
+\textbf{Perturbation theory} is a systematic procedure for obtaining \emph{approximate} solutions to the perturbed problem, by building on the known exact solutions to the unperturbed case. 
+
+To begin, we write the new Hamiltonian as a sum of two terms,
+
+\begin{equation}
+	\mathcal{H} = \mathcal{H}^0 + \lambda\mathcal{H}^{\prime}
+\end{equation}
+
+where $\mathcal{H}^0$ is the unperturbed Hamiltonian and $\mathcal{H}^{\prime}$ is the perturbation. We expand $\psi_n$ and $E_n$ as a power series in $\lambda$,
+
+\begin{align}
+	\psi_n &= {\psi_n}^0 + \lambda{\psi_n}^{1} + \lambda^2{\psi_n}^2 + \ldots \\[4pt]
+	E_n &= {E_n}^0 + \lambda{E_n}^{1} + \lambda^2{E_n}^2 + \ldots
+\end{align}
+
+where ${\psi_n}^{i}$ is the $i$\textsuperscript{th}-order correction to the $n$\textsuperscript{th} eigenfunction and ${E_n}^{i}$ is the $i$\textsuperscript{th}-order correction to its eigenvalue. Inserting this into the Schrödinger equation gives
+
+\begin{align*}
+	&\qty(\mathcal{H}^0+\lambda\mathcal{H}^{\prime})\qty[{\psi_n}^0 + \lambda{\psi_n}^{1} + \lambda^2{\psi_n}^{2} + \ldots] \\ &\qquad = \qty({E_n}^{0} + \lambda{E_n}^{1} + \lambda^2{E_n}^{2} + \ldots)\qty[{\psi_n}^0 + \lambda{\psi_n}^{1} + \lambda^2{\psi_n}^{2} + \ldots]
+\end{align*}
+
+and collecting powers of $\lambda$ we get
+
+\begin{align*}
+	&\mathcal{H}^0{\psi_n}^0 + \lambda\qty(\mathcal{H}^0{\psi_n}^1 + \mathcal{H}^{\prime}{\psi_n}^{0}) + \lambda^2\qty(\mathcal{H}^0{\psi_n}^2 + \mathcal{H}^{\prime}{\psi_n}^{1}) \\ &\qquad = {E_n}^0{\psi_n}^0 + \lambda\qty({E_n}^0{\psi_n}^1 + {E_n}^1{\psi_m}^0) + \lambda^2\qty({E_n}^0{\psi_n}^2 + {E_n}^1{\psi_n}^1 + {E_n}^2{\psi_n}^0) \,.
+\end{align*}
+
+To lowest order, we get nothing new, $\mathcal{H}^0{\psi_n}^0 = {E_n}^0{\psi_n}^0$. To first and second order, we get
+
+\begin{align}
+	\mathcal{H}^0{\psi_n}^1 + \mathcal{H}^{\prime}{\psi_n}^0 &= {E_n}^0{\psi_n}^1 + {E_n}^1{\psi_n}^0 \\[4pt]	\mathcal{H}^0{\psi_n}^2 + \mathcal{H}^{\prime}{\psi_n}^1 &= {E_n}^0{\psi_n}^2 + {E_n}^1{\psi_n}^1 + {E_n}^2{\psi_n}^0 \,.
+\end{align}
+
+We and we can continue to any order if necessary.
+
+\subsubsection{First order}
+The first order perturbation equation gives
+
+\begin{equation*}
+	\mathcal{H}^0\ket{{\psi_n}^1} + \mathcal{H}^{\prime}\ket{{\psi_n}^0} = {E_n}^0\ket{{\psi_n}^1} + {E_n}^1\ket{{\psi_n}^0} \,,
+\end{equation*}
+
+and multiplying by $\bra{{\psi_n}^0}$, we get
+
+\begin{equation}
+	\bra{{\psi_n}^0}\ket{\mathcal{H}^0{\psi_n}^1} + \bra{\mathcal{H}^0{\psi_n}^0}\ket{{\psi_n}^1} = {E_n}^0\bra{{\psi_n}^0}\ket{{\psi_n}^1} + {E_n}^{\prime}\bra{{\psi_n}^0}\ket{{\psi_n}^0}
+\end{equation}
+
+and since the Hamiltonian is Hermitian,
+
+\begin{equation*}
+	\bra{{\psi_n}^0}\ket{\mathcal{H}^0{\psi_n}^1} = \bra{\mathcal{H}^0{\psi_n}^0}\ket{{\psi_n}^1} = {E_n}^0\bra{{\psi_n}^0}\ket{{\psi_n}^1}
+\end{equation*}
+
+which gives
+
+\begin{equation}
+	\boxed{ {E_n}^{\prime} = \bra{{\psi_n}^0}\mathcal{H}^0\ket{{\psi_n}^0}\,. }
+\end{equation}
+
+This is the fundamental result of first-order perturbation theory, and one of the most important equations in quantum mechanics. The first order correction is the expectation value of the perturbation in the unperturbed state.
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Consider an infinite square well of width $a$, where the eigenfunctions are 
+
+\begin{equation*}
+	{\psi_n}^0(x) = \sqrt{\frac{2}{a}}\sin\qty(\frac{n\pi}{a}x) \,,\quad {E_n} = \frac{\hbar^2\pi^2n^2}{2ma^2} \,.
+\end{equation*}
+
+Suppose we increase the potential at the bottom of the well from zero to $V_0$. What is the first order correction to the energies?
+
+\paragraph*{Solution}:
+In this case, $\mathcal{H}^{\prime} = V_0$, so the correction in the energy is
+
+\begin{equation*}
+	{E_n}^{\prime} = \bra{{\psi_n}^0}V_0\ket{{\psi_n}^0} = V_0\bra{{\psi_n}^0}\ket{{\psi_n}^0} = V_0 \,.
+\end{equation*}
+
+The corrected energy levels are, as expected,  $E_n \approx {E_n}^0 + V_0$. In this case, the first order perturbation is exact because all other terms vanish for constant $V_0$.
+
+If instead the perturbation extends halfway through the well, $0<x<a/2$, we find
+
+\begin{equation*}
+	{E_n}^{\prime} = \frac{2V_0}{a}\int_{0}^{a/2}\sin^2\qty(\frac{n\pi}{a}x)\dd{x} = \frac{V_0}{2} \,.
+\end{equation*}
+
+In this case, this is not the exact shift in energy, but it is a reasonable approximation.
+\end{mdframed}
+
+Having found the first order correction to the energy, we now seek the first order correction to the wavefunction. We write
+
+\begin{equation}
+	\qty(\mathcal{H}^0 - {E_n}^0){\psi_n}^1 = -\qty(\mathcal{H}^{\prime} - {E_n}^1){\psi_n}^{0} \,.
+\end{equation}
+
+The unperturbed wavefunctions form a complete basis and we can rewrite ${\psi_n}^{1}$ in terms of the ${\psi_n}^0$:
+
+\begin{equation}
+{\psi_n}^{1} = \sum_{m \neq n}C_{m}^{(n)}{\psi_m}^0 \,.
+\end{equation}
+
+Inserting this into the last equation, we get
+
+\begin{equation*}
+	\sum_{m \neq n}\qty({E_m}^0 - {E_n}^0)C_{m}^{(n)}{\psi_m}^0 = -\qty(\mathcal{H}^\prime - {E_n}^1){\psi_n}^0 \,.
+\end{equation*}
+
+Taking the inner product with some state ${\psi_\ell}^0$, we obtain
+
+\begin{equation*}
+	\sum_{m \neq n}\qty({E_m}^0 - {E_n}^0)C_{m}^{(n)}\bra{{\psi_\ell}^0}\ket{{\psi_m}^0} = -\bra{{\psi_\ell}^0}\mathcal{H}^{\prime}\ket{{\psi_n}^0} + {E_n}^1\bra{{\psi_\ell}^0}\ket{{\psi_n}^0} \,.
+\end{equation*}
+
+If $\ell = n$ then the left hand size is zero and we recover the first order energy correction. If $\ell \neq n$, then
+
+\begin{equation*}
+	({E_\ell}^0 - {E_n}^0)C_{\ell}^{(n)} = -\bra{{\psi_\ell}^0}\mathcal{H}^\prime\ket{{\psi_n}^0} \,.
+\end{equation*}
+
+This means that the first order correction to the wavefunction is
+
+\begin{equation}
+	\boxed{{\psi_ n}^1 = \sum_{m \neq n}\frac{\bra{{\psi_m}^0}\mathcal{H}^\prime\ket{{\psi_n}^0}}{{E_n}^0 - {E_m}^0}}
+\end{equation}
+
+The denominator is nonzero so long as the unperturbed energy spectrum is non-degenerate. If two states have the same energy, we need to use degenerate.
+
+Perturbation theory often yields surprisingly accurate energies, with ${E_n}^0 + {E_n}^\prime$ being close to $E_n$. However, the wavefunction corrections are notoriously poor.
+
+\subsubsection{Second order}
+Similar to before, we apply the inner product $\bra{{\psi_n}^0}$ to the second order equation,
+
+\begin{equation*}
+	\mathcal{H}^0{\psi_n}^2 + \mathcal{H}^{\prime}{\psi_n}^1 = {E_n}^0{\psi_n}^2 + {E_n}^1{\psi_n}^1 + {E_n}^2{\psi_n}^0 \,.
+\end{equation*}
+
+this yields
+
+\begin{equation}
+	\bra{{\psi_n}^0}\ket{\mathcal{H}^0{\psi_n}^2} + \bra{{\psi_n}^0}\ket{\mathcal{H}^\prime{\psi_n}^1} = {E_n}^0\bra{{\psi_n}^0}\ket{{\psi_n}^2} + {E_n}^1\bra{{\psi_n}^0}\ket{{\psi_n}^1} + {E_n}^2\bra{{\psi_n}^0}\ket{{\psi_n}^0}
+\end{equation}
+
+which, since the Hamiltonian is Hermitian, gives
+
+\begin{equation*}
+	{E_n}^2 = \bra{{\psi_n}^0}\mathcal{H}^\prime\ket{{\psi_n}^1} - {E_n}^1\bra{{\psi_n}^0}\ket{{\psi_n}^1} \,.
+\end{equation*}
+
+The second term drops out, since $\bra{{\psi_n}^0}\ket{{\psi_n}^1} = \sum\limits_{m \neq n} C_{m}^{(n)}\bra{{\psi_n}^0}\ket{{\psi_m}^0} = 0$. This means
+
+\begin{equation*}
+	{E_n}^2 = \bra{{\psi_n}^0}\mathcal{H}^\prime\ket{{\psi_n}^1} = \sum_{m \neq n}C_{m}^{(n)}\bra{{\psi_n}^0}\mathcal{H}^\prime\ket{{\psi_m}^0} \,,
+\end{equation*}
+
+or,
+
+\begin{equation}
+	\boxed{ {E_n}^2 = \sum_{m \neq n}\frac{\qty|\bra{{\psi_n}^0}\mathcal{H}^\prime\ket{{\psi_m}^0}|^2}{{E_n}^0 - {E_m}^0}}
+\end{equation}
+
+which is the fundamental result of second order perturbation theory. It is possible to determine the second order correction to the wavefunction, as well as additional energy corrections. However, a second order correction to the energy is all that is required.
+
 \end{document}
