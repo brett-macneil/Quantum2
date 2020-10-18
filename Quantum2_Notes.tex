@@ -1443,4 +1443,249 @@ or,
 
 which is the fundamental result of second order perturbation theory. It is possible to determine the second order correction to the wavefunction, as well as additional energy corrections. However, a second order correction to the energy is all that is required.
 
+\subsection{Degenerate perturbation theory}
+If the unperturbed states are degenerate, two or more states ${\psi_n}^0$ share the same energy and the correction terms in perturbation theory blow up. We need to develop a proper theory to handle this case.
+
+\subsubsection{Two-fold degeneracy}
+Suppose that $\mathcal{H}^0{\psi_a}^0 = E^0{\psi_a}^0$ and $\mathcal{H}^0{\psi_b}^0 = E^0{\psi_b}^0$, where $\bra{{\psi_a}^0}\ket{{\psi_b}^0} = 0$. Any linear combination of these states is still an eigenstate of $\mathcal{H}^0$ with the same energy. Typically, adding a perturbation $\mathcal{H}^\prime$ will break the degeneracy and the unperturbed energy $E_0$ will split into two.
+
+%% Figure: Lifting of degeneracy.
+
+Turning off the perturbation, the upper and lower energies become orthogonal linear combinations of ${\psi_a}^0$ and ${\psi_b}^0$. However, we do not know what these \textit{good} states are, defined as the limit as the perturbation is turned off ($\lambda \rightarrow 0$). We write these in general form,
+
+\begin{equation}
+	\psi^0 = \alpha{\psi_a}^0 + \beta{\psi_b}^0 \,,
+\end{equation}
+
+where $\alpha$ and $\beta$ are adjustable. We wish to solve the Schrödinger equation, with $\mathcal{H} = \mathcal{H}^0 + \lambda\mathcal{H}^\prime$, and 
+
+\begin{align}
+\psi_n &= {\psi_n}^0 + \lambda{\psi_n}^{1} + \lambda^2{\psi_n}^2 + \ldots \\[4pt]
+E_n &= {E_n}^0 + \lambda{E_n}^{1} + \lambda^2{E_n}^2 + \ldots
+\end{align}
+
+Inserting this into the Schrödinger equation and collecting powers of $\lambda$, we obtain 
+
+\begin{equation*}
+	\mathcal{H}^0\psi^0 = \lambda\qty(\mathcal{H}^\prime\psi^0 + \mathcal{H}^0\psi^1) + \ldots = E^0\psi^0 + \lambda\qty(E^1\psi^0 + E^0\psi^1) \,.
+\end{equation*}
+
+To first order in $\lambda$, we get
+
+\begin{equation}
+	\mathcal{H}^0\psi^1 + \mathcal{H}^1\psi^0 = E^0\psi^1 + E^1\psi^0 \,.
+\end{equation}
+
+Taking the inner product of this with ${\psi_a}^0$ gives
+
+\begin{equation*}
+	\bra{{\psi_a}^0}\ket{\mathcal{H}\psi^1} + \bra{{\psi_a}^0}\ket{\mathcal{H}^\prime\psi^0} = E^0\bra{{\psi_a}^1}\ket{\psi^1} + E^1\bra{{\psi_a}^0}\ket{\psi^0} \,,
+\end{equation*}
+
+and because the Hamiltonian is Hermitian, the first terms on the left and right cancel. Since $\psi^0$ is a linear combination of ${\psi_a}^0$ and ${\psi_b}^0$ which are orthogonal, we obtain
+
+\begin{equation}
+	\alpha\bra{{\psi_a}^0}\mathcal{H}\ket{{\psi_a}^0} + \beta\bra{{\psi_a}^0}\mathcal{H}\ket{{\psi_b}^0} \,, 
+\end{equation}
+
+and performing a similar analysis, taking the inner product with ${\psi_b}^0$ gives
+
+\begin{equation}
+\alpha\bra{{\psi_b}^0}\mathcal{H}\ket{{\psi_a}^0} + \beta\bra{{\psi_b}^0}\mathcal{H}\ket{{\psi_b}^0} \,. 
+\end{equation}
+
+We can write this in matrix form, 
+
+\begin{equation}
+	\begin{bmatrix}
+	W_{aa} & W_{ab} \\ W_{ba} & W_{bb}
+	\end{bmatrix}
+	\begin{bmatrix}
+	\alpha \\ \beta
+	\end{bmatrix}
+	= E^1
+		\begin{bmatrix}
+	\alpha \\ \beta
+	\end{bmatrix} \,,
+\end{equation}
+
+where $W_{ij} = \bra{{\psi_i}^0}\mathcal{H}\ket{{\psi_j}^0}$ are known and depend of the perturbation and the good states. By diagonalizing the matrix we can determine the two energies. We find that:
+
+\begin{equation}
+	\boxed{{E_\pm}^1 = \frac{1}{2}\qty[W_{aa} + W_{bb} \pm \sqrt{\qty(W_{aa} - W_{bb})^2 - 4|W_{ab}|^2 \,\,}\,] }
+\end{equation}
+
+which is the fundamental result of degenerate perturbation theory. We can determine $\alpha$ and $\beta$ by noting that if the off-diagonal matrix elements are zero, then 
+
+\begin{equation*}
+	{E_+}^1 = W_{aa} = \bra{{\psi_a}^0}\mathcal{H}^\prime\ket{{\psi_a}^0} \quad\text{and}\quad {E_-}^1 = W_{bb} = \bra{{\psi_b}^0}\mathcal{H}^\prime\ket{{\psi_b}^0} \,.,
+\end{equation*}
+
+and we recover nondegenerate perturbation theory. Therefore, in the basis of degenerate states, the $W$-matrix is always diagonal and we can use nondegenerate perturbation theory. 
+
+\begin{mdframed}
+\paragraph*{Theorem.} Let $\mathcal{A}$ be a Hermitian operator that commutes with the unperturbed Hamiltonian $\mathcal{H}^0$ and the perturbation $\mathcal{H}^\prime$. If ${\psi_a}^0$ and ${\psi_b}^0$ are the degenerate eigenfunctions of $\mathcal{H}^0$ and are also eigenfunctions of $\mathcal{A}$ with distinct eigenvalues
+
+\begin{equation*}
+	\mathcal{A}{\psi_a}^0 = \mu{\psi_a}^0 \,, \quad \mathcal{A}{\psi_b}^0 = \nu{\psi_b}^0 \,\,\text{and}\,\, \mu\neq\nu
+\end{equation*}
+
+then ${\psi_a}^0$ and ${\psi_b}^0$ are \textit{good} states and off-diagonal matrix elements in the degenerate subspace are zero.
+
+\paragraph*{Proof.} By assumption, $\comm{\mathcal{A}}{\mathcal{H}^\prime} = 0$ which means that
+
+\begin{align*}
+	\bra{{\psi_a}^0}\comm{\mathcal{A}}{\mathcal{H}^\prime}\ket{{\psi_b}^0} &= 0 \\[4pt]
+	\bra{{\psi_a}^0}\ket{\mathcal{A}\mathcal{H}^\prime{\psi_b}^0} - \bra{{\psi_a}^0}\ket{\mathcal{H}^\prime\mathcal{A}{\psi_b}^0} &= 0 \\[4pt]
+		\mu\bra{\mathcal{A}{\psi_a}^0}\ket{\mathcal{H}^\prime{\psi_b}^0} - \nu\bra{{\psi_a}^0}\ket{\mathcal{H}^\prime{\psi_b}^0} &= 0 \\[4pt]
+		(\mu-\nu)\bra{{\psi_a}^0}\mathcal{H}^\prime\ket{{\psi_b}^0} &= 0 \\[4pt]
+		(\mu-\nu)W_{ab} &= 0
+\end{align*}
+
+but $\mu\neq\nu$ so $W_{ab} = 0$. \\
+\hspace*{\fill}$\blacksquare$
+\end{mdframed}
+
+If faced with degenerate states, find a Hermitian operator that commutes with $\mathcal{H}^0$ and $\mathcal{H}^\prime$. Then pick the unperturbed states that are simultaneously eigenfunctions of $\mathcal{H}^0$ and $\mathcal{A}$ to use nondegenerate perturbation theory.
+
+\subsubsection{Higher-order degeneracy}
+In the previous section we saw that we need to solve for the eigenvalues of 
+
+\begin{equation*}
+\begin{bmatrix}
+W_{aa} & W_{ab} \\ W_{ba} & W_{bb}
+\end{bmatrix}
+\begin{bmatrix}
+\alpha \\ \beta
+\end{bmatrix}
+= E^1
+\begin{bmatrix}
+\alpha \\ \beta
+\end{bmatrix} \,,
+\end{equation*}
+
+where $E^1$ are the eigenvalues of $W$ and the eigenvectors represent \textit{good} linear combinations of the unperturbed states. For an $n$-fold degenerate case we need to solve the $n \times n$ eigenvalue problem of the form
+
+\begin{equation}
+	W\vb{c} = E^1\vb{c}
+\end{equation}
+
+where $W_{ij} = \bra{{\psi_i}^0}\mathcal{H}^\prime\ket{{\psi_j}^0}$ and the vector $\vb{c}$ contains all the Fourier coefficients in the expansion
+
+\begin{equation*}
+	\psi^0 = \sum_{k=1}^{n}c_i\psi_k \,.
+\end{equation*}
+
+These \textit{good} unperturbed states represent a basis in the degenerate subspace that diagonalizes the matrix $W$. 
+
+Like before, if there exists an operator $\mathcal{A}$ that commutes with $\mathcal{H}^0$ and $\mathcal{H}^\prime$, and use the simultaneous eigenfunctions of $\mathcal{A}$ and $\mathcal{H}^0$, then the matrix $W$ will be diagonal.
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Consider a three dimensional infinite well, where the potential ${V(x,y,z) = 0}$ if $0<x,y,z<a$ and is infinite otherwise. The wavefunctions are 
+
+\begin{equation*}
+	\psi_{n_{x}n_{y}n_{z}}(x,y,z) = \qty(\frac{2}{a})^{3/2}\sin\qty(\frac{n_x\pi}{a}x)\sin\qty(\frac{n_y\pi}{a}y)\sin\qty(\frac{n_z\pi}{a}z)
+\end{equation*}
+
+with energies
+
+\begin{equation*}
+	E_{n_{x}n_{y}n_{z}} = \frac{\hbar^2\pi^2}{2ma^2}\Bigl({n_x}^2  {n_y}^2 + {n_z}^2\Bigr) \,.
+\end{equation*}
+
+The ground state is non-degenerate, with $\psi_{111}$ having energy $E_0 = 3\hbar^2\pi^2/2ma^2$. However, the first excited state has a triplet degeneracy:
+
+\begin{equation*}
+	\psi_a = \psi_{112} \quad \psi_b = \psi_{121} \quad \psi_c = \psi_{211} \,,
+\end{equation*}
+
+with energy $E_{1} = 2E_0$. If we add a perturbation $\mathcal{H}^\prime = V_0$ for $0<x,y<a/2$ and zero otherwise, we raise the potential by $V_0$ in one quarter of the box. Use perturbation theory to determine the correction to the energies.
+
+\paragraph*{Solution:}
+The ground state is nondegenerate so the correction to the energy is given by
+
+\begin{align*}
+	{E_{0}}^1 &= \bra{\psi_{111}}\mathcal{H}^\prime\ket{\psi_{111}} \\[4pt]
+	&= \qty(\frac{2}{a})^3V_0\int_{0}^{a/2}\sin^2\qty(\frac{\pi}{a}x)\dd{x}\int_{0}^{a/2}\sin^2\qty(\frac{\pi}{a}y)\dd{y}\int_{0}^{a/2}\sin^2\qty(\frac{\pi}{a}z)\dd{z} \\[4pt]
+	&= \qty(\frac{2}{a})^3V_0\qty(\frac{a}{4})\qty(\frac{a}{4})\qty(\frac{a}{4}) \\[4pt]
+	&= \frac{V_0}{4} \,.
+\end{align*}
+
+To determine the first order correction to the first excited states we need to use degenerate perturbation theory. We construct a matrix $W$ with matrix elements $W_{ij} = \bra{{\psi_i}^0}\mathcal{H}^\prime\ket{{\psi_j}^0}$ where $i$ and $j$ index over $a$, $b$ and $c$.
+
+The integrals in the diagonal matrix elements take the same form as the correction to the ground state energy and it follows that $W_{aa} = W_{bb} = W_{cc} = V_0/4$. For the off-diagonal terms we obtain integrals of the form:
+
+\begin{align*}
+	&\int_{0}^{a}\sin\qty(\frac{n_1\pi}{a}x)\sin\qty(\frac{n_2\pi}{a}x)\dd{x} = \frac{a}{2}\delta_{n_{1}n_{2}} \\[4pt]
+	&\int_{0}^{a/2}\sin\qty(\frac{n_1\pi}{a}x)\sin\qty(\frac{n_2\pi}{a}x)\dd{x} = \frac{a}{4}\delta_{n_{1}n_{n}} + \frac{2a}{3\pi}\biggl(1-\delta_{n_{1}n_{2}}\biggr) \,.
+\end{align*}
+
+Using this, we find that $W_{ab}$, $W_{ac}$, $W_{ba}$ and $W_{ca}$ are all zero. This leaves
+\begin{align*}
+	W_{bc} = {W_{cb}}^* &= \qty(\frac{2}{a})^3V_0\qty(\int_{0}^{a/2}\sin\qty(\frac{\pi}{a}u)\sin\qty(\frac{2\pi}{a}u)\dd{u} )^3 \\[4pt]
+	&= \qty(\frac{2}{a})^3V_0\qty(\frac{2a}{3\pi})\qty(\frac{2a}{3\pi})\qty(\frac{a}{2}) \\[4pt]
+	&= \qty(\frac{4}{3\pi})^2V_0 \,.
+\end{align*}
+
+This gives
+
+\begin{equation*}
+	W = \frac{V_0}{4}
+	\begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & K \\
+	0 & K & 1 
+	\end{bmatrix}
+\end{equation*}
+where $K = (8/3\pi)^2$. The eigenvalues of this matrix are $V_0/4$, $V_0(1+K)/4$ and $V_0(1-K)/4$. To first order, the perturbed energies are then
+
+\begin{equation*}
+	E_1 = \left\{
+	\begin{array}{l}
+	{E_1}^0 + V_0/4 \\
+	{E_1}^0 + V_0(1+K)/4 \\
+	{E_1}^0 + V_0(1-K)/4
+	\end{array}
+	\right. \,.
+\end{equation*}
+
+The perturbation lifts the degeneracy and splits ${E_1}^0$ into three distinct levels. If we had used nondegenerate perturbation theory, we would have found a correction of $V_0/4$ for all three states.
+
+The \textit{good} linear combinations of states 
+
+\begin{equation*}
+	\psi^0 = \alpha\psi_a + \beta\psi_b + \gamma\psi_c
+\end{equation*}
+
+are the eigenvectors of 
+
+\begin{equation*}
+	\begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & K \\
+	0 & K & 1 
+	\end{bmatrix}
+	\begin{bmatrix}
+	\alpha \\ \beta \\ \gamma
+	\end{bmatrix}
+	= w
+		\begin{bmatrix}
+	\alpha \\ \beta \\ \gamma
+	\end{bmatrix}
+\end{equation*}
+
+where $w$ are the eigenvalues of the form given above. For $w=1$, $\alpha = V$ and $\beta=\gamma=0$. For $w = 1+K$, $\alpha = 0$ and $\beta = \gamma = 1/\sqrt{2}$. Finally, for $w = 1-K$, $\alpha = 0$ and $\beta = -\gamma = 1/\sqrt{2}$. This means that the \textit{good} states are
+
+\begin{equation*}
+	\psi^0 = \left\{
+	\begin{array}{l}
+	\psi_a \\[4pt]
+	\frac{1}{\sqrt{2}}\bigl(\psi_b + \psi_c\bigr) \\[4pt]
+	\frac{1}{\sqrt{2}}\bigl(\psi_b - \psi_c\bigr)
+	\end{array}
+	\right. \,.
+\end{equation*}
+\end{mdframed}
+
 \end{document}
