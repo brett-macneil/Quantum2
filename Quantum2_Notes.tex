@@ -2252,5 +2252,73 @@ After solving for the eigenvalues, the corrections to ${E_2}^0 = -\SI{3.4}{\eV}$
 \end{align}
 \end{subequations}
 
+\subsection{Hyperfine splitting}
+Hyperfine splitting arises from the interaction between the proton spin and the electron spin. Both result in a magnetic dipole moment:
+
+\begin{equation}
+\vb*{\mu}_p = \frac{g_p e}{2m_p}\,\vb{S}_p \quad;\quad \vb*{\mu}_e = -\frac{e}{2m}\,\vb{S}_e \,,
+\end{equation}
+
+where the proton g-factor is approximately 5.59. The electron moment (on the order of one Bohr magneton) is much larger than the proton moment, since the proton mass is much larger than that of an electron. From classical electrodynamics, a dipole $\vb*{\mu}$ creates a magnetic field,
+
+\begin{equation}
+\vb{B} = \frac{\mu_0}{4\pi r^3}\Bigl[3(\vb*{\mu}\vdot\vb{r})\vu{r} - \vb*{\mu}\Bigr] + \frac{2\mu_0}{3}\vb*{\mu}\,\delta^3(\vb{r}) \,.
+\end{equation}
+
+The Hamiltonian that describes the electron in a magnetic field produced by the proton spin is
+
+\begin{equation}
+\mathcal{H}_\text{hf}^\prime = -\vb*{\mu}_e\vdot\vb{B} = \frac{\mu_0g_pe^2}{8\pi m_p m_e}\frac{3(\vb{S}_p\vdot\vu{r})(\vb{S}_e\vdot\vu{r})-\vb{S}_p\vdot\vb{S}_e}{r^3} + \frac{\mu_0g_pe^2}{3m_p m_e}\,\vb{S}_p\vdot\vb{S}_e\,\delta^3(\vb{r}) \,.
+\end{equation}
+
+Using perturbation theory, the first order correction to the energy is
+
+\begin{equation}
+E_\text{hf}^\prime = \frac{mu_0g_pe^2}{8\pi m_p m_e}\exv{\frac{3(\vb{S}_p\vdot\vu{r})(\vb{S}_e\vdot\vu{r})-\vb{S}_p\vdot\vb{S}_e}{r^3}} + \frac{\mu_0 g_p e^2}{3 m_p m_e}\exv{\vb{S}_p\vdot\vb{S}_e}|\psi(0)|^2 \,.
+\end{equation}
+
+Here we will focus on the ground state of hydrogen. Since it is spherically symmetric, the first term in the energy vanishes. For any $\ell = 0$ state, we have 
+
+\begin{equation*}
+E_\text{hf}^\prime = \frac{\mu_0 g_p e^2}{3\pi m_p m_e {a_0}^3}\exv{\vb{S}_p\vdot\vb{S}_e} \,,
+\end{equation*}
+
+where we have used $|\psi_{100}(0)|^2 = 1/\pi{a_0}^3$. This is \textbf{spin-spin coupling}, similar to the spin-orbit coupling. With this coupling, the individual spin angular momenta are not conserved. The total spin is conserved and as a result, the \textit{good} states are eigenvectors of 
+
+\begin{equation}
+\vb{S} = \vb{S}_e + \vb{S}_p \,.
+\end{equation}
+
+We use the same approach as before, were $S^2 = {S_e}^2 + {S_p}^2 + 2\vb{S}_e\vdot\vb{S}_p$, or
+
+\begin{equation}
+\vb{S}_e\vdot\vb{S}_p = \frac{1}{2}\Bigl(S^2 - {S_e}^2 - {S_p}^2 \Bigr) = \,.
+\end{equation}
+
+Since electrons and protons are both $s=1/2$, we obtain
+
+\begin{equation*}
+E_\text{hf}^\prime = \frac{\mu_0 g_p e^2\hbar^2}{6\pi m_p m_e {a_0}^3}\qty[s(s+1) - \frac{3}{2}] \,,
+\end{equation*}
+
+where $s$ is the total spin quantum number; either 0 or 1. This gives overall a triplet or singlet state.
+
+This is
+
+\begin{subequations}
+	\begin{align}
+	E_\text{triplet}^\prime &= \frac{g_p\hbar^4}{3 m_p m_e c^2 {a_0}^4} \\[4pt]
+	E_\text{singlet}^\prime &= -\frac{g_p\hbar^4}{ m_p m_e c^2 {a_0}^4}
+	\end{align}
+\end{subequations}
+
+which breaks the degeneracy of the ground state, increasing the energy of the triplet state and lowering the energy of the singlet state. The energy gap is
+
+\begin{equation*}
+\Delta E = \frac{4 g_p \hbar^4}{3 m_p m_e c^2 {a_0}^4} \approx \SI{5.88}{\micro\eV} \,.
+\end{equation*}
+
+This energy difference corresponds to a frequency of \SI{1420}{\mega\hertz}, or a wavelength of \SI{21}{\centi\metre}. This famous 21 centimetre line is one of the most pervasive forms of radiation in the universe, created when the proton and electron in the ground state of hydrogen change their spin configuration. 
+
 
 \end{document}
