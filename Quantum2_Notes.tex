@@ -1908,5 +1908,349 @@ The fine structure corrections break the energy degeneracy in $\ell$. For a give
 
 %% Figure: energy levels
 
+\subsection{The Zeeman effect}
+When an external uniform magnetic field $\vb{B}_\text{ext}$ is applied to an atom, the energy levels are shifted, due to the Zeeman effect. This is similar to spin-orbit interaction and the Hamiltonian is
+
+\begin{equation}
+	\mathcal{H}_{\text{Z}}^\prime = -(\vb*{\mu}_\ell + \vb*{\mu}_s)\vdot\vb{B}_\text{ext} \,,
+\end{equation}
+
+where 
+
+\begin{equation}
+	\vb*{\mu}_s = -\frac{e}{m}\,\vb{S} \,,
+\end{equation}
+
+is the spin dipole moment (which uses the relativistic quantum mechanical gyromagnetic ratio), and
+
+\begin{equation}
+	\vb*{\mu}_\ell = -\frac{e}{m}\,\vb{L} \,.
+\end{equation}
+
+is the orbital dipole moment, (which uses the classical gyromagnetic ratio). We find that
+
+\begin{equation}
+	\mathcal{H}_{\text{Z}}^\prime = \frac{e}{2m}\Bigl(\vb{L} + 2\vb{S}\Bigr)\vdot\vb{B}_\text{ext} \,.
+\end{equation}
+
+The size of the Zeeman splitting depends on the magnitude of the external field, compared to the magnitude of the internal field created by spin-orbit coupling:
+
+\begin{itemize}
+	\item If $\vb{B}_\text{ext} \gg \vb{B}_\text{int}$ then the fine structure dominates and the Zeeman Hamiltonian can be treated as a perturbation.
+	\item If $\vb{B}_\text{ext} \ll \vb{B}_\text{int}$ then the Zeeman effect dominates and the fine structure Hamiltonian is the perturbation.
+	\item If $\vb{B}_\text{ext} \sim \vb{B}_\text{int}$ then both need to be treated with degenerate perturbation theory.
+\end{itemize}
+
+We will consider each case for the hydrogen atom.
+
+\subsubsection{Weak-field Zeeman effect}
+If $\vb{B}_\text{ext} \ll \vb{B}_\text{int}$ then fine structure dominates and \textit{good} quantum numbers are $n$, $\ell$, $j$ and $m_j$ (but not $m_\ell$ or $m_s$ since $\vb{L}$ and $\vb{S}$ are not individually conserved).
+
+Perturbation theory says that the Zeeman energy correction is
+
+\begin{equation}
+	{E_\text{Z}}^1 = \bra{n,\ell,j,m_j} \mathcal{H}_\text{Z}^\prime \ket{{n,\ell,j,m_j}} = \frac{e}{2m}\,\vb{B}_\text{ext}\vdot\exv{\vb{L} + 2\vb{S}} \,.
+\end{equation}
+
+We eliminate $\vb{L}$ by writing $\vb{L} + 2\vb{S} = \vb{J} + \vb{S}$. We can easily calculate $\exv{\vb{J}}$, however to calculate $\exv{S}$ we consider that $\vb{L}$ and $\vb{S}$ precess rapidly around a fixed value of $\vb{J}$. 
+
+%% Figure: Precession
+
+This means that the time-averaged spin is simply its projection onto the total angular momentum:
+
+\begin{equation}
+	\vb{S}_\text{average} = \frac{\vb{S}\vdot\vb{J}}{J^2} \,\vb{J} \,.
+\end{equation}
+
+We write $\vb{L} = \vb{J}-\vb{S}$ in order to isolate $L^2 = J^2 +S^2 - 2\vb{S}\vdot\vb{J}$. This gives
+
+\begin{equation}
+	\vb{S}\vdot\vb{J} = \frac{1}{2}\bigl(J^2+S^2-L^2\bigr) = \frac{\hbar^2}{2}\Bigl[j(j+1) + s(s+1) - \ell(\ell+1)\Bigr] \,,
+\end{equation}
+
+from which we find 
+
+\begin{equation}
+	\exv{\vb{L} + 2\vb{S}} = \exv{\qty(1+\frac{\vb{S}\vdot\vb{J}}{J^2})\,\vb{J}} = \qty[1+\frac{j(j+1) - \ell(\ell+1) + s(s+1)}{2j(j+1)}]\exv{\vb{J}} \,.
+\end{equation}
+
+\begin{mdframed}
+\paragraph*{Note:} We define the Landé g-factor, $g_J$ as 
+
+\begin{equation}
+	g_J \equiv \qty[1+\frac{j(j+1) - \ell(\ell+1) + s(s+1)}{2j(j+1)}] \,,
+\end{equation}
+
+which is a useful shorthand.
+\end{mdframed}
+
+If we choose the external field to be along the $z$-axis, then
+
+\begin{align}
+	{E_\text{Z}}^1 &= \frac{e}{2m}\,B_\text{ext} g_J \exv{J_z} \nonumber \\[4pt]
+	&= \frac{e\hbar}{2m} B_\text{ext}g_Jm_j \nonumber \\[4pt]
+	&= \mu_\text{B} g_J B_\text{ext}m_j
+\end{align}
+
+where $\mu_\text{B} = e\hbar/2m \approx \SI{5.8e-5}{\eV\per\tesla}$ is the \textbf{Bohr magneton}.
+
+The total energy is the sum of the fine structure correction and the Zeeman contribution. For example, the ground state ($n=1$, $\ell=0$, $j=1/2$, $g_j=2$) splits in two:
+
+\begin{equation*}
+	{E_0}^1 = -\SI{1}{Ry}\qty(1+\frac{\alpha^2}{4}) \pm \mu_\text{B}B_\text{ext} \approx \,.
+\end{equation*}
+
+How small does $B_\text{ext}$ need to be in order to be treated as a perturbation? If we recall that
+
+\begin{equation*}
+	\vb{B} = \frac{1}{4\pi\epsilon_0}\frac{e}{mc^2r^2}\,\vb{L} \,,
+\end{equation*}
+
+and we assume that $L = \hbar$ and $r = a_0$, we find that $B_\text{int} = \SI{12}{\tesla}$, whereas the Earth's magnetic field is $\sim\SI{100}{\micro\tesla}$. Therefore, a Zeeman field is \emph{strong} if it is much larger than $\SI{12}{\tesla}$ and is \emph{weak} if it is much less than $\SI{12}{\tesla}$.
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Find the energies of all eight $n=2$ states under weak-field Zeeman splitting.
+\paragraph*{Solution:}
+For $n=2$ we have $\ell = 0$ ($j=1/2$) and $\ell = 1$ ($j=1/2$ or $3/2$) states. These states are $\ket{n, \ell, j, m_j} $:
+
+\begin{align*}
+	\ket{1} &= \ket{2,\,0,\,1/2,\,1/2} \\
+	\ket{2} &= \ket{2,\,0,\,1/2,\,-1/2} \\
+	\ket{3} &= \ket{2,\,1,\,1/2,\,1/2} \\
+	\ket{4} &= \ket{2,\,1,\,1/2,\,-1/2} \\
+	\ket{5} &= \ket{2,\,1,\,3/2,\,3/2} \\
+	\ket{6} &= \ket{2,\,1,\,3/2,\,1/2} \\
+	\ket{7} &= \ket{2,\,1,\,3/2,\,-1/2} \\
+	\ket{8} &= \ket{2,\,1,\,3/2,\,-3/2}
+\end{align*}
+
+where the Landé g-factor for each state is: 
+
+\begin{equation*}
+	g_{1} = g_{2} = 2 \qquad g_{3} = g_{4} = 2/3 \qquad g_{5} = g_{6} = g_{7} = g_{8} = 4/3 \,.
+\end{equation*}
+
+There are two sets of fine structure energies:
+
+\begin{align*}
+	E_{1} = E_{2} = E_{3} = E_{4} &= -\SI{3.4}{\eV}\qty(1+\frac{5}{16}\,\alpha^2) \,; \\[4pt]
+		E_{5} = E_{6} = E_{7} = E_{8} &= -\SI{3.4}{\eV}\qty(1+\frac{1}{16}\,\alpha^2) \,,
+\end{align*}
+
+such that the degeneracy is broken and the energies are
+
+\begin{align*}
+	E_1 &= -\SI{3.4}{\eV}(1 + 5\alpha^2/16) + \mu_\text{B} B_\text{ext} \\[4pt]
+	E_2 &= -\SI{3.4}{\eV}(1 + 5\alpha^2/16) - \mu_\text{B} B_\text{ext} \\[4pt]
+	E_3 &= -\SI{3.4}{\eV}(1 + 5\alpha^2/16) + \frac{1}{3}\mu_\text{B} B_\text{ext} \\[4pt]
+	E_4 &= -\SI{3.4}{\eV}(1 + 5\alpha^2/16) - \frac{1}{3}\mu_\text{B} B_\text{ext} \\[4pt]
+	E_5 &= -\SI{3.4}{\eV}(1 + \alpha^2/16) + 2\mu_\text{B} B_\text{ext} \\[4pt]
+	E_6 &= -\SI{3.4}{\eV}(1 + \alpha^2/16) + \frac{2}{3}\mu_\text{B} B_\text{ext} \\[4pt]
+	E_7 &= -\SI{3.4}{\eV}(1 + \alpha^2/16) - \frac{2}{3}\mu_\text{B} B_\text{ext} \\[4pt]
+	E_8 &= -\SI{3.4}{\eV}(1 + \alpha^2/16) - 2\mu_\text{B} B_\text{ext} \\[4pt]
+\end{align*}
+
+%% Figure: energies splitting
+\end{mdframed}
+
+\subsubsection{Strong-field Zeeman effect}
+When $B_\text{ext} \gg B_\text{int}$, the Zeeman effect is dominant over fine structure. This means that we can apply perturbation theory in sequence $\mathcal{H}^0 \rightarrow \mathcal{H}_\text{Z}^\prime \rightarrow \mathcal{H}_\text{fs}^\prime$. 
+
+If we consider only the external field $B_\text{ext}$ along $\vu{z}$, the \textit{good} quantum numbers are $n$, $\ell$, $m_\ell$ and $m_s$. Recall that a spin in a magnetic field is subject to Larmor precession, with $\exv{S_z}$ being independent of time whereas $\exv{S_x}$ and $\exv{S_y}$ are time dependent; a similar effect holds for orbital angular momentum. We then choose $m_\ell$ and $m_s$ as \textit{good} quantum numbers since their quantities are conserved. Since $\exv{\vb{L}}$ and $\exv{\vb{S}}$ precess at different frequencies, the total momentum $\exv{\vb{J}}$ is not conserved.
+
+Both $L_z$ and $S_z$ commute with the Hamiltonian. The Zeeman Hamiltonian is
+
+\begin{equation*}
+	\mathcal{H}_\text{Z}^\prime = \frac{e}{2m}\,B_\text{ext}(L_z + 2S_z) \,.
+\end{equation*}
+
+Using the unperturbed hydrogen wavefunctions $\psi_{n \ell m}$, we find
+
+\begin{align*}
+	\mathcal{H}_\text{Z}^\prime \psi_{n \ell m} &= \frac{e}{2m}\,B_\text{ext}(L_z\psi_{n \ell m} + 2S_z\psi_{n \ell m}) \\[4pt]
+	&= \frac{e}{2m}\,B_\text{ext}(\hbar m_\ell\psi_{n \ell m} + 2\hbar m_s\psi_{n \ell m}) \\[4pt]
+	&= \mu_\text{B} B_\text{ext} (m_\ell + 2m_s) \psi_{n \ell m} \,,
+\end{align*}
+
+and we see that they are an eigenstate of this perturbation Hamiltonian. The energies with an external field but no fine structure are therefore
+
+\begin{equation}
+	E_{n, m_{\ell}, m_{s}} = -\frac{\SI{13.6}{\eV}}{n^2} + \mu_\text{B} B_\text{ext}(m_\ell + 2m_s) \,.
+\end{equation}
+
+These are the \textit{unperturbed} energies, to which we apply a fine structure perturbation. The first order correction to the energy is
+
+\begin{equation}
+	E_\text{fs}^\prime = \bra{\psi_{n \ell m_{\ell} m_{s}}}\mathcal{H}_\text{r}^\prime + \mathcal{H}_\text{SO}^\prime \ket{\psi_{n \ell m_{\ell} m_{s}}} \,.
+\end{equation}
+
+The relativistic correction ends up being the same as before,
+
+\begin{equation*}
+	E_\text{r}^\prime = -\frac{(E_n)^2}{2mc^2}\qty[\frac{4n}{\ell+1/2}-3] \,,
+\end{equation*}
+
+With spin-orbit coupling, we get a term 
+
+\begin{equation*}
+	E_\text{SO}^\prime = \frac{e^2}{8\pi\epsilon_0 m^2c^2} \exv{\vb{S}\vdot\vb{L}}\exv{\frac{1}{r^3}} \,,
+\end{equation*}
+
+which depends on both the angular and radial parts of the wavefunction. As before, 
+
+\begin{equation*}
+	\exv{\frac{1}{r^3}} = \frac{1}{\ell(\ell+1/2)(\ell+1) n^3 {a_0}^3}
+\end{equation*}
+
+and 
+
+\begin{align}
+	\exv{\vb{S}\vdot\vb{L}} &= \exv{S_xL_x} + \exv{S_yL_y} + \exv{S_zL_z} \nonumber \\[4pt]
+	&= \exv{S_x}\exv{L_x} + \exv{S_y}\exv{L_y} + \exv{S_z}\exv{L_z} \,.
+\end{align}
+
+The $x$ and $y$ components of both angular momenta oscillate rapidly and therefore the time average is zero. Their expectation values will be zero. This gives
+
+\begin{equation}
+	\exv{\vb{S}\vdot\vb{L}} = \exv{S_z}\exv{L_z} = \hbar^2m_\ell m_s
+\end{equation}
+
+We then find that
+
+\begin{equation}
+	{E_\text{fs}}^\prime = -\frac{\SI{13.6}{\eV}}{n^2}\qty[1 - \frac{2\alpha^2}{4n^2} + \frac{\alpha^2}{n^2}\qty(\frac{\ell(\ell+1) - m_\ell m_s}{\ell(\ell+1/2)(\ell+1)})] + \mu_\text{B}B_\text{ext}(m_\ell + 2m_s) \,.
+\end{equation}
+
+\subsubsection*{Intermediate-field Zeeman effect}
+When $B_\text{ext} \sim B_\text{int}$ then we have to treat both the fine structure and Zeeman Hamiltonians as perturbations to the Bohr Hamiltonian,
+
+\begin{equation}
+	\mathcal{H}^\prime = \mathcal{H}_\text{fs}^\prime + \mathcal{H}_\text{Z}^\prime \,.
+\end{equation}
+
+We will focus on the $n=2$ states as an example and we will use $\ell$, $j$ and $m_\ell$ as a \textit{good} basis for degenerate perturbation theory. 
+
+\begin{mdframed}
+\paragraph*{Note:} one can use $\ell$, $m_\ell$ and $m_s$ as a basis, which would make the matrix elements of $\mathcal{H}_\text{Z}^\prime$ simpler, but those of $\mathcal{H}_\text{fs}^\prime$ more complicated.
+\end{mdframed}
+
+We use the Clebsch-Gordan tables to express $\ket{j, m_j}$ in terms of the composite states $\ket{\ell,m_\ell}\ket{s,m_s}$:
+
+\begin{align*}
+	&\ell = 0 \quad
+	\left\{ 
+	\begin{array}{l}
+	\psi_1 \equiv \ket{1/2,\, 1/2} = \ket{0,\, 0}\ket{1/2,\, 1/2} \\[6pt]
+	\psi_2 \equiv \ket{1/2,\, -1/2} = \ket{0,\, 0}\ket{1/2,\, -1/2}
+	\end{array}
+	\right. \\[6pt]
+	&\ell = 1 \quad
+	\left\{ 
+	\begin{array}{l}
+	\psi_3 \equiv \ket{3/2,\, 3/2} = \ket{1,\, 1}\ket{1/2,\, 1/2} \\[6pt]
+	\psi_4 \equiv \ket{3/2,\, -3/2} = \ket{1,\, -1}\ket{1/2,\, -1/2} \\[6pt]
+	\psi_5 \equiv \ket{3/2,\, 1/2} = \sqrt{\frac{2}{3}}\ket{1,\, 0}\ket{1/2,\, 1/2} + \frac{1}{\sqrt{3}}\ket{1,\, 1}\ket{1/2,\, -1/2} \\[6pt]
+	\psi_6 \equiv \ket{1/2,\, 1/2} = -\frac{1}{\sqrt{3}}\ket{1,\, 0}\ket{1/2,\, 1/2} + \sqrt{\frac{2}{3}}\ket{1,\, 1}\ket{1/2,\, -1/2} \\[6pt]
+	\psi_7 \equiv \ket{3/2,\, -1/2} = \frac{1}{\sqrt{3}}\ket{1,\, -1}\ket{1/2,\, 1/2} + \sqrt{\frac{2}{3}}\ket{1,\, 0}\ket{1/2,\, -1/2} \\[6pt]
+	\psi_8 \equiv \ket{1/2,\, -1/2} = -\sqrt{\frac{2}{3}}\ket{1,\, -1} + \frac{1}{\sqrt{3}} \ket{1,\, 0}\ket{1/2,\, -1/2}
+	\end{array}
+	\right. \,.
+\end{align*}
+
+Next, we calculate all matrix elements, $\bra{\psi_i}\mathcal{H}_\text{fs}^\prime + \mathcal{H}_\text{Z}^\prime\ket{\psi_k}$.
+
+For the fine structure perturbation, the diagonal matrix elements are
+
+\begin{equation*}
+	{E_\text{fs}}^\prime = \frac{(E_n)^2}{2mc^2}\qty(3-\frac{4n}{j+1/2}) \,.
+\end{equation*}
+
+Noting that the $\{\psi_i\}$ either have $j=1/2$ or $3/2$ and that $E_n = \alpha^2mc^2/2n^2$, we find that 
+
+\begin{align}
+	\bra{\psi_i}\mathcal{H}_\text{fs}^\prime\ket{\psi_i} &= -5\gamma \, \quad i\in\{1, 2, 6, 8\} \\[4pt]
+		\bra{\psi_i}\mathcal{H}_\text{fs}^\prime\ket{\psi_i} &= -\gamma\,  \quad i\in\{3, 4, 5, 7\}
+\end{align}
+
+where $\gamma \equiv (\alpha^2/8)(\SI{13.6}{\eV})$. We now need the off-diagonal elements. The relativistic part of the fine structure gives
+
+\begin{align*}
+	\bra{\psi_i}\mathcal{H}_\text{r}^\prime\ket{\psi_k} &= -\frac{1}{8m^3c^2}\bra{p^2\psi_i}\ket{p^2\psi_k} \\[4pt]
+	&= -\frac{1}{8m^3c^2}\bra{\psi_i}[2m(E-V)]^2\ket{\psi_k} \\[4pt]
+	&= -\frac{1}{2mc^2}\bra{\psi_i}(E-V(r))^2\ket{\psi_k}\bra{\psi_i}\ket{\psi_k}\bra{\chi_i}\ket{\chi_k}\,,
+\end{align*}
+
+where $\bra{\psi_k}\bra{\psi_i} = \delta_{{m_\ell}_i{m_\ell}_k}$ and $\bra{\chi_k}\ket{\chi_i} = \delta_{{m_s}_i {m_s}_k}$. With this, the only possible nonzero terms are $\bra{\psi_5}\mathcal{H}_\text{r}^\prime\ket{\psi_6}$ and $\bra{\psi_7}\mathcal{H}_\text{r}^\prime\ket{\psi_8}$, however it can be shown that these are also zero. The relativistic part of the fine structure only contributes diagonal matrix elements.
+
+The spin-orbit Hamiltonian gives
+
+\begin{align*}
+	\bra{\psi_i}\mathcal{H}_\text{SO}^\prime\ket{\psi_k} &\propto \bra{\psi_i}\vb{L}\vdot\vb{S}\ket{\psi_k} \\[4pt]
+	&= \frac{1}{2}\Bigl(\bra{\psi_i}J^2\ket{\psi_k} - \bra{\psi_i}L^2\ket{\psi_k} - \bra{\psi_i}S^2\ket{\psi_k}\Bigr)
+\end{align*}
+
+which requires either $\ell$, $j$ and $m_j$ or $\ell$, $m_\ell$ and $m_s$ to be the same. There are no states which satisfy these, so the spin-orbit part of the fine structure only contributes diagonal matrix elements. This means that fine structure only contributes diagonal elements; either $-\gamma$ or $-5\gamma$.
+
+The easiest way to work out the matrix elements for the Zeeman Hamiltonian is to realize that the hydrogenic states $\ket{\ell, m_\ell, m_s}$ are eigenstates of that Hamiltonian with energies $\mu_\text{B}B_\text{ext}(m_\ell + 2m_s)$. For states $\psi_1$ to $\psi_4$ the composite states are only composed of one term and so 
+
+\begin{align*}
+	\bra{\psi_1}\mathcal{H}_\text{Z}^\prime\ket{\psi_1} &= \beta \\[4pt]
+	\bra{\psi_2}\mathcal{H}_\text{Z}^\prime\ket{\psi_2} &= -\beta \\[4pt]
+	\bra{\psi_3}\mathcal{H}_\text{Z}^\prime\ket{\psi_3} &= 2\beta \\[4pt]
+	\bra{\psi_4}\mathcal{H}_\text{Z}^\prime\ket{\psi_4} &= -2\beta 
+\end{align*}
+
+where $\beta = \mu_\text{B}B_\text{ext}$. There are no off diagonal terms for these states. The states $\psi_5$ to $\psi_8$ are the sum of two terms. Applying the Hamiltonian gives
+
+\begin{align*}
+	\mathcal{H}_\text{Z}^\prime\ket{\psi_5} &= \beta
+	\sqrt{\frac{2}{3}}\ket{1,\, 0}\ket{1/2,\, 1/2} \\[4pt]
+	\mathcal{H}_\text{Z}^\prime\ket{\psi_6} &= \beta\frac{1}{\sqrt{3}}\ket{1,\, 0}\ket{1/2,\, 1/2} \\[4pt]
+	\mathcal{H}_\text{Z}^\prime\ket{\psi_7} &= -\beta\sqrt{\frac{2}{3}}\ket{1,\, 0}\ket{1/2,\, -1/2} \\[4pt]
+	\mathcal{H}_\text{Z}^\prime\ket{\psi_8} &= -\beta\frac{1}{\sqrt{3}}\ket{1,\, 0}\ket{1/2,\, -1/2}
+\end{align*}
+
+and from this we find
+
+\begin{align*}
+	\bra{\psi_5}\mathcal{H}_\text{Z}^\prime\ket{\psi_5} &= \frac{2}{3}\beta \\[4pt]
+	\bra{\psi_6}\mathcal{H}_\text{Z}^\prime\ket{\psi_6} &= \frac{1}{3}\beta \\[4pt]
+	\bra{\psi_7}\mathcal{H}_\text{Z}^\prime\ket{\psi_7} &= -\frac{2}{3}\beta \\[4pt]
+	\bra{\psi_8}\mathcal{H}_\text{Z}^\prime\ket{\psi_8} &= -\frac{1}{3}\beta \\[4pt]
+	\bra{\psi_5}\mathcal{H}_\text{Z}^\prime\ket{\psi_6} = \bra{\psi_6}\mathcal{H}_\text{Z}^\prime\ket{\psi_5}  &= -\frac{\sqrt{2}}{3}\beta \\[4pt]
+	\bra{\psi_7}\mathcal{H}_\text{Z}^\prime\ket{\psi_8} = \bra{\psi_8}\mathcal{H}_\text{Z}^\prime\ket{\psi_7}  &= -\frac{\sqrt{2}}{3}\beta \,.
+\end{align*}
+
+We can now construct the Hamiltonian matrix in the subspace of degenerate states:
+
+\begin{equation}
+	W = \begin{bmatrix}
+	\beta-5\gamma & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & -\beta-5\gamma & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 2\beta-\gamma & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & -2\beta-\gamma & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & \frac{2}{3}\beta-\gamma & -\frac{\sqrt{2}}{3}\beta & 0 & 0 \\
+	0 & 0 & 0 & 0 & -\frac{\sqrt{2}}{3}\beta & \frac{1}{3}\beta-5\gamma & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & -\frac{2}{3}\beta-\gamma & -\frac{\sqrt{2}}{3}\beta \\
+	0 & 0 & 0 & 0 & 0 & 0 & -\frac{\sqrt{2}}{3}\beta & -\frac{1}{3}\beta-5\gamma \\
+	\end{bmatrix}
+\end{equation}
+
+After solving for the eigenvalues, the corrections to ${E_2}^0 = -\SI{3.4}{\eV}$ are:
+
+\begin{subequations}
+\begin{align}
+	E_{\psi_{1}}^\prime &= \beta-5\gamma \\[4pt]
+	E_{\psi_{2}}^\prime &= -\beta-5\gamma \\[4pt]
+	E_{\psi_{3}}^\prime &= 2\beta-\gamma \\[4pt]
+	E_{\psi_{4}}^\prime &= -2\beta - \gamma \\[4pt]
+	E_{\psi_{5}}^\prime &= \frac{1}{2}\beta - 3\gamma +\sqrt{4\gamma^2 + \frac{2}{3}\beta\gamma + \frac{1}{4}\beta^2}\\[4pt]
+	E_{\psi_{6}}^\prime &= \frac{1}{2}\beta - 3\gamma - \sqrt{4\gamma^2 + \frac{2}{3}\beta\gamma + \frac{1}{4}\beta^2}\\[4pt]
+	E_{\psi_{7}}^\prime &= -\frac{1}{2}\beta - 3\gamma + \sqrt{4\gamma^2 - \frac{2}{3}\beta\gamma + \frac{1}{4}\beta^2}\\[4pt]
+	E_{\psi_{8}}^\prime &= -\frac{1}{2}\beta - 3\gamma - \sqrt{4\gamma^2 - \frac{2}{3}\beta\gamma + \frac{1}{4}\beta^2}
+\end{align}
+\end{subequations}
+
 
 \end{document}
