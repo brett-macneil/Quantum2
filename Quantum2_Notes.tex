@@ -2320,5 +2320,122 @@ which breaks the degeneracy of the ground state, increasing the energy of the tr
 
 This energy difference corresponds to a frequency of \SI{1420}{\mega\hertz}, or a wavelength of \SI{21}{\centi\metre}. This famous 21 centimetre line is one of the most pervasive forms of radiation in the universe, created when the proton and electron in the ground state of hydrogen change their spin configuration. 
 
+\section{The Variational Principle}
+\subsection{Theory of variation}
+Suppose we would like to calculate the ground state energy $E_\text{gs}$ for a system described by a Hamiltonian $\mathcal{H}$. If we are unable to solve the Schrödinger equation exactly, we can obtain an upper bound for this energy using the variational principle. Oftentimes an upper bound is all that is needed and this bound is sometimes close to the exact value.
+
+\begin{mdframed}
+\paragraph*{Remark:}
+For any normalized function $\psi$ we have
+
+\begin{equation}
+	E_\text{gs} \leq \bra{\psi}\mathcal{H}\ket{\psi} \equiv \exv{\mathcal{H}} \,.
+\end{equation}
+
+The expectation value of the Hamiltonian with some trial function $\psi$ will overestimate the ground state energy. The ground state wavefunction $\psi_\text{gs}$ uniquely minimizes $\exv{\mathcal{H}}$ to give $E_\text{gs}$.
+
+\paragraph{Proof:}
+The (unknown) eigenfunctions of $\mathcal{H}$ form a complete basis $\ket{\phi_n}$ so we can express $\psi$ as a linear combination of these basis functions:
+
+\begin{equation*}
+	\ket{\psi} = \sum_n C_n\ket{\phi_n} \quad\text{with}\quad\mathcal{H}\ket{\phi_n} = E_n\ket{\phi_n}\,.
+\end{equation*}
+
+Since $\psi$ is normalized, 
+
+\begin{align*}
+	\bra{\psi}\ket{\psi} &= \bra{\sum_mC_m\ket\phi_n}\ket{\sum_n C_n\ket{\phi_n}} \\[4pt]
+	&= \sum_m\sum_n {C_m}^*C_n\bra{\psi_m}\ket{\psi_n} \\[4pt]
+	&= \sum_m\sum_n {C_m}^*C_n \delta_{mn} = \sum_n |C_n|^2 = 1 \,,
+\end{align*}
+
+meaning we can write
+
+\begin{align*}
+	\exv{\mathcal{H}} &= \bra{\sum_mC_m\ket\phi_n}\mathcal{H}\ket{\sum_n C_n\ket{\phi_n}} \\[4pt]
+	&= \sum_m\sum_n {C_m}^*E_n C_n\bra{\psi_m}\ket{\psi_n} \\[4pt]
+	&= \sum_n E_n|C_n|^2 \,.
+\end{align*}
+
+By definition, the lowest eigenvalue is $E_\text{gs}$, thus
+
+\begin{equation*}
+	\exv{\mathcal{H}} \geq E_\text{gs}\sum_n|C_n|^2 = E_\text{gs}
+\end{equation*}
+\hspace*{\fill}$\blacksquare$
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Use a variational approach to determine an estimate of the ground state energy of the harmonic oscillator. Use a Gaussian trial function.
+
+\paragraph*{Solution:}
+We know the Hamiltonian and the exact ground state energy:
+
+\begin{equation*}
+	\mathcal{H} = -\frac{\hbar^2}{2m}\dv[2]{x} + \frac{1}{2}m\omega^2x^2 \qquad E_\text{gs} = \frac{\hbar\omega}{2} \,.
+\end{equation*}
+
+We select a trial (normalized) wavefunction to be
+
+\begin{equation*}
+	\psi(x) = \qty(\frac{2b}{\pi})^{1/4}\exp(-bx^2) \,.
+\end{equation*}
+
+We write the Hamiltonian as a kinetic and potential term, which gives $\exv{\mathcal{H}} = \exv{K} + \exv{V}$. We find:
+
+\begin{align*}
+	\exv{K} &= -\frac{\hbar^2}{2m}\qty(\frac{2b}{\pi})^{1/2}\int_{-\infty}^{\infty}e^{-bx^2}\dv[2]{x}e^{-bx^2}\dd{x} = \frac{\hbar^2 b}{2m} \,; \\[4pt]
+	\exv{V} &= \frac{1}{2}m\omega^2\qty(\frac{2b}{\pi})^{1/2}\int_{-\infty}^{\infty}x^2e^{-bx^2}\dd{x} = \frac{m\omega^2}{8b} \,; \\[4pt]
+	\exv{\mathcal{H}} &= \frac{\hbar^2b}{2m} + \frac{m\omega^2}{8b} \,.
+\end{align*}
+
+This result is greater than or equal to the ground state energy, for any $b$. We minimize $\exv{\mathcal{H}}$ with respect to $b$ to determine the best upper bound:
+
+\begin{equation}
+	\dv[2]{\exv{\mathcal{H}}}{x} = \frac{\hbar^2}{2m} = 0 \quad\implies\quad b = \frac{m\omega}{2\hbar} \,.
+\end{equation}
+
+Using this value of $b$, we find
+
+\begin{equation*}
+	\exv{\exv{\mathcal{H}}}_\text{min} = \frac{\hbar\omega}{2} \,,
+\end{equation*}
+
+which is the exact result. We found this result because we picked a trial wavefunction of the same form of the true ground state wavefunction.
+
+\textbf{A key part of the variational approach is to attempt to make a good choice for the trial wavefunction}.
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Use a Gaussian trial function to obtain an estimate on the ground state energy of an electron in a delta function potential (where the true energy is also known),
+
+\begin{equation*}
+	\mathcal{H} = -\frac{\hbar^2}{2m}\dv[2]{x} - \alpha\delta(x) \quad E_\text{gs} = -\frac{m\alpha^2}{2\hbar^2} \,.
+\end{equation*}
+
+\paragraph*{Solution:}
+The expectation value of the kinetic term will be the same as in the previous example. The potential term gives
+
+\begin{equation*}
+	\exv{V} = -\alpha\qty(\frac{2b}{\pi}^{1/2})\int_{-\infty}^{\infty}e^{-bx^2}\delta(x)\dd{x} = -\alpha\sqrt{\frac{2b}{\pi}} \,.
+\end{equation*}
+
+The expectation of the Hamiltonian is therefore
+
+\begin{equation*}
+	\exv{\mathcal{H}} = \frac{\hbar^2b}{2m} - -\alpha\sqrt{\frac{2b}{\pi}}\,,
+\end{equation*}
+
+which has a minimum value at $b = 2m^2\alpha^2/\pi\hbar^4$, giving
+
+\begin{equation*}
+	\exv{\mathcal{H}}_\text{min} = -\frac{m\alpha^2}{\pi\hbar^4} \,,
+\end{equation*}
+
+which is larger than the exact ground state energy, since $\pi>2$.
+\end{mdframed}
+
 
 \end{document}
