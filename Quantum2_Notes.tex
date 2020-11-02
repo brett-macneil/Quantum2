@@ -2510,5 +2510,115 @@ which has minimum value at $Z = 27/16 \approx 1.69$. Using this optimal value of
 
 With a clever, physically-motivated choice in the trial function, we have obtained an estimate which is within 2\% from the experimental ground state.
 
+\subsection{The singly ionized hydrogen molecule}
+Another classic example is the application of the variational principle to the hydrogen molecule ion, $\ce{H2+}$, which has one electron and two protons. The Hamiltonian is
 
+\begin{equation}
+	\mathcal{H} = -\frac{\hbar^2}{2m}\laplacian{} - \frac{e^2}{4\pi\epsilon_0}\qty(\frac{1}{r_1} + \frac{1}{r_2}) \,.
+\end{equation}
+
+%% Figure: geometry of coordinates
+
+Our challenge is to formulate a good guess for the trial wavefunction. One reasonable guess is to assume that $\psi$ is the sum of the two hydrogen wavefunctions centered around each proton:
+
+\begin{equation}
+	\psi = A\Bigl[\psi_0(\vb{r}_1) + \psi_0(\vb{r}_2)\Bigr] \,
+\end{equation}
+
+where 
+
+\begin{equation}
+	\psi_0 = \frac{1}{\sqrt{\pi {a_0}^3}}\,\exp(-r/a_0) \,.
+\end{equation}
+
+This is known as the linear combination of atomic orbitals (LCAO) technique. First we need to normalize $\psi$:
+
+\begin{align*}
+	\iint|\psi|^2\dd[3]{r_1}\dd[3]{r_2} &= |A|^2\qty[\int|\psi_0(r_1)|^2\dd[3]{r_1} + \int|\psi_0(r_2)|^2\dd[3]{r_2} + 2\iint\psi_0(r_1)\psi_0(r_2)\dd[3]{r_1}\dd[3]{r_2}] \\[4pt]
+	&= 2|A^2|\qty[1 + \iint\psi_0(r_1)\psi_0(r_2)\dd[3]{r_1}\dd[3]{r_2}] \\[4pt]
+	&= 2|A|^2(1+I) = 1\,,
+\end{align*}
+
+where $I\equiv\bra{\psi_0(r_1)}\ket{\psi_0(r_2)}$ is given by 
+
+\begin{equation*}
+	I = \frac{1}{\pi{a_0}^3}\iint\exp(-\frac{r_1 + r_2}{a_0})\dd[3]{r_1}\dd[3]{r_2} \,.
+\end{equation*}
+
+This is an \textbf{overlap intergral}, which measures the amount by which $\psi_0(r)$ overlaps $\psi_0(r^\prime)$. It goes to zero for $R\rightarrow\infty$ and to unity for $R\rightarrow 0$. To evaluate this integral, we choose coordinates such that one proton is at the origin, and the other is on the $z$-axis at a point $R$.
+
+%% Figure: geometry of the setup
+
+This means that the distance between the first proton and the electron is $r_1 = r$ and the distance between the second proton and the electron is $r_2 = |\vb{r} - \vb{R}| = \sqrt{r^2 + R^2 - 2\vb{r}\vdot\vb{R}}$, given by the cosine rule. This gives
+
+\begin{align*}
+I &= \frac{1}{\pi{a_0}^3}\int_{r=0}^{\infty}\int_{\phi=0}^{2\pi}\int_{\theta=0}^{\pi}\exp\qty(-\frac{r + \sqrt{r^2 + R^2 - 2rR\cos\theta}}{a_0})r^2\sin\theta\dd{\theta}\dd{\phi}\dd{r} \\[4pt]
+&= e^{-R/a_0}\qty[1 + \qty(\frac{R}{a_0} + \frac{1}{3}\qty(\frac{R}{a_0})^2)]\,.
+\end{align*}
+
+Now we can write
+
+\begin{equation}
+	A = \frac{1}{\sqrt{2 + 2e^{-R/a_0}\qty[1 + \qty(\frac{R}{a_0} + \frac{1}{3}\qty(\frac{R}{a_0})^2)]}} \,,
+\end{equation}
+
+which means that the Hamiltonian is
+
+\begin{align}
+	\mathcal{H}\psi &= A\qty[-\frac{\hbar^2}{2m}\laplacian{} - \frac{e^2}{4\pi\epsilon_0}\qty(\frac{1}{r_1} + \frac{1}{r_2})]\Bigl[\psi_0(\vb{r}_1) + \psi_0(\vb{r}_2)\Bigr] \nonumber \\[4pt] 
+	&= E_1\psi - A\qty(\frac{e^2}{4\pi\epsilon_0})\qty[\frac{1}{r_2}\psi_0(r_1) + \frac{1}{r_1}\psi_0(r_2)] \,,
+	\,,
+\end{align}
+
+meaning
+
+\begin{equation}
+	\exv{\mathcal{H}} = E_1 - 2|A|^2\qty(\frac{e^2}{4\pi\epsilon_0})\qty[\bra{\psi_0(r_1)}1/r_2\ket{\psi(r_1)} + \bra{\psi_0(r_1)}1/r_1\ket{\psi_0(r_2)}] \,.
+\end{equation}
+
+We define two integrals:
+
+\begin{subequations}
+\begin{align}
+	D &\equiv a\bra{\psi_0(r_1)}1/r_2\ket{\psi(r_1)} \qquad\text{``Direct integral"} \\[4pt]
+	X &\equiv a\bra{\psi_0(r_1)}1/r_1\ket{\psi_0(r_2)} \qquad\text{``Exchange integral"}
+\end{align}
+\end{subequations}
+
+which work out to
+
+\begin{subequations}
+	\begin{align}
+	D &= \frac{a_0}{R} - \qty(1 + \frac{a_0}{R})e^{-2R/a_0} \,; \\[4pt]
+	X &= \qty(1 + \frac{R}{a_0})e^{-R/a} \,.
+	\end{align}
+\end{subequations}
+
+Putting everything together, we find that 
+
+\begin{equation}
+	\exv{\mathcal{H}} = \qty[1 + 2\frac{D+X}{1+I}]E_1 \,.
+\end{equation}
+
+We also need to introduce the proton-proton potential energy,
+
+\begin{equation*}
+	V_{p-p} = \frac{e^2}{4\pi\epsilon_0}\frac{1}{R} = -\frac{2a_0}{R}\,E_1\,,
+\end{equation*}
+
+which is a simple Coulomb repulsion. The total energy of the system, in units of $-E_1$ is
+
+\begin{equation}
+	F(x) = -1 + \frac{2}{x}\qty[\frac{(1-\frac{2}{3}x^2)e^{-x} + (1+x)e^{-2x}}{1 + (1 + x + \frac{1}{3}x^2)e^{-x}}] \,,
+\end{equation}
+
+where $x \equiv R/a_0$. There is an optimal $R$ that minimizes $\exv{\mathcal{H}}$. 
+
+%% Figure: plot of F(x)
+
+Since the total energy is negative, we can infer that \ce{H2+} is stable, with both protons sharing the electron in a covalent bond. The bond length is $\SI{1.3}{\angstrom}$ (experiment is $\SI{1.06}{\angstrom}$) and the bond energy is $\SI{1.8}{\eV}$ (experiment is $\SI{2.8}{\eV}$).
+
+The variational principle overestimates the ground state energy and hence underestimates the bond strength. However, we gain a lot of qualitative insight into the problem. Choosing a more sophisticated trial wavefunction would yield an even closer result.
+
+ 
 \end{document}
