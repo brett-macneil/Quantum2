@@ -2437,5 +2437,78 @@ which has a minimum value at $b = 2m^2\alpha^2/\pi\hbar^4$, giving
 which is larger than the exact ground state energy, since $\pi>2$.
 \end{mdframed}
 
+\subsection{The ground state of helium}
+The helium atom has two electrons orbiting a nucleus of two protons. The Hamiltonian (neglecting small corrections) is 
+
+\begin{equation}
+	\mathcal{H} = -\frac{\hbar^2}{2m}\Bigl(\laplacian{}_1 + \laplacian{}_1\Bigr) - \frac{e^2}{4\pi\epsilon_0}\qty(\frac{2}{r_1} + \frac{2}{r_2} - \frac{1}{|\vb{r}_1 - \vb{r}_2|}) \,.
+\end{equation}
+
+%% Figure: Coordinates of electrons
+
+We seek the ground state energy. The electron-electron interaction prevents us from solving the Schrödinger equation directly, as we saw earlier. Ignoring the electron-electron interaction gave a ground state that was the product of two hydrogenic wavefunctions,
+
+\begin{equation*}
+	\psi_0(\vb{r}_1,\vb{r}_2) = \psi_{100}(\vb{r}_1)\psi_{100}(\vb{r}_2) = \frac{8}{\pi{a_0}^3}\exp\qty(-\frac{2(r_2 + r_2)}{a_0} \,,)
+\end{equation*}
+
+with energy $8E_1 = -\SI{109}{\eV}$ whereas the experimental ground state energy is $-\SI{79}{\eV}$. We apply the variational principle using this as a trial wavefunction:
+
+\begin{equation}
+	\mathcal{H}\psi_0 = (8E_1 + V_{e-e})\psi_0 \,.
+\end{equation}
+
+This means that $\exv{\mathcal{H}} = 8E_1 + \exv{V_{e-e}}$, where
+
+\begin{equation}
+	\exv{V_{e-e}} = \frac{e^2}{4\pi\epsilon_0}\qty(\frac{8}{\pi {a_0}^3})^2\iint\frac{\exp\bigl(-4(r_1+r_2)/a\bigr)}{|\vb{r}_1 - \vb{r}_2|}\dd[3]{r_1}\dd[3]{r_2} \,.
+\end{equation}
+
+It can be shown that this integral converges to $5E_1/2 = -\SI{34}{\eV}$. This is the same as the correction obtained from first order perturbation theory.  This gives $\exv{\mathcal{H}} = -\SI{75}{\eV}$, which is a close upper bound to $-\SI{79}{\eV}$.
+
+We can obtain a more accurate estimate by choosing a better trial wavefunction. Physically we might expect one electron to screen the other, and therefore each electron will experience a smaller effective nuclear charge $Z \leq 2$. This motivates us to use the wavefunction
+
+\begin{equation}
+	\psi_1(\vb{r}_1,\vb{r}_2) = \frac{Z^3}{\pi{a_0}^3}\exp\qty(-\frac{Z(r_1 + _2)}{a_0}) \,,
+\end{equation}
+
+where $Z$ is a variational parameter used to minimize the expectation value of the Hamiltonian. We can rewrite the Hamiltonian as
+
+\begin{equation}
+	\mathcal{H} = -\frac{\hbar^2}{2m}(\laplacian{}_1 + \laplacian{}_2) - \frac{e^2}{4\pi\epsilon_0}\qty(\frac{Z}{r_1} + \frac{Z}{r_2}) + \frac{e^2}{4\pi\epsilon_0}\qty[\frac{Z-2}{r_1} + \frac{Z-2}{r_2} + \frac{1}{|\vb{r}_1 - \vb{r}_2|}] \,,
+\end{equation}
+
+which gives
+
+\begin{equation}
+	\exv{\mathcal{H}} = 2Z^2E_1 + 2(Z-2)\qty(\frac{e^2}{4\pi\epsilon_0})\exv{\frac{1}{r}} + \exv{V_{e-e}} \,.
+\end{equation}
+
+The expectation value $\exv{1/r} = \bra{\psi_{100}}\frac{1}{r}\ket{\psi_{100}}$ is the expectation value for the single-particle hydrogen ground state, with nuclear charge $Z$. It can be shown that
+
+\begin{equation}
+	\exv{\frac{1}{r}} = \frac{Z}{a_0} \,.
+\end{equation}
+
+The expectation of the electron-electron term is the same as before, except with $Z$ instead of $2$:
+
+\begin{equation}
+	\exv{V_{e-e}} = \frac{5Z}{8a_0}\qty(\frac{e^2}{4\pi\epsilon_0}) = -\frac{5Z}{4}E_1\,.
+\end{equation}
+
+Putting this all together we find, 
+
+\begin{equation}
+	\exv{\mathcal{H}} = \qty[-2Z^2 + \frac{27}{4}Z] E_1 \,,
+\end{equation}
+
+which has minimum value at $Z = 27/16 \approx 1.69$. Using this optimal value of $Z$, we find that
+
+\begin{equation*}
+	\exv{\mathcal{H}} = \frac{1}{2}\qty(\frac{3}{2})^6 E_1 = -\SI{77.5}{\eV} \,.
+\end{equation*}
+
+With a clever, physically-motivated choice in the trial function, we have obtained an estimate which is within 2\% from the experimental ground state.
+
 
 \end{document}
