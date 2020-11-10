@@ -2799,5 +2799,111 @@ from which we find that
 When we used perturbation theory, we found $E = {E_n}^0 + V_0/2$, which is the same as this result for small perturbations.
 \end{mdframed}
 
+\subsection{Tunneling}
+So far we have considered the the case where the particle energy is larger than the potential and $p(x)$ is real. Next, we study the nonclassical region where the potential is higher than the particle's energy and $p(x)$ is imaginary. The wavefunction is the same as before:
+
+\begin{equation}
+	\psi(x) \approxeq \frac{C}{\sqrt{|p(x)|}}\exp\qty(\pm\frac{1}{\hbar}\int |p(x)|\dd{x}) \,.
+\end{equation}
+
+For illustration, let us consider a rectangular barrier with a bumpy top. 
+
+%% Figure: barrier
+
+To the left of the barrier $(x<0)$, we have an oscillatory solution:
+
+\begin{equation}
+	\psi(x) = Ae^{ikx} + Be^{-ikx} \,,
+\end{equation} 
+
+where $A$ and $B$ are the incident and reflected amplitudes, and $k = \sqrt{2mE}/\hbar$. To the right of the barrier ($x>a$), we obtain an exponential solution,
+
+\begin{equation}
+	\psi(x) = Fe^{ikx} \,,
+\end{equation}
+
+where $F$ is the transmitted amplitude and the transmission probability is
+
+\begin{equation}
+	T = \frac{|F|^2}{|A|^2} \,.
+\end{equation}
+
+In the tunneling region $(0<x<a)$, the WKB approximation gives:
+
+\begin{equation}
+	\psi(x) \simeq \frac{C}{\sqrt{|p(x)|}}\exp\qty(\frac{1}{\hbar}\int_{0}^{x}|p(x^\prime)|)\dd{x^\prime} + \frac{D}{\sqrt{|p(x)|}}\exp\qty(-\frac{1}{\hbar}\int_{0}^{x}|p(x^\prime)|)\dd{x^\prime} \,.
+\end{equation}
+
+In the case of a high and/or wide barrier (\textit{i.e.} when the tunneling probability is small), then the momentum integral is large and the coefficient $C$ is small, due to the normalization condition. For a barrier of infinite width, $C=0$.
+
+%% Figure: tunneling wavefunction
+
+The ratio of the transmitted and incident amplitudes is proportional to the exponential decrease over the nonclassical region:
+
+\begin{equation*}
+	\frac{|F|}{|A|} \sim \exp\qty(-\frac{1}{\hbar}\int_{0}^{a}|p(x^\prime)|)\dd{x^\prime} = \exp\qty(-\frac{\sqrt{2m}}{\hbar}\int_{0}^{a}\sqrt{V(x) - E}\dd{x}) \,,
+\end{equation*}
+
+so that 
+
+\begin{equation}
+	T = e^{-2\gamma} \quad\text{with}\quad \gamma \equiv \frac{\sqrt{2m}}{\hbar}\int_{0}^{a}\sqrt{V(x) = E}\dd{x} \,.
+\end{equation}
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+\textbf{Gamov's theory of alpha decay}. Alpha emission occurs when two protons ans two neutrons overcome the weak nuclear force and are expelled from a radioactive nucleus. As soon as the alpha particle escapes the nuclear force, it is repelled by the electrostatic force. Gamov approximated the potential between the nucleus and alpha particle as:
+
+\begin{equation}
+	V(r) = \begin{cases}
+	-V_0 & 0 < < r_1 \\[4pt]
+	\frac{(Ze)(4e)}{2\pi\epsilon_0 r} & r > r_1
+	\end{cases}
+\end{equation}
+
+%% Figure: Gamov potential
+
+We can understand the decay lifetimes by treating tunneling with the WKB approximation. If $E$ is the energy of the emitted alpha particle, then the position $r_2$ where the potential is equal to the energy is given by
+
+\begin{equation}
+	\frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{r_2} = E \,.
+\end{equation}
+
+The region $r_1<r<r_2$ is the tunneling region. The exponent $\gamma$ is therefore 
+
+\begin{equation*}
+	\gamma = \frac{1}{\hbar}\int_{r_1}^{r^2}\sqrt{2m\qty(\frac{Ze^2}{2\pi\epsilon_0 r} - E)}\dd{r} = \frac{\sqrt{2mE}}{\hbar} \int_{r_1}^{r_2}\sqrt{\frac{r_2}{r} - 1} \dd{r} \,.
+\end{equation*}
+
+Using $r = r_2\sin^2 u$, the integral can be solved:
+
+\begin{equation}
+	\gamma = \frac{\sqrt{2mE}}{\hbar}\qty[r_2\qty(\frac{\pi}{2} - \arcsin\sqrt{\frac{r_1}{r_2}}) - \sqrt{r_1(r_2-r_1)}] \,.
+\end{equation}
+
+Typically $r_1 \ll r_2$ so we can expand this to first order and obtain
+
+\begin{equation}
+	\gamma \approx \frac{\sqrt{2mE}}{\hbar}\qty[\frac{\pi}{2}r_2 - 2\sqrt{r_1 r_2}] = K_1\frac{Z}{\sqrt{E}} - K_2 \sqrt{Z r_1} \,,
+\end{equation}
+
+where
+
+\begin{subequations}
+\begin{align}
+	K_1 &\equiv \qty(\frac{e^2}{4\pi\epsilon_0})\frac{\pi\sqrt{2m}}{\hbar} = 1.980(\si{\mega\electronvolt})^{1/2}\,, \\[4pt]
+	K_2 &\equiv \qty(\frac{e^2}{4\pi\epsilon_0})^{1/2}\frac{4\sqrt{m}}{\hbar} = 1.485(\si{\femto\metre})^{1/2} \,.
+\end{align}
+\end{subequations}
+
+If we imagine the alpha particle classically inside the nucleus, sometimes hitting the wall, the escape probability is $e^{-2\gamma}$, with an average velocity $v$, and time between collisions $2r_1/v$. The average lifetime is therefore
+
+\begin{equation}
+	\tau = \qty(\frac{2r_1}{v})\exp\qty(\frac{2K_1Z}{\sqrt{E}} - 2K_2\sqrt{Zr_1}) \,.
+\end{equation} 
+
+The exponentially measured lifetimes show this exponential trend.
+\end{mdframed}
+
 
 \end{document}
