@@ -2620,5 +2620,184 @@ Since the total energy is negative, we can infer that \ce{H2+} is stable, with b
 
 The variational principle overestimates the ground state energy and hence underestimates the bond strength. However, we gain a lot of qualitative insight into the problem. Choosing a more sophisticated trial wavefunction would yield an even closer result.
 
- 
+\section{The WKB approximation}
+The WKB (\textit{Wentzel, Kramers, Brillouin}) approximation technique for solving the the time-independent Schrödinger equation in one dimension. It is especially useful in calculating bound state energies and tunneling rates through potential barriers.
+
+We assume that a particle of energy $E$ is moving through a region where the potential $V$ is constant. If the particle's energy is larger than the potential, the wavefunction is 
+
+\begin{equation}
+	\psi(x) = Ae^{\pm iK x} \quad, \qquad K \equiv \frac{1}{\hbar}\sqrt{2m(E-V)} \,.
+\end{equation}
+
+The wavefunction is oscillatory, with wavelength $\lambda = 2\pi/K$, and amplitude $A$.
+
+Now let us suppose that the potential is not constant, but smoothly varying compared to $\lambda$, so that over a region containing many full wavelengths the potential is essentially constant. It is then reasonable to assume that $\psi$ will remain sinusoidal, except that the wavelength and amplitude change slowly with $x$. This is the idea behind the WKB approximation.
+
+If we consider the case when the potential is higher than the particle energy, the wavefunction is exponential,
+
+\begin{equation}
+	\psi(x) = Ae^{\pm Kx} \quad, \qquad K \equiv \frac{1}{\hbar}\sqrt{2m(V-E)} \,.
+\end{equation}
+
+If the potential is not constant but is slowly varying compared to $1/K$, the wavefunction remains almost exponential, except that $A$ and $K$ are slowly varying functions of $x$.
+
+\begin{mdframed}
+	\paragraph*{Note:} when $E \approx V$, $\lambda\sim 1/K \rightarrow\infty$. Then $V(x)$ cannot be considered as slowly varying. These points are referred to as \textbf{turning points}. The problem can be solved but requires special treatment.
+\end{mdframed}
+
+\subsection{The classical region}
+We start by rewriting the Schrödinger equation as
+
+\begin{equation}
+	\dv[2]{\psi}{x} = -\frac{p^2}{\hbar^2}\psi \,,
+\end{equation} 
+
+where
+
+\begin{equation}
+	p(x) = \sqrt{2m(E-V(x))} \,.
+\end{equation}
+
+Here we assume that $E>V(x)$, such that $p(x)$ is real. We call this the \textit{classical region}.
+
+In general for some complex $\psi$ we can write
+
+\begin{equation}
+	\psi(x) = A(x)e^{i\phi(x)} ,,
+\end{equation}
+
+where $A$ and $\phi$ are real. We start by differentiating this expression to obtain
+
+\begin{align}
+	\dv{\psi}{x} &= \qty[\dv{A}{x} + iA\dv{\phi}{x}]e^{i\phi}\,; \\[4pt]
+	\dv[2]{\psi}{x} &= \qty[\dv[2]{\psi}{x} + 2i\dv{A}{x}\dv{\phi}{x} + iA\dv{\phi}{x} - A\qty(\dv{\phi}{x})^2]e^{i\phi} \,.
+\end{align}
+
+Inserting this into the rearranged Schrödinger equation, we obtain
+
+\begin{equation}
+	\dv[2]{A}{x} + 2i\dv{A}{x}\dv{\phi}{x} + iA\dv[2]{\phi}{x} - A\qty(\dv{\phi}{x})^2 = -\qty(\frac{p^2}{\hbar^2})A \,.
+\end{equation}
+
+Taking the real and imaginary parts, we obtain two equations:
+
+\begin{subequations}
+\begin{align}
+	&\dv[2]{A}{x} = A\qty[\qty(\dv{\phi}{x})^2 - \frac{p^2}{\hbar^2}]\,; \\[4pt]
+	&2\dv{A}{x}\dv{\phi}{x} + A\dv[2]{\phi}{x} = \dv{x}\qty(A^2\dv{\phi}{x}) = 0\,,
+\end{align}
+\end{subequations}
+which are equivalent to the Schrödinger equation. The second equation is easy to solve:
+
+\begin{equation}
+	A = \frac{C}{\sqrt{\dv{\phi}{x}}} \,,
+\end{equation}
+
+where $C$ is a real constant.
+
+To solve the other equation, we make the approximation that $\dv*[2](A{x})$ is negligible, because the amplitude $A$ varies slowly. We have:
+
+\begin{equation}
+	\qty(\dv[2]{\phi}{x})^2 = \frac{p^2}{\hbar^2} \quad\text{or}\quad \dv{\phi}{x} = \pm\frac{p}{\hbar} \,.
+\end{equation}
+
+Therefore, 
+
+\begin{equation}
+	\phi(x) = \pm \frac{1}{\hbar}\int p(x)\dd{x}\,.
+\end{equation}
+
+It follows that
+
+\begin{equation}
+	\boxed{ \psi(x) \approxeq \frac{C}{\sqrt{p(x)}}\exp\qty(\pm\frac{i}{\hbar}\int p(x)\dd{x}) }
+\end{equation}
+
+and the general solution is a linear combination of the two ($\pm$) terms.
+
+\begin{mdframed}
+\paragraph*{Note:} the probability density is approximately given by
+
+\begin{equation}
+	|\psi(x)|^2 \approxeq \frac{C^2}{p(x)} \,,
+\end{equation}
+
+which says that the probability of finding a particle at $x$ is inversely proportional to its velocity. Intuitively, a particle moving rapidly in a region is less likely to be caught there.
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Apply the WKB approximation to the case of an infinite square well, with a bumpy potential at the bottom:
+
+\begin{equation*}
+	V(x) = \begin{cases}
+	\text{something} & 0<x<a \\
+	0 & \text{otherwise}
+	\end{cases}
+	\,.
+\end{equation*}
+
+\paragraph*{Solution:}
+Inside the well, assuming that $E>V$, we have
+
+\begin{equation*}
+	\psi(x) \approxeq \frac{1}{\sqrt{p(x)}}\Bigl[C_+ e^{i\phi(x)} + C_- e^{-i\phi(x)}\Bigr] = \frac{1}{\sqrt{p(x)}}\Bigl[C_1\sin(\phi(x)) + C_2\cos(\phi(x))\Bigr] \,.
+\end{equation*}
+
+where
+
+\begin{equation*}
+	\phi(x) = \frac{1}{\hbar}\int_{0}^{x}p(x^\prime)\dd{x^\prime} \,/
+\end{equation*}
+
+Applying boundary conditions:
+
+\begin{align*}
+	\left\{
+	\begin{array}{l}
+	\psi(0) = 0 \quad\rightarrow\quad C_2 = 0 \\[4pt]
+	\psi(a) = 0 \quad\rightarrow\quad \sin(\phi(a)) = 0
+	\end{array}	
+	\right. \\[4pt]
+	\implies \phi(a) = n\pi\,\quad n=1,\, 2,\, 3,\,\ldots \\[4pt]
+	\implies \int_{0}^{a}p(x)\dd{x} = n\pi\hbar \,.
+\end{align*}
+This condition gives quantized energy levels.
+
+\paragraph*{Flat bottom:}
+If the bottom is flat ($V(x) = 0$) we recover the original infinite square well. Then $p = \sqrt{2mE}$ and
+
+\begin{equation*}
+	\int_{0}^{a}p(x)\dd{x} = a\sqrt{2mE} = n\hbar\pi \quad\implies\quad E_n = \frac{\hbar^2\pi^2n^2}{2ma^2} \,,
+\end{equation*}
+
+which is the exact result (since $\dv*[2]{A}{x}$ is identically zero in this case).
+
+\paragraph*{Shelf potential:}
+Here we consider a potential
+
+\begin{equation*}
+	V(x) = \begin{cases}
+	V_0 & 0<x<a/2 \\
+	0 & a/2<x<a \\
+	\infty & \text{otherwise}
+	\end{cases} \,.
+\end{equation*}
+
+This gives
+
+\begin{equation*}
+	\int_{0}^{a}p(x)\dd{x} = \int_{0}^{a/2}\sqrt{2m(E-V_0)}\dd{x} + \int_{a/2}^{a}\sqrt{2mE}\dd{x} = \frac{a}{2}\sqrt{2m(E-V_0)} + \frac{a}{2}\sqrt{2mE} \,,
+\end{equation*}
+
+from which we find that 
+
+\begin{equation*}
+	E_n = \frac{\hbar^2\pi^2n^2}{2ma^2} + \frac{V_0}{2} + \frac{{V_0}^2ma^2}{8\hbar^2\pi^2n^2} \,.
+\end{equation*}
+
+When we used perturbation theory, we found $E = {E_n}^0 + V_0/2$, which is the same as this result for small perturbations.
+\end{mdframed}
+
+
 \end{document}
