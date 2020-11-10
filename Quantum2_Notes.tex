@@ -22,6 +22,9 @@
 \newcommand{\Sy}{\begin{bmatrix} 0 & -i \\ i & 0\end{bmatrix}}
 \newcommand{\Sz}{\begin{bmatrix} 1 & 0 \\ 0 & -1\end{bmatrix}}
 
+\DeclareMathOperator{\Ai}{Ai} % Airy function
+\DeclareMathOperator{\Bi}{Bi} % Airy function
+
 \setlength{\parindent}{0pt} % no auto-indents
 \setlength{\parskip}{8pt}
 
@@ -2903,6 +2906,248 @@ If we imagine the alpha particle classically inside the nucleus, sometimes hitti
 \end{equation} 
 
 The exponentially measured lifetimes show this exponential trend.
+\end{mdframed}
+
+\subsection{The connection formulae}
+So far we have considered cases with vertical \textit{walls} to the potential well or barrier. Here we focus on when $E = V(x)$, where the classical region joins the nonclassical region. Here we focus on the bound state problem. 
+
+Assuming that $E = V$ at $x=0$, the WKB wavefunction is
+
+\begin{equation}
+	\psi(x) \simeq 
+	\begin{cases}
+	\frac{1}{\sqrt{p(x)}}\qty[B\exp\qty(\frac{i}{\hbar}\int_{x}^{0}p(x^\prime)\dd{x^\prime}) + C\exp\qty(-\frac{i}{\hbar}\int_{x}^{0}p(x^\prime)\dd{x^\prime})] & x<0 \\[4pt]
+	\frac{1}{\sqrt{|p(x)|}} D \exp\qty(-\frac{1}{\hbar}\int_{0}^{x}|p(x^\prime)|\dd{x^\prime}) & x>0
+	\end{cases}
+\end{equation}
+
+%% Figure: wavefunction
+
+where we have assumed that $V(x)>E$ for all $x>0$. 
+
+We want to join both solutions at $x=0$, however $\psi\rightarrow\infty$ as $x\rightarrow 0$. Our strategy is to linearize $V(x)$ near $x=0$ and solve for the wavefunction in a \textit{patching region}. We can use this to stitch together the two wavefunctions.
+
+To find the patching wavefunction $\psi_p$, we approximate the potential,
+
+\begin{equation}
+	V(x) \approx E + x\eval{\dv{V}{x}}_{x=0} \,.
+\end{equation}
+
+We need to solve:
+
+\begin{equation*}
+	-\frac{\hbar^2}{2m}\dv[2]{\psi_p}{x} + \qty[E + x\eval{\dv{V}{x}}_{x=0}\,]\psi_p = E\psi_p \,,
+\end{equation*}
+
+or
+
+\begin{equation}
+	\dv[2]{\psi_p}{x} = \alpha^3 x \psi_p \,,
+\end{equation}
+
+where
+
+\begin{equation}
+	\alpha \equiv \qty(\frac{2m}{\hbar^2}\eval{\dv{V}{x}}_{x=0}\,)^{1/3} \,.
+\end{equation}
+
+We define $ = \alpha x$, which gives
+
+\begin{equation}
+	\dv[2]{\psi_p}{z} = z\psi_p \,,
+\end{equation}
+
+which is known as \textbf{Airy's equation}, with a set of solutions known as \textbf{Airy functions}. There are two linearly independent solutions $\Ai(z)$ and $\Bi(z)$, with asymptotic forms
+
+\begin{align*}
+	\Ai(z) &\sim \frac{1}{2\sqrt{\pi}z^{1/4}}\exp\qty(-\frac{2}{3}z^{3/2}) \\[4pt]
+	\Bi(z) &\sim \frac{1}{2\sqrt{\pi}z^{1/4}}\exp\qty(\frac{2}{3}z^{3/2})
+\end{align*}
+
+for $z \gg 0$, and
+
+\begin{align*}
+\Ai(z) &\sim \frac{1}{2\sqrt{\pi}(-z)^{1/4}}\sin\qty(\frac{2}{3}(-z)^{3/2} + \frac{\pi}{4}) \\[4pt]
+\Bi(z) &\sim \frac{1}{2\sqrt{\pi}(-z)^{1/4}}\cos\qty(\frac{2}{3}(-z)^{3/2} + \frac{\pi}{4})
+\end{align*}
+
+for $Z \ll 0$.
+
+The patching wavefunction is then
+
+\begin{equation}
+	\psi_p = a \Ai(\alpha x) + b \Bi(\alpha x) \,.
+\end{equation}
+
+We can match the patching wavefunction to the WKB solutions on both sides of $x=0$.
+
+%% Figure: Patching region
+
+The overlapping regions must be close enough to the turning point at $x=0$ that $V(x)$ can be safely linearized, but far enough that the WKB approximation is reliable. In the overlap region,
+
+\begin{equation}
+	p(x) \approx \sqrt{2m\qty(E - E - x\eval{\dv{V}{x}}_{x=0}\,)} = \hbar \alpha^{3/2} \sqrt{-x} \,.
+\end{equation}  
+
+For $x > 0$:
+
+\begin{equation}
+	\int_{0}^{x} |p(x^\prime)|\dd{x^\prime} = \hbar\alpha^{3/2}\int_{0}^{x}\sqrt{x^\prime}\dd{x^\prime} = \frac{2}{3}\hbar(\alpha x)^{3/2}
+\end{equation}
+
+and the WKB wavefunction becomes
+
+\begin{equation}
+	\psi(x)\simeq \frac{D}{\sqrt{\hbar}\alpha^{3/4}x^{1/4}}\exp\qty(-\frac{2}{3}(\alpha x)^{3/2}) \,.
+\end{equation}
+
+Using the Airy functions (for large $z$) in the positive overlap region, 
+
+\begin{equation}
+	\psi_p(x)\simeq \frac{a}{2\sqrt{\pi}(\alpha x)^{1/4}}\exp(-\frac{2}{3}(\alpha x)^{3/2}) + \frac{b}{\sqrt{\pi}(\alpha x)^{1/4}}\exp(\frac{2}{3}(\alpha x)^{3/2}) \,.
+\end{equation}
+
+Comparing the positive WKB wavefunction and the patching function, we find that
+
+\begin{equation}
+	a = \sqrt{\frac{4\pi}{\alpha\hbar}} D \quad\text{and}\quad b = 0 \,.
+\end{equation}
+
+Repeating the same procedure for the negative overlap region,
+
+\begin{equation}
+	\int_{x}^{0}p(x^\prime)\dd{x^\prime} = \frac{2}{3}\hbar(-\alpha x)^{3/2} \,,
+\end{equation}
+
+and the WKB wavefunction is 
+
+\begin{equation}
+	\psi(x)\simeq \frac{1}{\sqrt{\hbar}\alpha^{3/4}(-x)^{1/4}}\qty[B\exp\qty(\frac{2i}{3}(-\alpha x)^{3/2}) + C\exp\qty(-\frac{2i}{3}(-\alpha x)^{3/2})] \,.
+\end{equation}
+
+We set consider the large Airy functions ($x<0$) and set $b=0$. This gives
+
+\begin{align}
+	\psi_p(x)&\simeq\frac{a}{\sqrt{\pi}(-\alpha x)^{1/4}}\sin\qty(\frac{2}{3}(-\alpha x)^{3/2} + \frac{\pi}{4}) \nonumber \\[4pt]  &= \frac{a}{\sqrt{\pi}(-\alpha x)^{1/4}}\frac{1}{2i}\qty[e^{i\pi/4}\exp\qty(\frac{2i}{3}(-\alpha x)^{3/2}) - e^{-i\pi/4}\exp\qty(-\frac{2i}{3}(-\alpha x)^{3/2})] \,.
+\end{align}
+
+Comparing the WKB and patching wavefunctions, we find
+
+\begin{equation}
+	\frac{a}{2i\sqrt{\pi}}e^{i\pi/4} = \frac{B}{\sqrt{\hbar\alpha}} \quad\text{and}\quad -\frac{a}{2i\sqrt{\pi}}e^{-i\pi/4} = \frac{C}{\sqrt{\hbar\alpha}} \,.
+\end{equation}
+
+Recalling that $a = D\sqrt{4\pi/\alpha\hbar}$, we find
+
+\begin{equation}
+	\boxed{ B = -ie^{i\pi/4}D \quad\text{and}\quad C = ie^{-i\pi/4}D }
+\end{equation}
+
+These are the \textbf{connection formulae}, joining the WKB solutions at either side of the turning point. The WKB wavefunction for some turning point at $x_0$ is
+
+\begin{equation}
+	\boxed{\psi(x)\simeq \begin{cases}
+	\frac{2D}{\sqrt{p(x)}}\sin\qty[\frac{1}{\hbar}\int_{x}^{x_0}p(x^\prime) \dd{x^\prime} + \frac{\pi}{4}] & x < x_0 \\
+	\frac{D}{\sqrt{|p(x)|}}\exp\qty[-\frac{1}{\hbar}\int_{x_0}^{x}|p(x^\prime)|\dd{x^\prime}] & x>x_0
+	\end{cases}}
+\end{equation} 
+
+\begin{mdframed}[backgroundcolor=gray!20]
+\paragraph*{Example:}
+Consider the \textit{half harmonic oscillator}, with potential given by
+
+\begin{equation*}
+	V(x) = \begin{cases}
+	\frac{1}{2}m\omega^2 x^2 & x>0 \\[4pt]
+	\infty &\text{otherwise}
+	\end{cases} \,.
+\end{equation*}
+
+Use the WKB approximation to determine the energies of each bound state.
+
+\paragraph*{Solution:}
+In this case, $\psi(0) = 0$ and therefore,
+
+\begin{equation*}
+	\frac{1}{\hbar}\int_{0}^{x_0}p(x)\dd{x} + \frac{\pi}{4} = n\pi \,,
+\end{equation*}
+
+or
+
+\begin{equation*}
+	\int_{0}^{x_0}p(x)\dd{x} = (n-1/4)\pi\hbar \,.
+\end{equation*}
+
+We have
+
+\begin{equation*}
+	p(x) = \sqrt{2m\qty(E - \frac{1}{2}m\omega^2 x^2)} = m\omega\sqrt{{x_0}^2 - x^2} \,,
+\end{equation*}
+
+where 
+
+\begin{equation*}
+	x_0 = \frac{1}{\omega}\sqrt{\frac{2E}{m}}
+\end{equation*}
+
+is the turning point. This means that
+
+\begin{equation*}
+	\int_{0}^{x_0}p(x)\dd{x} = m\omega\int_{0}^{x_0}\sqrt{{x_0}^2 - x^2}\dd{x} = \frac{\pi}{4}m\omega{x_0}^2 = \frac{\pi E}{2\omega}\,.
+\end{equation*}
+
+The quantization condition gives
+
+\begin{equation*}
+	E_n = \qty(2n-\frac{1}{2})\hbar\omega \,.
+\end{equation*}
+
+These are the odd energies of the full harmonic oscillator, which happen to be the exact energies for this problem.
+\end{mdframed}
+
+We determined the connection formulae for a turning point where the potential slopes upward. We now consider a potential well with no vertical walls. In this case, the turning points slope downward and we find that
+
+\begin{equation}
+\boxed{\psi(x)\simeq \begin{cases}
+	\frac{D^\prime}{\sqrt{|p(x)|}}\exp\qty[-\frac{1}{\hbar}\int_{x_0}^{x}|p(x^\prime)|\dd{x^\prime}] & x<x_0 \\
+	\frac{2D^\prime}{\sqrt{p(x)}}\sin\qty[\frac{1}{\hbar}\int_{x}^{x_0}p(x^\prime) \dd{x^\prime} + \frac{\pi}{4}] & x > x_0 
+	\end{cases}}
+\end{equation} 
+
+If we consider a potential well, the wavefunction in the classical region can be written as 
+
+\begin{equation}
+	\psi(x)\approxeq \frac{2D}{\sqrt{p(x)}}\sin\theta_2(x) \,, \quad\text{where}\quad \theta_2 = \frac{1}{\hbar}\int_{x}^{x_0}p(x^\prime)\dd{x^\prime} + \frac{\pi}{4}
+\end{equation}
+
+or 
+
+\begin{equation}
+	\psi(x)\approxeq -\frac{2D^\prime}{\sqrt{p(x)}}\sin\theta_1(x) \,, \quad\text{where}\quad \theta_1 = -\frac{1}{\hbar}\int_{x}^{x_0^\prime}p(x^\prime)\dd{x^\prime} - \frac{\pi}{4} \,.
+\end{equation}
+
+Since both expressions describe the same region, then $\theta_2 = \theta_1 + n\pi$:
+
+\begin{equation*}
+	\frac{1}{\hbar}\int_{x}^{x_0}p(x^\prime)\dd{x^\prime} + \frac{\pi}{4} = -\frac{1}{\hbar}\int_{x_0^\prime}^{x}p(x^\prime)\dd{x^\prime} - \frac{\pi}{4} + n\pi \,,
+\end{equation*}
+
+which means that
+
+\begin{equation}
+	\int_{x_0^\prime}^{x_0}p(x)\dd{x} = \qty(n-\frac{1}{2})\pi\hbar \,.
+\end{equation}
+
+This quantization condition gives the allowed energies for a typical potential well with two sloping sides. 
+
+\begin{mdframed}
+\paragraph*{Note:}
+The result is different for two vertical walls $(n)$, one vertical wall $(n-1/4)$, and no vertical walls $(n-1/2)$. The WKB approximation works best in the semi-classical (large $n$) case, where the differences are minor.
+\end{mdframed}
+
+\begin{mdframed}
+\paragraph*{Note:}
+This approach is powerful because it eliminates the need to solve the Schrödinger equation or deal with the wavefunction. Allowed energies are obtained by evaluating one integral. 
 \end{mdframed}
 
 
