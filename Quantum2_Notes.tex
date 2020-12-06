@@ -15,6 +15,7 @@
 \usepackage{xcolor} % colors
 \usepackage{cancel} % cancelto
 \usepackage{hyperref} % references and links
+\usepackage{mathrsfs} % mathscr
 \hypersetup{colorlinks=false, linkbordercolor=1 1 1}
 
 \newcommand{\exv}[1]{\left\langle #1 \right\rangle}
@@ -3150,5 +3151,217 @@ The result is different for two vertical walls $(n)$, one vertical wall $(n-1/4)
 This approach is powerful because it eliminates the need to solve the Schrödinger equation or deal with the wavefunction. Allowed energies are obtained by evaluating one integral. 
 \end{mdframed}
 
+\section{Time dependent perturbation theory}
+Here we consider problems where the potential is time varying, $V(\vb{r},t)$. This is interesting since there are important physical processes that are time dependent, (like the absorption of radiation), and allows for transitions between energy levels. In \textbf{quantum dynamics}, there are few problems that can be solved exactly and therefore we develop time dependent perturbation theory which provides approximate solutions when the time dependent part of the Hamiltonian is small compared to the time independent part.
 
+\subsection{Two-level systems}
+We begin by considering that there are two unperturbed states $\psi_a$ and $\psi_b$, which are eigenstates of the unperturbed Hamiltonian, $\mathcal{H}^0$:
+
+\begin{equation*}
+	\mathcal{H}^0\psi_a = E_a\psi_a \,; \quad \mathcal{H}^0\psi_a = E_a\psi_a \,; \quad \bra{\psi_a}\ket{\psi_b}=\delta_{ab} \implies \psi(0) = c_a\psi_a + c_b\psi_b\,.
+\end{equation*}
+
+In the absence of any perturbation, the time dependent wavefunction is
+
+\begin{equation}
+	\Psi(t) = C_a\psi_ae^{-i E_a t/\hbar} + C_b\psi_be^{-i E_b t/\hbar} \,,
+\end{equation}
+
+and $|C_a|^2$ and $|C_b|^2$ are the probabilities that a measurement of energy would yield the value $E_a$ or $E_b$. Of course, normalization requires $|C_a|^2$ and $|C_b|^2$.
+
+\subsubsection{The perturbed system}
+Now suppose we have a time dependent perturbation $\mathcal{H}^\prime(t)$. We wish to determine the time dependent coefficients $C_a$ and $C_b$. If, for example, the particle starts out in the state $\psi_a$ ($C_a(0) = 1$) and at some later time $_0$ the we find that $C_b(t_0) = 1$, the system will have undergone a transition $\psi_a \rightarrow \psi_b$.
+
+We impose that the wavefunction $\Psi(t)$ must satisfy the time dependent Schrödinger equation,
+
+\begin{equation}
+	\mathcal{H}\Psi = i\hbar\pdv{\Psi}{t} \,, \quad\text{where}\quad \mathcal{H} = \mathcal{H}^0 + \mathcal{H}^\prime \,.
+\end{equation}
+
+Inserting the form of $\Psi$ into the Schrödinger equation gives
+
+\begin{multline*}
+	C_a\qty(\mathcal{H}^0\psi_a)e^{-iE_at/\hbar} + C_b\qty(\mathcal{H}^0\psi_b)e^{-iE_bt/\hbar} + C_a\qty(\mathcal{H}^\prime\psi_a)e^{-iE_at/\hbar} + C_b\qty(\mathcal{H}^\prime\psi_b)e^{-iE_bt/\hbar} =\\ i\hbar\qty[\dot{C}_a\psi_ae^{-iE_at/\hbar} + \dot{C}_b \psi_be^{-iE_bt/\hbar} + C_a\psi_a\qty(-\frac{iE_a}{\hbar})e^{-iE_a t/\hbar} + C_b\psi_b\qty(-\frac{iE_b}{\hbar})e^{-iE_b t/\hbar}]
+\end{multline*}
+
+for which the first two terms on the left cancel the lat two terms on the right, which gives
+
+\begin{equation}
+	C_a\qty(\mathcal{H}^\prime\psi_a)e^{-iE_at/\hbar} + C_b\qty(\mathcal{H}^\prime\psi_b)e^{-iE_bt/\hbar} = i\hbar\dot{C}_a\psi_ae^{-iE_at/\hbar} + i\hbar\dot{C}_b \psi_be^{-iE_bt/\hbar} \,.
+\end{equation}
+
+We isolate $\dot{C}_a$ and $\dot{C}_a$ by taking the inner product with $\psi_a$ and $\psi_b$:
+
+\begin{subequations}
+\begin{align}
+	C_a\bra{\psi_a}\mathcal{H}^\prime\ket{\psi_a}e^{-iE_at/\hbar} + C_b\bra{\psi_a}\mathcal{H}^\prime\ket{\psi_b}e^{-iE_bt/\hbar} &= i\hbar\dot{C}_ae^{-E_at/\hbar} \\[4pt]
+	C_a\bra{\psi_b}\mathcal{H}^\prime\ket{\psi_a}e^{-iE_at/\hbar} + C_b\bra{\psi_b}\mathcal{H}^\prime\ket{\psi_b}e^{-iE_bt/\hbar} &= i\hbar\dot{C}_be^{-E_bt/\hbar}
+\end{align}
+\end{subequations}
+
+and defining the matrix elements $\mathcal{H}_{ij}^\prime = \bra{\psi_i}\mathcal{H}^\prime\ket{\psi_j}$, we have the effective Schrödinger equation:
+
+\begin{subequations}
+\begin{align}
+	\dot{C}_a &= -\frac{i}{\hbar}\qty[C_a\mathcal{H}^\prime_{aa} + C_b\mathcal{H}^\prime_{ab}e^{-i(E_b-E_a)t/\hbar}] \,; \\[4pt]
+	\dot{C}_b &= -\frac{i}{\hbar}\qty[C_b\mathcal{H}^\prime_{bb} + C_a\mathcal{H}^\prime_{ba}e^{-i(E_b-E_a)t/\hbar}] \,.
+\end{align}
+\end{subequations}
+
+It is common that the diagonal matrix elements vanish, which gives
+
+\begin{align*}
+	\dot{C}_a &= -\frac{i}{\hbar} C_b\mathcal{H}^\prime_{ab}e^{-i\omega_0 t} \,; \\[4pt]
+	\dot{C}_b &= -\frac{i}{\hbar}C_a\mathcal{H}^\prime_{ba}e^{-i\omega_0 t} \,,
+\end{align*}
+
+where $\omega = \Delta E/\hbar$. 
+
+\subsubsection{Time dependent perturbation}
+As we did with time independent perturbation theory, we expand the Hamiltonian in powers of the parameter $\lambda$, which we then set to unity to introduce the perturbation. We have
+
+\begin{equation}
+	\mathcal{H}^\prime(t) = \mathcal{H}^0(t) + \lambda\mathcal{H}^\prime(t)\,, \qquad C_n(t) = C_n^{(0)}(t) + \lambda C_n^{(1)}(t) + \lambda^2C_n^{(2)}(t) + \ldots
+\end{equation}
+
+which gives to zeroth order:
+
+\begin{subequations}
+\begin{align}
+	\dot{C}_a^{(0)}(t) = 0 \,; \\[4pt]
+	\dot{C}_a^{(0)}(t) = 0 \,,
+\end{align}
+\end{subequations}
+
+to first order:
+
+\begin{subequations}
+\begin{align}
+	\dot{C}_a^{(1)}(t) &= -\frac{i}{\hbar}\qty(C_a^{(0)}\mathcal{H}^\prime_{aa} + C_b^{(0)}\mathcal{H}^\prime_{ab}e^{-i\omega_0 t}) \,;\\[4pt]
+	\dot{C}_b^{(1)}(t) &= -\frac{i}{\hbar}\qty(C_b^{(0)}\mathcal{H}^\prime_{bb} + C_a^{(0)}\mathcal{H}^\prime_{ba}e^{-i\omega_0 t})\,,
+\end{align}
+\end{subequations}
+
+and to higher order:
+
+\begin{subequations}
+\begin{align}
+\dot{C}_a^{(r)}(t) &= -\frac{i}{\hbar}\qty(C_{a}^{(r-1)}\mathcal{H}^\prime_{aa} + C_{b}^{(r-1)}\mathcal{H}^\prime_{ab}e^{i\omega_0 t})\,; \\[4pt]
+\dot{C}_b^{(r)}(t) &= -\frac{i}{\hbar}\qty(C_{b}^{(r-1)}\mathcal{H}^\prime_{bb} + C_{a}^{(r-1)}\mathcal{H}^\prime_{ba}e^{i\omega_0 t})\,.
+\end{align}
+\end{subequations}
+
+We have a recursive formula, where the next higher order energy is obtained from the current order. Let us determine the solutions where the particle is initially in state $\psi_a$, or $C_a(0) = 1$ and $C_b(0)=0$. To zeroth order:
+
+\begin{align}
+	&\dot{C}_a^{(0)} = 0 &&\dot{C}_b^{(0)} = 0 \,; \nonumber \\[4pt]
+    &C_{a}^{(0)} = 1 &&C_{b}^{(0)} = 0 \,.
+\end{align}
+
+To first order:
+
+\begin{align}
+	&\dot{C}_a^{(1)} = -\frac{i}{\hbar}\mathcal{H}^\prime_{aa} &&\dot{C}_a^{(1)} = -\frac{i}{\hbar}\mathcal{H}^\prime_{aa}\,; \nonumber \\[4pt]
+	&C_{a}^{(1)} = \frac{1}{i\hbar}\int_{0}^{t} \mathcal{H}^\prime_{aa}(\tau)\dd{\tau}  &&C_{b}^{(1)} = \frac{1}{i\hbar}\int_{0}^{t} \mathcal{H}^\prime_{ba}(\tau)e^{i\omega_0 \tau}\dd{\tau} 
+\end{align}
+
+With these results we can write the time dependent expansion coefficients to first order and determine an approximation of $\Psi(t)$.
+
+From the coefficients $C_n(t)$, we can calculate the transition probability from an initial state $i$ to final state $f$. The definition is
+
+\begin{equation}
+	\mathscr{P}_{if} = |\bra{\psi_f}\ket{\Psi(t)}|^2 \,,
+\end{equation}
+
+where $\ket{\Psi(0)} = \ket{\psi_i}$. This gives
+
+\begin{equation}
+	\mathscr{P}_{if}(t) = \qty|C_f(t)|^2 \,,
+\end{equation}
+
+where $C_f(t) = C_{f}^{(0)}(t) + C_f^{(1)}(t) + \ldots$
+
+We are interested when $\mathcal{H}^\prime(t)$ introduces transitions $i \rightarrow f$ (for $i \neq f$). We have $C_f^{0}(t) = 0$ and therefore to first order:
+
+\begin{equation}
+	\mathcal{P}_{if} = |C_f^{(1)}(t)|^2\,.
+\end{equation}
+
+Using the approximation we obtained,
+
+\begin{equation}
+	\mathscr{P}_{if}(t) = \frac{1}{\hbar^2}\qty|\int_{0}^{t}\mathcal{H}^\prime_{fi}(\tau)e^{i\omega_0 \tau}\dd{\tau}|^2 \,.
+\end{equation}
+
+This assumes that $\mathcal{H}^\prime(t<0) = 0$. The transition probability is proportional to the matrix element $\bra{\psi_f}\mathcal{H}^\prime\ket{\psi_i}$.
+
+\subsubsection{Sinusoidal perturbations}
+We assume that we have a perturbation with sinusoidal time dependence,
+
+\begin{equation}
+	\mathcal{H}^\prime(\vb{r}, t) = V(\vb{r})\cos\omega t \,quad (t>0)\
+\end{equation}
+
+and we wish to extract the transmission probability of going from state $a$ to $b$. We have
+
+\begin{equation}
+	\mathcal{H}^\prime_{ab} = V_{ab}\cos\omega t \,,
+\end{equation}
+
+where 
+
+\begin{equation}
+	V_{ab} = \bra{\psi_a}V\ket{\psi_b} \,.
+\end{equation}
+
+We have
+
+\begin{align}
+	C_{b}(t) &\simeq \frac{1}{i\hbar}\int_{0}^{t} \cos\omega\tau e^{i\omega_0\tau}\dd{\tau} \nonumber\\[4pt]
+	&= \frac{V_{ba}}{2i\hbar}\frac{0}{t}\qty[e^{i(\omega_0 + \omega)\tau} + e^{i(\omega_0-\omega)\tau}]\dd{\tau} \nonumber \\[4pt]
+	&= \frac{V_ba}{2\hbar}\qty[\frac{e^{i(\omega_0+\omega)t}-1}{\omega_0+\omega} + \frac{e^{i(\omega_0-\omega)t-1}}{\omega_0-\omega}] \,.
+\end{align}
+
+We focus on driving frequencies near the transition frequency $\omega_0$:
+
+\begin{equation}
+	\omega_0 + \omega \gg |\omega_0 - \omega| \,.
+\end{equation}
+
+This leaves us with
+
+\begin{align}
+	C_b(t) &\approx \frac{V_{ba}}{2\hbar}\frac{e^{i(\omega_0-\omega)t/2}}{\omega_0 - \omega}\Bigl[e^{i(\omega_0-\omega)t/2} - e^{-i(\omega_0-\omega)t/2}\Bigl] \nonumber \\[4pt]
+	&= \frac{V_{ba}}{i\hbar}\frac{\sin\bigl((\omega_0 - \omega)t/2\bigr)}{\omega_0 - \omega}e^{i(\omega_0 - \omega)t/2} \,.
+\end{align}
+
+The transition probability $\psi_a \rightarrow \psi_b$ at time $t$ is
+
+\begin{equation}
+	\mathscr{P}_{ab}(t) = |C_b(t)|^2 \approx \frac{|V_{ab}|^2}{\hbar^2}\frac{\sin^2\bigl((\omega_0 - \omega)t/2\bigr)}{(\omega_0 - \omega)} \,.
+\end{equation}
+
+%% Figure: Transition probability function of t and omega
+
+The transition probability oscillates sinusoidally. The probability of measuring a particle in a state depends on when it is observed. This is in agreement with the exact solution.
+
+\subsubsection{Generalization to N-level system}
+For an eigenspace with$N$ dimensions, any state may be written
+
+\begin{equation}
+	\Psi(t) = \sum_{n=1}^{N}C_n(t)\psi_ne^{-iE_n t/\hbar} ]\,,
+\end{equation}
+
+where the Fourier coefficients are governed by
+
+\begin{equation}
+	i\hbar \dot{C}_n(t) = \sum_{k=1}^{N}\mathcal{H}_{nk}^\prime e^{i\omega_{nk}t}C_{k}(t) \,,
+\end{equation}
+
+where $\omega_{nk} = (E_n - E_k)\hbar$. The corrections are:
+
+\begin{align}
+	& i\hbar\dot{C}_n^{(0)}(t) = 0 \\[4pt]
+	& i\hbar\dot{C}_n^{(r)}(t) = \sum_{k=1}^{N}\mathcal{H}_{nk}(t)e^{i\omega_{nk}t}C_{k}^{(r-1)}(t) \,.
+\end{align}
 \end{document}
