@@ -3364,4 +3364,135 @@ where $\omega_{nk} = (E_n - E_k)\hbar$. The corrections are:
 	& i\hbar\dot{C}_n^{(0)}(t) = 0 \\[4pt]
 	& i\hbar\dot{C}_n^{(r)}(t) = \sum_{k=1}^{N}\mathcal{H}_{nk}(t)e^{i\omega_{nk}t}C_{k}^{(r-1)}(t) \,.
 \end{align}
+
+Assuming that the particle is in one unperturbed state $\psi_i$,
+
+\begin{align}
+	C_n^{(0)}(t) &= \delta_{ni} \\[4pt]
+	C_n^{(1)}(t) &= \int_{0}^{t}\mathcal{H}^\prime_{ni}(\tau)e^{i\omega_{ni}\tau}\dd{\tau} \,.
+\end{align}
+
+The transmission probability is the same as before.
+
+\subsection{Emission and Absorption of Radiation}
+\subsubsection{Electromagnetic waves}
+Electromagnetic waves have oscillating electric and magnetic fields.
+
+%% Figure: EM radiation
+
+If the wavelength of the light is long compared to the size of an atom, we can ignore the spatial variation of electric field, which we can define as:
+
+\begin{equation}
+	\vb{E} = E_0\cos\omega t \vu{z} \,.
+\end{equation}
+
+An atom is then perturbed by this electric field:
+
+\begin{align}
+	\mathcal{H}^\prime = -q E_0 z \cos\omega t \,;
+	\mathcal{H}^\prime_{ba} = i pE_0 \cos\omega t\,,
+\end{align}
+
+where $p \equiv q\bra{\psi_b}z\ket{\psi_a}$ is an odd diagonal matrix element of the $z$-component of the electric dipole moment operator, $q\vb{r}$. This interaction is the same as the oscillatory perturbation we studied before,
+
+\begin{equation}
+	V_{ba} = -pE_0 \,.
+\end{equation}
+
+\subsubsection{Absorption, stimulated emission and spontaneous emission}
+If an atom is in the \textit{lower} state $\psi_a$ and monochromatic polarized light is incident, the probability of transition to the \textit{upper} state $\psi_b$ is
+
+\begin{equation}
+	\mathscr{P}_{ab}(t) = \qty(\frac{|p|E_0}{\hbar})^2\frac{\sin^2\qty(\frac{1}{2}(\omega_0 - \omega)t)}{(\omega_0 - \omega)^2} \,.
+\end{equation}
+
+In this process, the electron absorbs the energy $E_b - E_a = \hbar\omega_0$ from the electric field; it absorbs a photon.
+
+Doing the same calculation assuming the electron the electron starts in the upper state $\psi_b$, we find
+
+\begin{equation}
+	\mathscr{P}_{ba}(t) = \qty(\frac{|p|E_0}{\hbar})^2\frac{\sin^2\qty(\frac{1}{2}(\omega_0 - \omega)t)}{(\omega_0 - \omega)^2} \,.
+\end{equation}
+
+If the electron is in the upper state and light is shined on it, it can make a transition to the lower state and emit a photon of energy $\hbar\omega_0$. Interestingly, the probability is the same as absorbing a photon. This process was first predicted by Einstein and is called stimulated emission.
+
+%% Figure: Stimulated emission
+
+Stimulated emission gives rise to amplification. If there are many atoms with electrons in the upper state, a single incident photon can produce a second, and this process can continue. This is the principle behind lasers (\textit{light amplification by stimulated emission of radiation}).
+
+Spontaneous emission is the down transition without an applied field. This is identical to stimulated emissionm since quantum mechanics states that there's always a non-zero field known as \textit{zero point} radiation.
+
+\subsubsection{Incoherent perturbations}
+The energy density of electromagnetic waves is given by:
+
+\begin{equation}
+	u = \frac{\epsilon_0}{2}\,{E_0}^2 \,,
+\end{equation}
+
+where $E_0$ is the amplitude of the electric field. Then the expression for the transition probabiluty becomes:
+
+\begin{equation}
+	\mathscr{P}_{ba}(t) = \frac{2u}{\epsilon_0\hbar^2}|p^2|\frac{\sin^2\qty[(\omega_0-\omega)t/2]}{(\omega_0 - \omega)^2} \,.
+\end{equation}
+
+This is for monochromatic light; a single $\omega$. In many cases, the system would be exposed to a range of frequencies. In this case, we replace $u \rightarrow \rho(\omega)\dd{\omega}$, which is the energy density in the frequency range $\dd{\omega}$. We then integrate over all frequencies to obtain:
+
+\begin{equation*}
+	\mathscr{P}_{ba}(t) = \frac{2}{\epsilon_0\hbar^2}|p^2|\int_{0}^{\infty}\rho(\omega)\,\frac{\sin^2\qty[(\omega_0-\omega)t/2]}{(\omega_0 - \omega)^2} \dd{\omega}\,,
+\end{equation*}
+
+which is sharply peaked about $\omega = \omega_0$. We can then approximate $\rho(\omega) \approx \rho(\omega_0)$ and obtain
+
+\begin{align}
+	\mathscr{P}_{ba}(t) &\cong \frac{2|p|^2\rho(\omega_0)}{\epsilon_0\hbar^2}\int_{0}^{\infty}\frac{\sin^2\qty[(\omega_0-\omega)t/2]}{(\omega_0 - \omega)^2} \dd{\omega}\,, \nonumber\\[4pt]
+	&= \frac{\pi|p|^2}{\epsilon_0\hbar^2}\rho(\omega_0) t \,.
+\end{align}
+
+\begin{mdframed}
+\paragraph*{Note:} In the above relation we are required to compute the integral
+
+\begin{equation*}
+	I = \int_{0}^{\infty}\frac{\sin^2\qty[(\omega_0-\omega)t/2]}{(\omega_0 - \omega)^2} \dd{\omega}\,.
+\end{equation*}
+
+We make the substitution $x = (\omega_0 - \omega)t/2$ such that $\dd{x} = -t\dd{\omega}/2$. We may extend the bounds to $x = \pm\infty$ since the integrand decays rapidly. This gives us the approximate value
+
+\begin{equation*}
+	I \cong \frac{t}{2}\int_{-\infty}^{\infty}\frac{\sin^2 x}{x^2} = \frac{t\pi}{2}\,.
+\end{equation*}
+
+This remaining integral is equal to $\pi$ and can be solved by complex analysis, Feynman's trick, or Fourier series via Parseval's theorem.
+\end{mdframed}
+
+Now the transition probability is proportional to $t$. The oscillating behaviour seen with monochromatic light gets washed out when incoherent light of many frequencies is used. Here the transition rate is constant:
+
+\begin{equation*}
+	R_{ba} = \dv{\mathscr{P}}{t} = \frac{\pi}{\epsilon_0\hbar^2}|p|^2 \rho(\omega_0) \,.
+\end{equation*}
+
+There is another correction we need to consider for incoherent perturbations. Before we assumed that the incident light is traveling along $y$with polarization along $z$. We are interested in the case when light is incident from all directions with all polarizations. For this we need to replace $|p|^2$ with the average of $|\vb{p}\vdot\vu{n}|^2$\, where $\vu{n}$ is the polarization direction, $\vb{p} = \bra{\psi_b}\vb{r}\ket{\psi_a}$ is the polarization matrix element, and the average is taken over all space.
+
+To perform the angular average we select spherical coordinates and choose the direction of propagation to be along $x$ and $\vu{n}$ along $z$. This way, $\vb{p}$ defines the spherical angles $\theta$ and $\phi$.
+
+%% Figure: Geometry of orientations
+
+We have
+
+\begin{equation}
+	\vb{p}\vdot\vu{n} = p\cos\theta \,,
+\end{equation}
+
+and the average over all angles is
+
+\begin{equation}
+	\exv{|\vb{p}\vdot\vu{n}|^2} = \frac{1}{4\pi}\int_{0}^{2\pi}\int_{0}^{\pi}|p|^2\cos\theta\sin\theta\dd{\theta}\dd{\phi} = \frac{1}{3}|p|^2 \,.
+\end{equation}
+
+The transition rate for stimulated emission from state $b$ to state $a$, under the influence of incoherent, unpolarized light incident from all directions is therefore
+
+\begin{equation}
+	R_{ba} = \frac{\pi}{3\epsilon_0\hbar^2}|p|^2\rho(\omega_0) \,.
+\end{equation}
+
+
 \end{document}
